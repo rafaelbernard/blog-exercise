@@ -141,22 +141,19 @@
                         return $rootScope.sessao.usuarioEstaLogadoOuLocalStorageV1();
                     };
 
-                    /**
-                     * Verifica se usuario estah autenticado e realiza redirecionamento se necessario
-                     */
                     $rootScope.verificarAutenticacao = function ()
                     {
                         //devConsoleLog("$rootScope.verificarAutenticacao");
-                        $rootScope.redirecionarSeUsuarioDeslogadoV1();
+                        $rootScope.redirectUnloggedUserV1();
                     };
 
-                    $rootScope.redirecionarSeUsuarioDeslogadoV1 = function ()
+                    $rootScope.redirectUnloggedUserV1 = function ()
                     {
-                        //devConsoleLog("$rootScope.redirecionarSeUsuarioDeslogadoV1");
+                        //devConsoleLog("$rootScope.redirectUnloggedUserV1");
 
                         if (!$rootScope.usuarioEstaLogadoV1())
                         {
-                            //devConsoleLog('self.redirecionarSeUsuarioDeslogadoV1: !self.usuarioEstaLogadoV1()');
+                            //devConsoleLog('self.redirectUnloggedUserV1: !self.usuarioEstaLogadoV1()');
                             //return;
                             $rootScope.logoff();
                             $location.path("/login");
@@ -261,17 +258,15 @@
                             return;
                         }
 
-                        $rootScope.redirecionarSeUsuarioDeslogadoV1();
+                        $rootScope.redirectUnloggedUserV1();
                     };
 
                     $rootScope._init();
                 }])
-        .config(['$httpProvider', '$routeProvider', "$locationProvider", "localStorageServiceProvider", "$mdThemingProvider", "ChartJsProvider",
-            function ($httpProvider, $routeProvider, $locationProvider, localStorageServiceProvider, $mdThemingProvider, ChartJsProvider)
+        .config(['$httpProvider', '$routeProvider', "$locationProvider", "localStorageServiceProvider", "$mdThemingProvider",
+            function ($httpProvider, $routeProvider, $locationProvider, localStorageServiceProvider, $mdThemingProvider)
             {
                 devConsoleLog("rs.config");
-
-                ChartJsProvider.setOptions({colors: ['#ec008c', '#803690', '#ec008c', '#ec008c', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360']});
 
                 localStorageServiceProvider
                     .setPrefix('achecpvcolaborador');
@@ -381,19 +376,7 @@
                         controllerAs: "faq",
                         label: "FAQ"
                     })
-                    .when("/cuidador", {
-                        templateUrl: "views/cuidador.html",
-                        controller: "CuidadorController",
-                        controllerAs: "cuidador",
-                        label: "Cuidador"
-                    })
-                    .when("/saudavel-saber", {
-                        templateUrl: "views/saudavelsaber.html",
-                        controller: "SaudavelController",
-                        controllerAs: "saudavel",
-                        label: "Saudavel Saber"
-                    })
-                    .when("/pagina-nao-encontrada", {
+                    .when("/not-found", {
                         templateUrl: "views/erro404.html",
                         controller: 'erro404Controller',
                         controllerAs: 'erro404',

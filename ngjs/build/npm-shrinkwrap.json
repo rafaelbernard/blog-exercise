@@ -20,26 +20,14 @@
       "resolved": "https://registry.npmjs.org/angular/-/angular-1.7.3.tgz"
     },
     "angular-animate": {
-      "version": "1.6.9",
-      "from": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.6.9.tgz",
-      "resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.6.9.tgz"
+      "version": "1.7.3",
+      "from": "angular-animate@latest",
+      "resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.7.3.tgz"
     },
     "angular-aria": {
       "version": "1.6.9",
       "from": "angular-aria@latest",
       "resolved": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.6.9.tgz"
-    },
-    "angular-chart.js": {
-      "version": "1.1.1",
-      "from": "angular-chart.js@latest",
-      "resolved": "https://registry.npmjs.org/angular-chart.js/-/angular-chart.js-1.1.1.tgz",
-      "dependencies": {
-        "chart.js": {
-          "version": "2.3.0",
-          "from": "chart.js@>=2.3.0 <2.4.0",
-          "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.3.0.tgz"
-        }
-      }
     },
     "angular-local-storage": {
       "version": "0.7.1",
