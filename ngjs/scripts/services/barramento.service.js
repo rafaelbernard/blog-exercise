@@ -28,9 +28,10 @@
          */
         self.tokenExpirationTime = 3000;
 
-        self.CONFIG                 = $rootScope.CONFIG_USO.WS_BARRAMENTO;
-        self.CONFIG_ACCREDITED_LEAD = $rootScope.CONFIG_USO.WS_ACCREDITED_LEAD;
-        self.host                   = $rootScope.CONFIG_USO.WS_BARRAMENTO.HOST;
+        // self.CONFIG                 = $rootScope.CONFIG_USO.WS_BARRAMENTO;
+        // self.CONFIG_ACCREDITED_LEAD = $rootScope.CONFIG_USO.WS_ACCREDITED_LEAD;
+        // self.host                   = $rootScope.CONFIG_USO.WS_BARRAMENTO.HOST;
+        // self.host                   = $rootScope.CONFIG_USO.WS_BARRAMENTO.HOST;
         self.invalidateCache        = false;
 
         // -----------------

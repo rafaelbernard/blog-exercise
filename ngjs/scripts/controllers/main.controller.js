@@ -13,7 +13,7 @@
                             $rootScope)
     {
         $rootScope.verifyAuthentication();
-        
+
         var self = this;
 
         self._initInicial = function ()
@@ -21,8 +21,8 @@
             devConsoleLog("_initInicial");
             $location.path("/inicial/colaborador");
         };
-        
-        
+
+
     }
 
 })();

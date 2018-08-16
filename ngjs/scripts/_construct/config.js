@@ -108,29 +108,14 @@
             URL_WEBTOCASE: "https://cs52.salesforce.com",
         },
         X_TOKEN_API: "262e4801adb5dfe5611a4a83c68365a591f14c48",
-        DEBUG_MODE: "debug",
-        WS_BARRAMENTO: {
-            BASIC_AUTHORIZATION: "Basic YjViZDMzZjI1ZTM4NDI1ZTk0MzI3OGIwMWFmZDE5YzY6MTIzNDU2",
-            CLIENT_ID: "XKqQ5cHpIVvwdfDZ1Y7HMbY71jNlUfxI",
-            CLIENT_SECRET: "FA91ANx2199R22gH",
-            HOST: "https://apiachehmg.apimanagement.us2.hana.ondemand.com",
-            APP_PCS: {
-                APIKEY: "e864d567-8d87-7871-11a2-991c40241f58",
-            },
-            ID_CANAL: WS_BARRAMENTO_ID_CANAL_SITE,
-            ID_PARCEIRO: WS_BARRAMENTO_ID_PARCEIRO_SITE,
-        },
-        WS_ACCREDITED_LEAD: {
-            CLIENT_ID: 'j21vKgAAZU88AhB9YnEnVkT1yAGR6J3m',
-            CLIENT_SECRET: "mW2pM3IfAYH28UOv"
-        }
+        DEBUG_MODE: "debug"
     };
 
     var configUso = configProducao;
 
     var urlAcesso = window.location.href;
 
-    if (urlAcesso.lastIndexOf("localhost") !== -1 || urlAcesso.lastIndexOf("local.dev") !== -1)
+    if (urlAcesso.lastIndexOf("localhost") !== -1 || urlAcesso.lastIndexOf("w2") !== -1)
     { configUso = configDevLocal; }
     else if (urlAcesso.lastIndexOf("dev") !== -1)
     { configUso = configDev; }
