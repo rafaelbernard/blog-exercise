@@ -69,11 +69,6 @@
       "from": "angular-ui-mask@1.8.7",
       "resolved": "https://registry.npmjs.org/angular-ui-mask/-/angular-ui-mask-1.8.7.tgz"
     },
-    "angulartics": {
-      "version": "1.6.0",
-      "from": "angulartics@1.6.0",
-      "resolved": "https://registry.npmjs.org/angulartics/-/angulartics-1.6.0.tgz"
-    },
     "ansi-colors": {
       "version": "1.1.0",
       "from": "ansi-colors@>=1.0.1 <2.0.0",

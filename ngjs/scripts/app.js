@@ -69,7 +69,7 @@
 
                     $rootScope.getDadosAutenticacao = function ()
                     {
-                        return $rootScope.sessao.getUsuario();
+                        return $rootScope.sessao.getUser();
                     };
 
                     /**

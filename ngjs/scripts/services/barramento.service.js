@@ -484,7 +484,7 @@
                 idCanal: _CONFIG.WS_BARRAMENTO.ID_CANAL,
 
                 // identificacao da fonte
-                idInclusao: $rootScope.sessao.getUsuario().cpf,
+                idInclusao: $rootScope.sessao.getUser().cpf,
                 tipoIdInclusao: "cpf-colaborador"
             };
 
@@ -532,7 +532,7 @@
                 idCanal: _CONFIG.WS_BARRAMENTO.ID_CANAL,
 
                 // identificacao da fonte
-                idInclusao: $rootScope.sessao.getUsuario().cpf,
+                idInclusao: $rootScope.sessao.getUser().cpf,
                 tipoIdInclusao: "cpf-colaborador"
             };
 
@@ -901,13 +901,13 @@
             {
                 params = {cnpj: cnpj};
             }
-            else if ($rootScope.sessao.getUsuario().cargo === 'GERENTE')
+            else if ($rootScope.sessao.getUser().cargo === 'GERENTE')
             {
-                params = {managerEmail: $rootScope.sessao.getUsuario().Email};
+                params = {managerEmail: $rootScope.sessao.getUser().Email};
             }
             else
             {
-                params = {agentEmail: $rootScope.sessao.getUsuario().Email};
+                params = {agentEmail: $rootScope.sessao.getUser().Email};
             }
 
             var route         = '/v1/api/corp/sales/lead/accreditedLead';
@@ -950,12 +950,12 @@
                 responsiblePhone: params.telefoneResponsavelFarmacia,
                 responsibleMobilePhone: params.celularResponsavelFarmacia,
                 responsibleEmail: params.emailResponsavelFarmacia,
-                agentName: $rootScope.sessao.getUsuario().Nome,
-                agentMobilePhone: $rootScope.sessao.getUsuario().Dados.CelularCorporativo,
-                agentEmail: $rootScope.sessao.getUsuario().Email,
-                managerName: $rootScope.sessao.getUsuario().Dados.Gestores[0].Nome,
-                managerMobilePhone: $rootScope.sessao.getUsuario().Dados.Gestores[0].CelularCorporativo,
-                managerEmail: $rootScope.sessao.getUsuario().Dados.Gestores[0].Email,
+                agentName: $rootScope.sessao.getUser().Nome,
+                agentMobilePhone: $rootScope.sessao.getUser().Dados.CelularCorporativo,
+                agentEmail: $rootScope.sessao.getUser().Email,
+                managerName: $rootScope.sessao.getUser().Dados.Gestores[0].Nome,
+                managerMobilePhone: $rootScope.sessao.getUser().Dados.Gestores[0].CelularCorporativo,
+                managerEmail: $rootScope.sessao.getUser().Dados.Gestores[0].Email,
                 businessActivity: 'Drogaria',
                 leadExistsSevenPDV: false,
                 partnerId: 18,

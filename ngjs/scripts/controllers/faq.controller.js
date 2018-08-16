@@ -43,8 +43,8 @@
             self.formularioContato.assunto = "duvida-faq-cpvemcampo";
             self.formularioContato.fonte = "cpvemcampo";
             self.formularioContato.codTipoFormulario = "faq";
-            self.formularioContato.nome = angular.copy($rootScope.sessao.getUsuario().nome);
-            self.formularioContato.email = angular.copy($rootScope.sessao.getUsuario().Email);
+            self.formularioContato.nome = angular.copy($rootScope.sessao.getUser().nome);
+            self.formularioContato.email = angular.copy($rootScope.sessao.getUser().Email);
 
             PublicService.enviarFormularioContatoV2(self.formularioContato)
                 .then(function ()

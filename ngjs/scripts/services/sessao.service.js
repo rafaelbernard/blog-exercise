@@ -97,12 +97,12 @@
         {
             //devConsoleLog("sessao.isUserLoggedOrLocalStorageV1");
 
-            if (!self.getUsuario())
+            if (!self.getUser())
             {
                 recoverLocalStorage();
             }
 
-            return (self.getLogged() && self.getUsuario());
+            return (self.getLogged() && self.getUser());
         };
 
         self.getLogged = function ()
@@ -124,9 +124,9 @@
             limparLocalStorage();
         };
 
-        self.getUsuario = function ()
+        self.getUser = function ()
         {
-            //devConsoleLog("sessao.getUsuario");
+            //devConsoleLog("sessao.getUser");
             return self.user;
         };
 

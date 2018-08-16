@@ -78,7 +78,7 @@
                 return false;
             }
 
-            if ($rootScope.sessao.getUsuario().Dados.Gestores.length === 0 || ($rootScope.sessao.getUsuario().Dados.Gestores[0] && !$rootScope.sessao.getUsuario().Dados.Gestores[0].Email) || !$rootScope.sessao.getUsuario().Email)
+            if ($rootScope.sessao.getUser().Dados.Gestores.length === 0 || ($rootScope.sessao.getUser().Dados.Gestores[0] && !$rootScope.sessao.getUser().Dados.Gestores[0].Email) || !$rootScope.sessao.getUser().Email)
             {
                 sendFeedback('Sua estrutura organizacional está inconsistente. Procure o departamento de TI.', 'alert');
                 return false;
@@ -86,7 +86,7 @@
 
             self.requestInProgress = true;
 
-            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
+            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUser().id);
 
             barramentoService.accreditedLead(self.conviteFarmacia)
                 .then(function (response)
@@ -118,7 +118,7 @@
 
             self.requestInProgress = true;
 
-            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
+            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUser().id);
 
             barramentoService.accreditedLeadGet(self.buscaFarmacia.cnpjResponsavelFarmacia)
                 .then(function (response)
@@ -144,7 +144,7 @@
 
             self.requestInProgress = true;
 
-            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
+            self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUser().id);
 
             barramentoService.accreditedLeadStatus(self.conviteFarmacia.cnpjResponsavelFarmacia)
                 .then(function (response)
