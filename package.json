@@ -5,7 +5,7 @@
     "install": "cd ngjs/build && npm install",
     "uninstall": "cd build && npm uninstall",
     "start": "cd build && npm start",
-    "dev": "cd ngjs/build && npm run-script dev",
+    "dev": "cd lvl-rest && php composer.phar install && cd ../ngjs/build && npm run-script dev",
     "publish": "cd ngjs/build && npm run-script publish"
   },
   "dependencies": {}
