@@ -1,56 +1,39 @@
-<div class="container principal ">
-    <div class="row login_container">
-        <div class="col-xs-12 nopad">
-            
-            <div class="areaLogin">
-                <div class="header_login">
-                    <span class="logo_login" alt=""></span>
-                    <p>Esta é uma <span>ÁREA RESTRITA</span> aos colaboradores do <span>Aché Laboratórios Farmacêuticos</span>.</p>
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6 center-block">
+
+            <form data-ng-submit="loginController.loginV1(loginController.loginData)">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                <div class="form-group">
+                    <label class="text-left">E-mail</label>
+                    <input type="email" name="email" class="form-control" autofocus required data-ng-model="loginController.loginData.email">
                 </div>
-                
-                <form name="formLogin" data-ng-submit="loginController.loginV1(loginController.dadosLogin)">
 
-                    <div class="cpf_area">
-                        <label for="login">Login: </label>
-                        <input type="text" id="login" required
-                               data-ng-model="loginController.dadosLogin.login">
-                    </div>
-                    <div class="matricula_area">
-                        <label for="senha">Senha: </label>
-                        <input type="password" id="senha" required
-                               data-ng-model="loginController.dadosLogin.senha">
-                    </div>
+                <div class="form-group">
+                    <label class="">Password</label>
+                    <input type="password" name="password" class="form-control" required data-ng-model="loginController.loginData.password">
+                </div>
 
-                    <!--<div class="cpf_area">-->
-                        <!--<label for="cpf">CPF: </label>-->
-                        <!--<input type="text" id="cpf" placeholder="98745632198" required-->
-                        <!--data-ng-model="loginController.dadosLogin.cpf" data-ui-mask-placeholder-->
-                        <!--data-ui-mask="999.999.999-99">-->
-                    <!--</div>-->
-                    <!--<div class="matricula_area">-->
-                            <!--<label for="matricula">Matrícula: </label>-->
-                            <!--<input type="text" id="matricula" placeholder="987123" required-->
-                            <!--data-ng-model="loginController.dadosLogin.matricula">-->
-                    <!--</div>-->
-                    
-                    <div class="btn_login_area">
-                        <input type="submit" value="Entrar" class="btn_login" data-ng-disabled="loginController.requisicaoEmAndamento || formLogin.$invalid">
-                        <md-progress-circular class="progress_custom loading_login md-accent md-hue-1" md-diameter="20"
-                        md-mode="indeterminate" data-ng-show="loginController.requisicaoEmAndamento"></md-progress-circular>
-                    </div>
-                    <!--<input type="submit" class="xbtn_login" data-ng-disabled="loginController.requisicaoEmAndamento || formLogin.$invalid">-->
-                    <p class="text_caso">Caso não consiga acessar, entre em contato com <u>suportecpv@ache.com.br</u></p>
-                    
-                
-                </form>
-            </div>
-            
-            <span class="logo_ache_rodape"></span>
+                <div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">
+                        Sign-in
+                    </button>
+
+                    <!-- loading -->
+                    <md-progress-circular class="progress_custom md-accent md-hue-1 loading_cep" md-diameter="20" md-mode="indeterminate" data-ng-show="loginController.requestInProgress"></md-progress-circular>
+                </div>
+
+            </form>
+
+            <pre data-ng-show="loginController.r">
+                API RESPONSE:
+                {{loginController.r|json}}
+            </pre>
+
         </div>
 
-        
-        
-        <!-- <div ng-include="'../includes/box_newsletter.html'"></div> -->
     </div>
     <!-- /row -->
 </div>

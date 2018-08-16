@@ -12,16 +12,19 @@
             "ui.mask",
         ])
         .run(
-            ["$location",
+            ['$location',
+                '$http',
                 "$rootScope",
                 '$route',
                 "$sce",
                 "Sessao",
                 function ($location,
+                          $http,
                           $rootScope,
                           $route,
                           $sce,
-                          sessao)
+                          sessao
+                )
                 {
                     // ===========
                     // CONS
@@ -33,8 +36,8 @@
                     // =========
                     // BOOLEANS
                     // =========
-                    $rootScope.logado          = false;
-                    $rootScope.rotaDeAplicacao = false;
+                    $rootScope.logado           = false;
+                    $rootScope.applicationRoute = false;
 
                     // =========
                     // OBJECTS
@@ -46,7 +49,7 @@
                     // ==================
                     // OBJECTS - MODELOS
                     // ==================
-                    var MODELO_DADOS_AUTENTICACAO = {
+                    var AUTH_MODEL_DATA = {
                         id: "",
                         nome: "",
                         tipoLogin: "",
@@ -56,6 +59,8 @@
                             return this.id;
                         }
                     };
+
+                    $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
                     // ==================
                     // OBJETOS DE SESSAO
@@ -128,11 +133,11 @@
                         return null;
                     };
 
-                    $rootScope.limparDadosSessao = function ()
+                    $rootScope.cleanSessionData = function ()
                     {
-                        //devConsoleLog("$rootScope.limparDadosSessao");
+                        //devConsoleLog("$rootScope.cleanSessionData");
                         $rootScope.setLogado(false);
-                        $rootScope.sessao.limparDadosSessao();
+                        $rootScope.sessao.cleanSessionData();
                     };
 
                     $rootScope.usuarioEstaLogadoV1 = function ()
@@ -163,7 +168,7 @@
                     $rootScope.logoff = function ()
                     {
                         //devConsoleLog("$rootScope.logoff");
-                        $rootScope.limparDadosSessao();
+                        $rootScope.cleanSessionData();
                         return $rootScope;
                     };
 
@@ -179,9 +184,9 @@
                      *
                      * @returns {*}
                      */
-                    $rootScope.verificarRotaDeAplicacao = function ()
+                    $rootScope.verifyApplicationRoute = function ()
                     {
-                        //devConsoleLog("$rootScope.verificarRotaDeAplicacao");
+                        //devConsoleLog("$rootScope.verifyApplicationRoute");
                         $rootScope.rotaDeAplicacao = true;
 
                         var caminho = $location.path();
@@ -206,38 +211,27 @@
                     {
                         // handle route changes
                         //devConsoleLog("$locationChangeSuccess");
-                        $rootScope.verificarRotaDeAplicacao();
+                        $rootScope.verifyApplicationRoute();
                     });
 
-                    $rootScope.setDadosAutenticacao = function (dados)
+                    $rootScope.setAuthenticationData = function (dados)
                     {
-                        $rootScope.usuario        = Object.assign(MODELO_DADOS_AUTENTICACAO, dados);
+                        $rootScope.usuario        = Object.assign(AUTH_MODEL_DATA, dados);
                         $rootScope.usuario.objeto = angular.copy(dados);
-                        $rootScope.normalizeDadosAutenticacao();
+                        $rootScope.normalizeAuthenticationData();
                     };
 
                     $rootScope.setDadosAutenticacaoColaborador = function (dados)
                     {
                         dados.tipoLogin = "colaborador";
-                        $rootScope.setDadosAutenticacao(dados);
-                        return $rootScope.sessao.setUsuarioColaborador(dados);
+                        $rootScope.setAuthenticationData(dados);
+                        return $rootScope.sessao.setUser(dados);
                     };
 
-                    $rootScope.normalizeDadosAutenticacao = function ()
+                    $rootScope.normalizeAuthenticationData = function ()
                     {
-                        //devConsoleLog("$rootScope.normalizeDadosAutenticacao");
-                        if ($rootScope.usuario.tipoLogin === "colaborador")
-                        {
-                            $rootScope.normalizeDadosAutenticacaoColaborador();
-                        }
-                    };
+                        //devConsoleLog("$rootScope.normalizeAuthenticationData");
 
-                    $rootScope.normalizeDadosAutenticacaoColaborador = function ()
-                    {
-                        //devConsoleLog("$rootScope.normalizeDadosAutenticacaoColaborador");
-                        var colaborador         = angular.copy($rootScope.usuario.objeto);
-                        $rootScope.usuario.id   = colaborador.CPF;
-                        $rootScope.usuario.nome = colaborador.Nome;
                     };
 
                     $rootScope.isActiveRoute = function (route)
@@ -251,9 +245,9 @@
                         //devConsoleLog("rs._init");
                         //devConsoleLog($location.path());
 
-                        $rootScope.verificarRotaDeAplicacao();
+                        $rootScope.verifyApplicationRoute();
 
-                        if (!$rootScope.rotaDeAplicacao)
+                        if (!$rootScope.applicationRoute)
                         {
                             return;
                         }
@@ -262,14 +256,15 @@
                     };
 
                     $rootScope._init();
-                }])
+                }
+            ])
         .config(['$httpProvider', '$routeProvider', "$locationProvider", "localStorageServiceProvider", "$mdThemingProvider",
             function ($httpProvider, $routeProvider, $locationProvider, localStorageServiceProvider, $mdThemingProvider)
             {
                 devConsoleLog("rs.config");
 
                 localStorageServiceProvider
-                    .setPrefix('achecpvcolaborador');
+                    .setPrefix('figured');
 
                 $mdThemingProvider.theme('red')
                     .primaryPalette('red');
@@ -333,30 +328,6 @@
                         controller: "cadastroController",
                         controllerAs: "cadastroController",
                         label: "Cadastro de Pacientes"
-                    })
-                    // .when("/cadastro-paciente-2", {
-                    //     templateUrl: "views/cadastro-paciente-2.html",
-                    //     controller: "cadastroController",
-                    //     controllerAs: "cadastroController",
-                    //     label: "Cadastro de Pacientes"
-                    // })
-                    // .when("/cadastro-paciente-3", {
-                    //     templateUrl: "views/cadastro-paciente-3.html",
-                    //     controller: "cadastroController",
-                    //     controllerAs: "cadastroController",
-                    //     label: "Cadastro de Pacientes"
-                    // })
-                    .when("/produtos-participantes", {
-                        templateUrl: "views/produtos-participantes.html",
-                        controller: "ProdutosController",
-                        controllerAs: "produtos",
-                        label: "Produtos Participantes"
-                    })
-                    .when('/produtos-participantes/:prodSlug', {
-                        templateUrl: 'views/produtos-participantes-detalhe.html',
-                        controller: 'ProdutoDetalheController',
-                        controllerAs: 'produtoDetalhe',
-                        label: 'Produtos Participantes'
                     })
                     .when("/materiais-promocionais", {
                         templateUrl: "views/materiais-promocionais.html",

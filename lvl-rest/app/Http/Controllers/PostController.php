@@ -25,14 +25,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $title        = $request->input('title');
-        $content      = $request->input('content');
-        $is_published = $request->input('is_published');
-        $user_id      = $request->input('user_id');
+        $this->validate($request, [
+            'title'   => 'required',
+            'content' => 'required',
+            'userId'  => 'required'
+        ]);
+
+        $title       = $request->input('title');
+        $content     = $request->input('content');
+        $isPublished = $request->input('isPublished');
+        $userId      = $request->input('userId');
 
         $post = [
-            'title'     => $title,
-            'view_post' => [
+            'title'    => $title,
+            'content'  => $content,
+            'userId'   => $userId,
+            'viewPost' => [
                 'href'   => 'api/v1/post/999',
                 'method' => 'GET'
             ]
@@ -44,8 +52,6 @@ class PostController extends Controller
         ];
 
         return response()->json($response, 201);
-
-        return "It works!";
     }
 
     /**
@@ -71,10 +77,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $title        = $request->input('title');
-        $content      = $request->input('content');
-        $is_published = $request->input('is_published');
-        $user_id      = $request->input('user_id');
+        $this->validate($request, [
+            'title'   => 'required',
+            'content' => 'required',
+            'userId'  => 'required'
+        ]);
+
+        $title       = $request->input('title');
+        $content     = $request->input('content');
+        $isPublished = $request->input('isPublished');
+        $userId      = $request->input('userId');
     }
 
     /**

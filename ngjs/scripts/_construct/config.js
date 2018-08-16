@@ -5,64 +5,27 @@
     /* jshint ignore:start */
     /* jshint ignore:end */
 
-    /**
-     * Dados do barramento para identificacao de origem
-     * Para o Salesforce, sao Locais de Cadastro
-     * Canal = Tipo Cadastro
-     * Parceiro = Código
-     *
-     */
-        //var WS_BARRAMENTO_ID_PARCEIRO_SITE = "1";
-        //var WS_BARRAMENTO_ID_PARCEIRO_SITE_MOBILE = "2";
-        //var WS_BARRAMENTO_ID_CANAL_SITE = "Site";
-        //var WS_BARRAMENTO_ID_CANAL_SITE_MOBILE = "Site";
-
     var WS_BARRAMENTO_ID_PARCEIRO_SITE = "18";
     var WS_BARRAMENTO_ID_CANAL_SITE    = "Site";
 
     // Configuracao de Producao
     var configProducao = {
-        _ENV: "prod",
-        HOST_API: "https://api.cuidadospelavida.com.br",
-        HOST_CMS: "https://content.cuidadospelavida.com.br/",
-        HOST_PORTAL: 'https://colaborador.cuidadospelavida.com.br',
-        SALESFORCE: {
-            ORGID: '00D5B000000D8za',
-            URL_WEBTOCASE: 'https://www.salesforce.com',
-        },
-        X_TOKEN_API: '262e4801adb5dfe5611a4a83c68365a591f14c48',
-        DEBUG_MODE: 'debug',
-        WS_BARRAMENTO: {
-            BASIC_AUTHORIZATION: 'Basic YjViZDMzZjI1ZTM4NDI1ZTk0MzI3OGIwMWFmZDE5YzY6MTIzNDU2',
-            CLIENT_ID: '9qiG2T5pX2r9zZGteHBg8PBIxbSt0IPr',
-            CLIENT_SECRET: '1kEzIMgbEOi47U30',
-            HOST: 'https://api.ache.com.br',
-            // plataforma de acesso centralizado
-            APP_PCS: {
-                APIKEY: "e864d567-8d87-7871-11a2-991c40241f58",
+            _ENV: "prod",
+            HOST_API: 'http://localhost:8000',
+            HOST_CMS: "https://content.cuidadospelavida.com.br/",
+            HOST_PORTAL: 'https://colaborador.cuidadospelavida.com.br',
+            SALESFORCE: {
+                ORGID: '00D5B000000D8za',
+                URL_WEBTOCASE: 'https://www.salesforce.com',
             },
-            ID_CANAL: WS_BARRAMENTO_ID_CANAL_SITE,
-            ID_PARCEIRO: WS_BARRAMENTO_ID_PARCEIRO_SITE,
-        },
-        WS_ACCREDITED_LEAD: {
-            CLIENT_ID: 'rq4AmUzRlr8RN0MFw7teYlxTmGNrJnoJ',
-            CLIENT_SECRET: "7E7C2KDhzehAeOGD"
-        }
-        // Configuracoes do barramento para aplicacoes de cadastro de paciente
-        // WS_BARRAMENTO_PACIENTE: {
-        //     basicAuthorization: "Basic YjViZDMzZjI1ZTM4NDI1ZTk0MzI3OGIwMWFmZDE5YzY6MTIzNDU2",
-        //     CLIENT_ID: "rq4AmUzRlr8RN0MFw7teYlxTmGNrJnoJ",
-        //     CLIENT_SECRET: "7E7C2KDhzehAeOGD",
-        //     HOST: "https://api.ache.com.br",
-        //     ID_CANAL: WS_BARRAMENTO_ID_CANAL_SITE,
-        //     ID_PARCEIRO: WS_BARRAMENTO_ID_PARCEIRO_SITE
-        // }
+            X_TOKEN_API: '262e4801adb5dfe5611a4a83c68365a591f14c48',
+            DEBUG_MODE: 'debug'
         }
     ;
 
     var configHom = {
         _ENV: "hom",
-        HOST_API: "https://api.hom.cuidadospelavida.com.br",
+        HOST_API: 'http://localhost:8000',
         HOST_CMS: 'https://content.hom.cuidadospelavida.com.br/',
         HOST_PORTAL: 'https://colaborador.hom.cuidadospelavida.com.br',
         SALESFORCE: {
@@ -99,7 +62,7 @@
 
     var configDev = {
         _ENV: 'dev',
-        HOST_API: 'https://api.dev.cuidadospelavida.com.br',
+        HOST_API: 'http://localhost:8000',
         HOST_CMS: 'https://content.dev.cuidadospelavida.com.br/',
         HOST_PORTAL: 'https://colaborador.dev.cuidadospelavida.com.br',
         SALESFORCE: {
@@ -136,7 +99,7 @@
 
     var configDevLocal = {
         _ENV: "local",
-        HOST_API: "https://api.hom.cuidadospelavida.com.br",
+        HOST_API: 'http://localhost:8000/lvl-rest/',
         //HOST_API: "http://localhost:3000",
         HOST_CMS: "https://content.hom.cuidadospelavida.com.br/",
         HOST_PORTAL: "http://localhost:8000",
@@ -197,7 +160,6 @@
 
     window._DEBUG_MODE = configUso.DEBUG_MODE;
     window._IS_MOBILE  = IS_MOBILE;
-    window._URL_ACESSO = urlAcesso;
 
     angular.module("app").constant("_CONFIG", configUso);
 })(window);

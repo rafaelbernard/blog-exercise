@@ -40,14 +40,14 @@
                 sendFeedbackMensagemErro("Informe a UF.");
             }
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaCidade = null;
 
             publicService.buscarCidadesPorUF(uf)
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
 
                         if (response.data && response.data.data)
                         {
@@ -56,7 +56,7 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -81,7 +81,7 @@
                 bairro: params.bairro || ""
             };
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.requisicaoBuscaFarmaciaEmAndamento = true;
             self.listaFarmacia = null;
 
@@ -89,13 +89,13 @@
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.requisicaoBuscaFarmaciaEmAndamento = false;
                         self.listaFarmacia = response.data;
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.requisicaoBuscaFarmaciaEmAndamento = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
@@ -106,19 +106,19 @@
         {
             devConsoleLog("buscarListaMarca");
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaMarca = null;
 
             sevenService.buscarListaMarcaPorParametros()
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.listaMarca = response.data;
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -153,15 +153,15 @@
                 periodo: "7diasD-1"
             };
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.requisicaoDadosCompraRecompraPorDiaFarmacia7DiasD_1 = true;
 
             sevenService.buscarVendaEstatisticaCompraRecompraPorDiaDeFarmaciaEMarcaPorParametros(cnpj, idMarca, params)
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
-                        self.requisicaoDadosCompraRecompraPorDiaFarmacia7DiasD_1 = self.requisicaoEmAndamento;
+                        self.requestInProgress = false;
+                        self.requisicaoDadosCompraRecompraPorDiaFarmacia7DiasD_1 = self.requestInProgress;
 
                         self.listaDadosCompraRecompra7Dias = response.data;
                         $scope.labels = [];
@@ -182,8 +182,8 @@
                 .catch(function (erro)
                     {
                         //devConsoleLog(erro);
-                        self.requisicaoEmAndamento = false;
-                        self.requisicaoDadosCompraRecompraPorDiaFarmacia7DiasD_1 = self.requisicaoEmAndamento;
+                        self.requestInProgress = false;
+                        self.requisicaoDadosCompraRecompraPorDiaFarmacia7DiasD_1 = self.requestInProgress;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -243,15 +243,15 @@
                 periodo: "mesAtual"
             };
 
-            self.requisicaoEmAndamento = true;
-            self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requisicaoEmAndamento;
+            self.requestInProgress = true;
+            self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requestInProgress;
 
             sevenService.buscarVendaEstatisticaCompraRecompraPorDiaDeFarmaciaEMarcaPorParametros(cnpj, idMarca, params)
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
-                        self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requisicaoEmAndamento;
+                        self.requestInProgress = false;
+                        self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requestInProgress;
                         self.listaDadosCompraRecompra = response.data;
 
                         self.listaDadosCompraRecompraMesAtual = response.data;
@@ -271,8 +271,8 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
-                        self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requisicaoEmAndamento;
+                        self.requestInProgress = false;
+                        self.requisicaoDadosCompraRecompraPorDiaFarmaciaMesAtual = self.requestInProgress;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -304,15 +304,15 @@
                 periodo: "3mesesM-1"
             };
 
-            self.requisicaoEmAndamento = true;
-            self.requisicaoDadosCompraRecompraPorMesFarmacia3MesesM_1 = self.requisicaoEmAndamento;
+            self.requestInProgress = true;
+            self.requisicaoDadosCompraRecompraPorMesFarmacia3MesesM_1 = self.requestInProgress;
 
             sevenService.buscarVendaEstatisticaCompraRecompraDeFarmaciaEMarcaPorParametros(cnpj, idMarca, params)
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
-                        self.requisicaoDadosCompraRecompraPorMesFarmacia3MesesM_1 = self.requisicaoEmAndamento;
+                        self.requestInProgress = false;
+                        self.requisicaoDadosCompraRecompraPorMesFarmacia3MesesM_1 = self.requestInProgress;
 
                         self.listaDadosCompraRecompra3Meses = response.data;
 
@@ -333,7 +333,7 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -373,19 +373,19 @@
         {
             devConsoleLog("buscarMedicoCadastradoById");
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.medicoCadastradoResultadoBusca = null;
 
             sevenService.buscarMedicoById(ufDocumentoProfissional, numeroDocumentoProfissional)
                 .then(
                     function (response)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.medicoCadastradoResultadoBusca = response.data;
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -423,7 +423,7 @@
                 numeroDocumentoProfissional: numeroDocumentoProfissional
             };
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaDadosCompraRecompra7DiasMedico = null;
 
             sevenService.buscarVendaSomaCompraRecompraDeMedicoEMarcaPorParametrosV1(params)
@@ -431,7 +431,7 @@
                     function (response)
                     {
                         //devConsoleLog(response.data);
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.listaDadosCompraRecompra7DiasMedico = response.data;
 
                         //self.series7DiasMedico = ["Compra", "Recompra"];
@@ -452,7 +452,7 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -493,7 +493,7 @@
                 numeroDocumentoProfissional: numeroDocumentoProfissional
             };
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaDadosCompraRecompraMesAtualMedico = null;
 
             sevenService.buscarVendaSomaCompraRecompraDeMedicoEMarcaPorParametrosV1(params)
@@ -501,7 +501,7 @@
                     function (response)
                     {
                         //devConsoleLog(response.data);
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.listaDadosCompraRecompraMesAtualMedico = response.data;
 
                         self.dadosMesAtualMedico = [[], [], []];
@@ -517,7 +517,7 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );
@@ -560,7 +560,7 @@
                 numeroDocumentoProfissional: numeroDocumentoProfissional,
             };
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaDadosCompraRecompra3MesesMedico = null;
 
             sevenService.buscarVendaSomaCompraRecompraDeMedicoEMarcaPorParametrosV1(params)
@@ -568,7 +568,7 @@
                     function (response)
                     {
                         //devConsoleLog(response.data);
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         self.listaDadosCompraRecompra3MesesMedico = response.data;
 
                         self.dados3MesesMedico = [[], [], []];
@@ -584,7 +584,7 @@
                     })
                 .catch(function (erro)
                     {
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                         errorHandler.sendFeedbackErro(erro);
                     }
                 );

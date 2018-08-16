@@ -99,8 +99,8 @@
                                         data-ng-required="true">
                             </div>
                             <div class="btn_login_area">
-                                <input type="submit" value="ENVIAR" class="btn_login btn_enviar_convite" data-ng-disabled="farmacia.requisicaoEmAndamento || formConviteFarmacia.$invalid">
-                                <md-progress-circular class="loading_farma progress_adicionar progress_generic md-accent md-hue-1 loading" md-diameter="30" md-mode="indeterminate" data-ng-show="farmacia.requisicaoEmAndamento"></md-progress-circular>
+                                <input type="submit" value="ENVIAR" class="btn_login btn_enviar_convite" data-ng-disabled="farmacia.requestInProgress || formConviteFarmacia.$invalid">
+                                <md-progress-circular class="loading_farma progress_adicionar progress_generic md-accent md-hue-1 loading" md-diameter="30" md-mode="indeterminate" data-ng-show="farmacia.requestInProgress"></md-progress-circular>
                             </div>
                         </form>
 
@@ -142,9 +142,9 @@
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad-left">
                                 <div class="btn_login_area consulta">
-                                    <input type="submit" value="CONSULTAR" class="btn_login consulta" data-ng-click="farmacia.accreditedLeadGet()" data-ng-disabled="farmacia.requisicaoEmAndamento || formBuscaFarmacia.$invalid">
+                                    <input type="submit" value="CONSULTAR" class="btn_login consulta" data-ng-click="farmacia.accreditedLeadGet()" data-ng-disabled="farmacia.requestInProgress || formBuscaFarmacia.$invalid">
                                     <md-progress-circular class="loading_farma progress_consultar progress_generic md-accent md-hue-1 loading" md-diameter="30" md-mode="indeterminate"
-                                data-ng-show="farmacia.requisicaoEmAndamento"></md-progress-circular>
+                                data-ng-show="farmacia.requestInProgress"></md-progress-circular>
                                 </div>
                             </div>
                         </div>

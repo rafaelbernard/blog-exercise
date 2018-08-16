@@ -94,7 +94,7 @@
                                 
                                 <button class="btn_busca_farma"
                                         data-ng-click="relatorio.buscarListaFarmaciaPorParametrosLocalizacao(relatorio.dadosLocalizacaoRelatorio)"
-                                        data-ng-disabled="formLocalizacao.$invalid || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formLocalizacao.$invalid || relatorio.requestInProgress">
                                     Buscar farmácias
                                 </button>
                             </form>
@@ -135,7 +135,7 @@
                                 
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaFarmacia7DiasD_1(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                         Processar relatórios
                                 </button>
                             </form>
@@ -196,7 +196,7 @@
                                 </h3>
                                 <!--<button class="btn_busca_farma"-->
                                 <!--data-ng-click="relatorio.buscarMedicoCadastradoById(ufDocumentoProfissional, numeroDocumentoProfissional)"-->
-                                <!--data-ng-disabled="formLocalizacaoMedico.$invalid || relatorio.requisicaoEmAndamento">-->
+                                <!--data-ng-disabled="formLocalizacaoMedico.$invalid || relatorio.requestInProgress">-->
                                 <!--Buscar médico-->
                                 <!--</button>-->
                             </form>
@@ -218,7 +218,7 @@
                                 
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaMedico7DiasD_1V1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                                     Processar relatórios
                                 </button>
                             </form>
@@ -231,9 +231,9 @@
                 <!-- /tab farmacias -->
                 
                 <!-- Loading -->
-                <!-- <div data-ng-show="relatorio.requisicaoEmAndamento">
+                <!-- <div data-ng-show="relatorio.requestInProgress">
                     Carregando...
-                    <md-progress-circular class="progress_generic md-accent md-hue-1" md-diameter="30" style="" md-mode="indeterminate" data-ng-show="relatorio.requisicaoEmAndamento"></md-progress-circular>
+                    <md-progress-circular class="progress_generic md-accent md-hue-1" md-diameter="30" style="" md-mode="indeterminate" data-ng-show="relatorio.requestInProgress"></md-progress-circular>
                 </div> -->
 =======
                     <!-- /segunda etapa relatorio -->
@@ -241,11 +241,11 @@
                 </div>
                 <!-- /tab farmacias -->
                 
-                <!--<div data-ng-show="relatorio.requisicaoEmAndamento">-->
+                <!--<div data-ng-show="relatorio.requestInProgress">-->
                     <!---->
                     <!--<md-progress-circular class="progress_generic md-accent md-hue-1" md-diameter="30" style=""-->
                             <!--md-mode="indeterminate"-->
-                            <!--data-ng-show="relatorio.requisicaoEmAndamento"></md-progress-circular>-->
+                            <!--data-ng-show="relatorio.requestInProgress"></md-progress-circular>-->
                 <!--</div>-->
 >>>>>>> 7713fed5271bac3e40491c6c184b8872726f94a2
                 
@@ -262,7 +262,7 @@
                                     data-ng-click="relatorio.relatorioAtual = 'setedias'">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaFarmacia7DiasD_1(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                         Relatório 7 Dias
                                 </button>
                             </li>
@@ -270,7 +270,7 @@
                                     data-ng-click="relatorio.relatorioAtual = 'mesatual'">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaFarmaciaMesAtual(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                         Relatório Mês Atual
                                 </button>
                             </li>
@@ -278,7 +278,7 @@
                                     data-ng-click="relatorio.relatorioAtual = 'tresmeses'">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorMesFarmacia3MesesM_1(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                         Relatório 3 Meses
                                 </button>
                             </li>
@@ -305,7 +305,7 @@
                             <br>
                             <button class="btn_processar_relatorio"
                                     data-ng-click="relatorio.processarDadosCompraRecompraPorDiaFarmacia7DiasD_1(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                 Processar 7 dias
                             </button>
     
@@ -325,7 +325,7 @@
                             <br>
                             <button class="btn_processar_relatorio" data-ng-show="formDadosRelatorio.$valid"
                                     data-ng-click="relatorio.processarDadosCompraRecompraPorDiaFarmaciaMesAtual(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                 Processar mês atual
                             </button>
                             
@@ -346,7 +346,7 @@
                             <br>
                             <button class="btn_processar_relatorio"
                                     data-ng-click="relatorio.processarDadosCompraRecompraPorMesFarmacia3MesesM_1(relatorio.dadosRelatorio.farmacia.cnpj, relatorio.dadosRelatorio.marca.id_marca)"
-                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requisicaoEmAndamento">
+                                    data-ng-disabled="formDadosRelatorio.$invalid  || relatorio.requestInProgress">
                                 Processar 3 meses
                             </button>
     
@@ -372,21 +372,21 @@
                             <li data-ng-init="relatorio.relatorioAtualMedicos = 'setediasMedicos'" data-ng-class="{'active' : relatorio.relatorioAtualMedicos == 'setediasMedicos'}">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaMedico7DiasD_1V1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                                         Relatório 7 Dias
                                 </button>
                             </li>
                             <li data-ng-class="{'active' : relatorio.relatorioAtualMedicos == 'mesatualMedicos'}">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorDiaMedicoMesAtualV1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                                         Relatório Mês Atual
                                 </button>
                             </li>
                             <li data-ng-class="{'active' : relatorio.relatorioAtualMedicos == 'tresmesesMedicos'}">
                                 <button class="btn_processar_relatorio"
                                         data-ng-click="relatorio.processarDadosCompraRecompraPorMesMedico3MesesM_1V1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                                        data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                                         Relatório 3 Meses
                                 </button>
                             </li>
@@ -417,7 +417,7 @@
 
                     <md-progress-circular class="progress_relatorios progress_generic md-accent md-hue-1" md-diameter="30" style=""
                     md-mode="indeterminate"
-                    data-ng-show="relatorio.requisicaoEmAndamento"></md-progress-circular>
+                    data-ng-show="relatorio.requestInProgress"></md-progress-circular>
 
 
 =======
@@ -428,7 +428,7 @@
                         
                         <!--<button class="btn_busca_farma"-->
                         <!--data-ng-click="relatorio.buscarMedicoCadastradoById(ufDocumentoProfissional, numeroDocumentoProfissional)"-->
-                        <!--data-ng-disabled="formLocalizacaoMedico.$invalid || relatorio.requisicaoEmAndamento">-->
+                        <!--data-ng-disabled="formLocalizacaoMedico.$invalid || relatorio.requestInProgress">-->
                         <!--Buscar médico-->
                         <!--</button>-->
                     
@@ -454,7 +454,7 @@
                         
                         <button class="btn_processar_relatorio"
                                 data-ng-click="relatorio.processarDadosCompraRecompraPorDiaMedico7DiasD_1V1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                                data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                                data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                             Processar relatórios
                         </button>
                     </form>
@@ -468,7 +468,7 @@
                     
                     <md-progress-circular class="progress_generic md-accent md-hue-1" md-diameter="30" style=""
                             md-mode="indeterminate"
-                            data-ng-show="relatorio.requisicaoEmAndamento"></md-progress-circular>
+                            data-ng-show="relatorio.requestInProgress"></md-progress-circular>
                     
                     <div data-ng-show="relatorio.listaDadosCompraRecompra7DiasMedico">
                         
@@ -482,7 +482,7 @@
                     <br>
                     <button class="btn_processar_relatorio"
                             data-ng-click="relatorio.processarDadosCompraRecompraPorDiaMedicoMesAtualV1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                            data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                            data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                         Processar mês atual
                     </button>
                     
@@ -499,7 +499,7 @@
                     <br>
                     <button class="btn_processar_relatorio"
                             data-ng-click="relatorio.processarDadosCompraRecompraPorMesMedico3MesesM_1V1(ufDocumentoProfissional, numeroDocumentoProfissional, relatorio.dadosRelatorio.marca.id_marca)"
-                            data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requisicaoEmAndamento">
+                            data-ng-disabled="formDadosRelatorioMedico.$invalid || relatorio.requestInProgress">
                         Processar 3 meses
                     </button>
                     

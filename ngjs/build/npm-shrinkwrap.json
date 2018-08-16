@@ -25,9 +25,14 @@
       "resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.7.3.tgz"
     },
     "angular-aria": {
-      "version": "1.6.9",
+      "version": "1.7.3",
       "from": "angular-aria@latest",
-      "resolved": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.6.9.tgz"
+      "resolved": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.7.3.tgz"
+    },
+    "angular-bootstrap": {
+      "version": "0.12.2",
+      "from": "angular-bootstrap@latest",
+      "resolved": "https://registry.npmjs.org/angular-bootstrap/-/angular-bootstrap-0.12.2.tgz"
     },
     "angular-local-storage": {
       "version": "0.7.1",
@@ -40,9 +45,9 @@
       "resolved": "https://registry.npmjs.org/angular-material/-/angular-material-1.1.10.tgz"
     },
     "angular-messages": {
-      "version": "1.6.9",
-      "from": "angular-messages@1.6.9",
-      "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.6.9.tgz"
+      "version": "1.7.3",
+      "from": "angular-messages@latest",
+      "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.7.3.tgz"
     },
     "angular-resource": {
       "version": "1.7.3",
@@ -51,7 +56,7 @@
     },
     "angular-route": {
       "version": "1.7.3",
-      "from": "angular-route@1.7.3",
+      "from": "angular-route@latest",
       "resolved": "https://registry.npmjs.org/angular-route/-/angular-route-1.7.3.tgz"
     },
     "angular-sanitize": {
@@ -68,11 +73,6 @@
       "version": "1.6.0",
       "from": "angulartics@1.6.0",
       "resolved": "https://registry.npmjs.org/angulartics/-/angulartics-1.6.0.tgz"
-    },
-    "angulartics-google-analytics": {
-      "version": "0.5.0",
-      "from": "angulartics-google-analytics@0.5.0",
-      "resolved": "https://registry.npmjs.org/angulartics-google-analytics/-/angulartics-google-analytics-0.5.0.tgz"
     },
     "ansi-colors": {
       "version": "1.1.0",
@@ -376,9 +376,9 @@
       "dev": true
     },
     "bootstrap": {
-      "version": "3.3.7",
-      "from": "bootstrap@>=3.0.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz"
+      "version": "4.1.3",
+      "from": "bootstrap@latest",
+      "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.1.3.tgz"
     },
     "brace-expansion": {
       "version": "1.1.8",
@@ -535,28 +535,6 @@
       "from": "https://registry.npmjs.org/chalk/-/chalk-2.3.2.tgz",
       "resolved": "https://registry.npmjs.org/chalk/-/chalk-2.3.2.tgz",
       "dev": true
-    },
-    "chart.js": {
-      "version": "2.7.2",
-      "from": "chart.js@latest",
-      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-2.7.2.tgz"
-    },
-    "chartjs-color": {
-      "version": "2.2.0",
-      "from": "chartjs-color@>=2.1.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/chartjs-color/-/chartjs-color-2.2.0.tgz",
-      "dependencies": {
-        "color-convert": {
-          "version": "0.5.3",
-          "from": "color-convert@>=0.5.3 <0.6.0",
-          "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-0.5.3.tgz"
-        }
-      }
-    },
-    "chartjs-color-string": {
-      "version": "0.5.0",
-      "from": "chartjs-color-string@>=0.5.0 <0.6.0",
-      "resolved": "https://registry.npmjs.org/chartjs-color-string/-/chartjs-color-string-0.5.0.tgz"
     },
     "clap": {
       "version": "1.2.3",
@@ -733,7 +711,8 @@
     "color-name": {
       "version": "1.1.3",
       "from": "color-name@1.1.3",
-      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz"
+      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz",
+      "dev": true
     },
     "color-string": {
       "version": "0.3.0",
@@ -3429,6 +3408,11 @@
       "dev": true,
       "optional": true
     },
+    "jquery": {
+      "version": "3.3.1",
+      "from": "jquery@latest",
+      "resolved": "https://registry.npmjs.org/jquery/-/jquery-3.3.1.tgz"
+    },
     "js-base64": {
       "version": "2.4.5",
       "from": "js-base64@>=2.1.9 <3.0.0",
@@ -3901,11 +3885,6 @@
           "dev": true
         }
       }
-    },
-    "moment": {
-      "version": "2.22.0",
-      "from": "moment@>=2.10.2 <3.0.0",
-      "resolved": "https://registry.npmjs.org/moment/-/moment-2.22.0.tgz"
     },
     "ms": {
       "version": "2.0.0",
@@ -5822,6 +5801,11 @@
       "from": "plur@>=2.1.2 <3.0.0",
       "resolved": "https://registry.npmjs.org/plur/-/plur-2.1.2.tgz",
       "dev": true
+    },
+    "popper.js": {
+      "version": "1.14.4",
+      "from": "popper.js@latest",
+      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.14.4.tgz"
     },
     "posix-character-classes": {
       "version": "0.1.1",

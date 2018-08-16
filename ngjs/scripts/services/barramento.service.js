@@ -28,22 +28,22 @@
          */
         self.tokenExpirationTime = 3000;
 
-        self.CONFIG                     = $rootScope.CONFIG_USO.WS_BARRAMENTO;
-        self.CONFIG_ACCREDITED_LEAD     = $rootScope.CONFIG_USO.WS_ACCREDITED_LEAD;
-        self.host                       = $rootScope.CONFIG_USO.WS_BARRAMENTO.HOST;
-        self.invalidateCache            = false;
+        self.CONFIG                 = $rootScope.CONFIG_USO.WS_BARRAMENTO;
+        self.CONFIG_ACCREDITED_LEAD = $rootScope.CONFIG_USO.WS_ACCREDITED_LEAD;
+        self.host                   = $rootScope.CONFIG_USO.WS_BARRAMENTO.HOST;
+        self.invalidateCache        = false;
 
         // -----------------
         // STRING
         // -----------------
-        self.accessToken        = null;
-        self.accreditedLeadAccessToken        = null;
-        self.urlBarramentoProxy = _CONFIG.HOST_API + "/v1/_/barramento/proxy";
+        self.accessToken               = null;
+        self.accreditedLeadAccessToken = null;
+        self.urlBarramentoProxy        = _CONFIG.HOST_API + "/v1/_/barramento/proxy";
 
         // -----------------
         // OBJECT
         // -----------------
-        self.token = null;
+        self.token               = null;
         self.accreditedLeadtoken = null;
 
         /**
@@ -808,7 +808,7 @@
          *
          * @param response
          */
-        self.exibirMensagemErro = function (response)
+        self.showErrorMessage = function (response)
         {
             sendFeedbackMensagemErro(self.tratarMensagemErroRequisicao(response));
         };
@@ -874,7 +874,8 @@
                     "InvalidateCache": self.invalidateCache
                 },
                 params: {
-                    cnpj: cnpj}
+                    cnpj: cnpj
+                }
             };
 
             return $http.get(urlBarramento, config);
@@ -995,6 +996,34 @@
             };
 
             var url = _CONFIG.HOST_API + "/v1/_/v2/api/corp/it/security/accessapp/SalesForce/Authenticate";
+            return $http.post(url, login, config);
+        };
+
+        self.auth = function (login)
+        {
+            devConsoleLog("login");
+
+            // if (!self.isTokenValido())
+            // {
+            //     //throw new Error('Token é necessário');
+            //     return self.generateToken()
+            //         .then(function ()
+            //         {
+            //             return self.salesforceAuthenticate(login);
+            //         });
+            // }
+
+            //login.apikey = _CONFIG.WS_BARRAMENTO.APP_PCS.APIKEY;
+
+            var config = {
+                headers: {
+                    "Authorization": self.accessToken,
+                    "InvalidateCache": "true"
+                }
+            };
+
+            //var url = _CONFIG.HOST_API + '/public/api/v1/user/sigin';
+            var url = '../lvl-rest/public/api/v1/user/signin';
             return $http.post(url, login, config);
         };
 

@@ -61,7 +61,7 @@
             if (data.data)
             {
                 var retorno = data.data;
-                devConsoleLog(retorno);
+
                 if (retorno.status !== undefined && retorno.status.erro !== undefined)
                 {
                     var status = retorno.status;

@@ -46,12 +46,12 @@
             devConsoleLog("buscarConviteFarmaciaPorChaveConvite");
 
             self.conviteFarmacia = null;
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
 
             emcampoService.getConviteFarmaciaPorChaveConvite(chaveConviteFarmacia)
                 .then(function (response)
                       {
-                          self.requisicaoEmAndamento = false;
+                          self.requestInProgress = false;
 
                           var conviteFarmacia = response.data;
 
@@ -61,7 +61,7 @@
                       })
                 .catch(function (response)
                        {
-                           self.requisicaoEmAndamento = false;
+                           self.requestInProgress = false;
                            errorHandler.sendFeedbackErro(response);
                        });
         };
@@ -90,19 +90,19 @@
         self.enviarFormularioCredenciamentoLanding = function (intencaoCredenciamentoAEnviar)
         {
             devConsoleLog("enviarFormularioCredenciamentoLanding");
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
 
             intencaoCredenciamentoAEnviar.conviteFarmacia = angular.copy(self.conviteFarmacia);
 
             publicService.enviarFormularioCredenciamentoLanding(intencaoCredenciamentoAEnviar)
                 .then(function ()
                       {
-                          self.requisicaoEmAndamento = false;
+                          self.requestInProgress = false;
                           self.intencaoCredenciamentoRealizada = true;
                       })
                 .catch(function (response)
                        {
-                           self.requisicaoEmAndamento = false;
+                           self.requestInProgress = false;
                            errorHandler.sendFeedbackErro(response);
                        });
         };
@@ -165,7 +165,7 @@
         {
             devConsoleLog("getTipoLogradouro");
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
             self.listaTipoLogradouro = null;
 
             barramentoService.getTipoLogradouro()
@@ -178,12 +178,12 @@
                         }
 
                         self.listaTipoLogradouro = response.data.d.results;
-                        self.requisicaoEmAndamento = false;
+                        self.requestInProgress = false;
                     })
                 .catch(function (response)
                        {
-                           self.requisicaoEmAndamento = false;
-                           barramentoService.exibirMensagemErro(response);
+                           self.requestInProgress = false;
+                           barramentoService.showErrorMessage(response);
                        }
                 );
         };

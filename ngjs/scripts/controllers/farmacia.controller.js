@@ -84,14 +84,14 @@
                 return false;
             }
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
 
             self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
 
             barramentoService.accreditedLead(self.conviteFarmacia)
                 .then(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
 
                     if (response.data.code === '200')
                     {
@@ -107,7 +107,7 @@
                 })
                 .catch(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
                     errorHandler.sendFeedbackErro(response);
                 });
         };
@@ -116,19 +116,19 @@
         {
             devConsoleLog("accreditedLeadGet");
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
 
             self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
 
             barramentoService.accreditedLeadGet(self.buscaFarmacia.cnpjResponsavelFarmacia)
                 .then(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
                     self.arrConvites = response.data.data;
                 })
                 .catch(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
                     errorHandler.sendFeedbackErro(response);
                 });
         };
@@ -142,14 +142,14 @@
                 return false;
             }
 
-            self.requisicaoEmAndamento = true;
+            self.requestInProgress = true;
 
             self.conviteFarmacia.idUsuarioInclusao = angular.copy($rootScope.sessao.getUsuario().id);
 
             barramentoService.accreditedLeadStatus(self.conviteFarmacia.cnpjResponsavelFarmacia)
                 .then(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
 
                     if (response.data.code === '200')
                     {
@@ -160,7 +160,7 @@
                 })
                 .catch(function (response)
                 {
-                    self.requisicaoEmAndamento = false;
+                    self.requestInProgress = false;
                     errorHandler.sendFeedbackErro(response);
                 });
         };

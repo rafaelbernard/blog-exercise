@@ -2,7 +2,7 @@
 <html lang="pt-BR" data-ng-app="app" data-ng-controller="AppController as appController">
 <head>
 
-    <!--<base href="ngjs/">-->
+    <base href="/ngjs/">
 
     <meta name="fragment" content="!">
 
@@ -19,14 +19,16 @@
 
     <title>Figured - Blog Exercise</title>
 
-    <link rel="stylesheet" href="dist/main.min.css">
+    <link rel="stylesheet" href="build/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="build/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!--<link rel="stylesheet" href="dist/main.min.css">-->
 
 </head>
 <body>
 
 <div class="site ng-cloak">
 
-    <div data-ng-include src="'views/includes/_cabecalho.v1.html'"></div>
+    <!--<div data-ng-include src="'views/includes/_cabecalho.v1.html'"></div>-->
 
     <data-ng-view></data-ng-view>
 

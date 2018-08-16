@@ -10,7 +10,7 @@
     "confirm": true,
     "console": true,
     "devConsoleLog": true,
-    "exibirMensagemErro": true,
+    "showErrorMessage": true,
     "formatDate": true,
     "formatDateToApi": true,
     "formatDateToStrView": true,

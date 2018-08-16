@@ -8,7 +8,13 @@ class AuthController extends Controller
 {
     public function store(Request $request)
     {
-        $username = $request->input('username');
+        $this->validate($request, [
+            'email'    => 'required|email',
+            'name'     => 'required',
+            'password' => 'required|min:5'
+        ]);
+
+        $email    = $request->input('email');
         $password = $request->input('password');
         $name     = $request->input('name');
         return "It works!";
@@ -16,8 +22,23 @@ class AuthController extends Controller
 
     public function signin(Request $request)
     {
-        $username = $request->input('username');
+        $this->validate($request, [
+            'email'    => 'required|email',
+            'password' => 'required|min:5'
+        ]);
+
+        $email    = $request->input('email');
         $password = $request->input('password');
+
+        $user = ['email' => $email];
+
+        $response = [
+            'msg'  => 'User signed in',
+            'user' => $user
+        ];
+
+        return $response;
+
         return "It works!";
     }
 }
