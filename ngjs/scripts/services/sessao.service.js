@@ -15,7 +15,7 @@
         var logado = false;
 
         // OBJECTS - MODELOS
-        var MODELO_DADOS_AUTENTICACAO = {
+        var AUTH_MODEL_DATA = {
             _login: {inclusao: null},
             id: "",
             cpf: "",
@@ -31,7 +31,7 @@
         var armazenarEmLocalStorage = function ()
         {
             //devConsoleLog("sessao._armazenarEmLocalStorage");
-            localStorageService.set("usuario", self.usuario);
+            localStorageService.set("usuario", self.user);
         };
 
         var limparLocalStorage = function ()
@@ -93,7 +93,7 @@
             return false;
         };
 
-        self.usuarioEstaLogadoOuLocalStorageV1 = function ()
+        self.userEstaLogadoOuLocalStorageV1 = function ()
         {
             //devConsoleLog("sessao.usuarioEstaLogadoOuLocalStorageV1");
 
@@ -120,7 +120,7 @@
         {
             //devConsoleLog("sessao.cleanSessionData");
             self.setLogado(false);
-            self.usuario     = null;
+            self.user        = null;
             self.colaborador = null;
             limparLocalStorage();
         };
@@ -128,21 +128,20 @@
         self.getUsuario = function ()
         {
             //devConsoleLog("sessao.getUsuario");
-            return self.usuario;
+            return self.user;
         };
 
         self.setUser = function (dados)
         {
             //devConsoleLog("sessao.setUser");
-            dados.tipoLogin = "colaborador";
             self.setAuthenticationData(dados);
         };
 
         self.setAuthenticationData = function (dados)
         {
             //devConsoleLog("sessao.setAuthenticationData");
-            self.usuario        = Object.assign(MODELO_DADOS_AUTENTICACAO, dados);
-            self.usuario.objeto = angular.copy(dados);
+            self.user        = Object.assign(AUTH_MODEL_DATA, dados);
+            self.user.objeto = angular.copy(dados);
             self.normalizeAuthenticationData();
             armazenarEmLocalStorage();
         };
