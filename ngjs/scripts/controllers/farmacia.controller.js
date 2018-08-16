@@ -22,7 +22,7 @@
                                 errorHandler,
                                 $window)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 

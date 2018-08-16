@@ -12,7 +12,7 @@
         var self = this;
 
         // BOOLEAN
-        var logado = false;
+        var logged = false;
 
         // OBJECTS - MODELOS
         var AUTH_MODEL_DATA = {
@@ -40,24 +40,24 @@
             localStorageService.remove("usuario");
         };
 
-        var recuperarLocalStorage = function ()
+        var recoverLocalStorage = function ()
         {
             //devConsoleLog("sessao._recuperarLocalStorage");
             var localStorage = localStorageService.get("usuario");
 
             if (localStorage)
             {
-                if (!localStorageValido(localStorage))
+                if (!validLocalStorage(localStorage))
                 {
                     return;
                 }
 
                 self.setLogged(true);
-                self.setDadosAutenticacao(localStorage);
+                self.setAuthenticationData(localStorage);
             }
         };
 
-        var localStorageValido = function (localStorage)
+        var validLocalStorage = function (localStorage)
         {
             //devConsoleLog("sessao.var.localStorageValido");
             if (localStorage._login && localStorage._login.inclusao)
@@ -93,26 +93,26 @@
             return false;
         };
 
-        self.userEstaLogadoOuLocalStorageV1 = function ()
+        self.isUserLoggedOrLocalStorageV1 = function ()
         {
-            //devConsoleLog("sessao.usuarioEstaLogadoOuLocalStorageV1");
+            //devConsoleLog("sessao.isUserLoggedOrLocalStorageV1");
 
             if (!self.getUsuario())
             {
-                recuperarLocalStorage();
+                recoverLocalStorage();
             }
 
-            return (self.getLogado() && self.getUsuario());
+            return (self.getLogged() && self.getUsuario());
         };
 
-        self.getLogado = function ()
+        self.getLogged = function ()
         {
-            return logado;
+            return logged;
         };
 
         self.setLogged = function (value)
         {
-            logado = Boolean(value);
+            logged = Boolean(value);
             return self;
         };
 

@@ -12,7 +12,7 @@
     function MainController($location,
                             $rootScope)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
         
         var self = this;
 

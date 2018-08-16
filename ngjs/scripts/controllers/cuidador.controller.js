@@ -10,7 +10,7 @@
 
     function CuidadorController($rootScope)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         //var self = this;
 

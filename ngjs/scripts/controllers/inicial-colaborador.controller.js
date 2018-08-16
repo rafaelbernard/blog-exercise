@@ -11,7 +11,7 @@
     function InicialColaboradorController($rootScope)
     {
 
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         //var self = this;
         $rootScope.namePage = "pagina_home";

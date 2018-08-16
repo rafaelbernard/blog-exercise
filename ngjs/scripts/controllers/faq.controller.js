@@ -13,7 +13,7 @@
 
     function FaqController($rootScope, postsDaoService, errorHandler, PublicService)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 

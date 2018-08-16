@@ -7005,7 +7005,7 @@
     },
     "underscore": {
       "version": "1.9.1",
-      "from": "underscore@1.9.1",
+      "from": "underscore@latest",
       "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.9.1.tgz"
     },
     "union-value": {

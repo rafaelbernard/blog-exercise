@@ -18,7 +18,7 @@
                                   sevenService,
                                   $scope)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 

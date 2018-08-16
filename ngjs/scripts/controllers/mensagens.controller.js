@@ -6,14 +6,12 @@
 
     MensagensController.$inject = [
         "$rootScope",
-        "postsDaoService",
     ];
 
-    function MensagensController($rootScope,
-                                 postsDaoService)
+    function MensagensController($rootScope)
     {
-        $rootScope.verificarAutenticacao();
-        var self = this;
+        $rootScope.verifyAuthentication();
+        var self              = this;
         self.conteudoMensagem = "";
 
         self.verificaMensagens = function ()
@@ -24,7 +22,7 @@
                     function (response)
                     {
                         self.itemsMensagens = response.data.posts;
-                        self.pagesProdutos = response.data.pages;
+                        self.pagesProdutos  = response.data.pages;
                     },
                     function (erro)
                     {

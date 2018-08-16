@@ -13,7 +13,7 @@
 
     function ProdutoDetalheController($location, $rootScope, $routeParams, postsDaoService)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 

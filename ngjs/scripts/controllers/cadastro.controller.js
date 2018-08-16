@@ -24,7 +24,7 @@
                                 integracaoService,
                                 publicService)
     {
-        $rootScope.verificarAutenticacao();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 

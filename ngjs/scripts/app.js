@@ -77,12 +77,12 @@
                      * @returns {boolean|*}
                      */
 
-                    $rootScope.getLogado = function ()
+                    $rootScope.getLogged = function ()
                     {
-                        return $rootScope.sessao.getLogado();
+                        return $rootScope.sessao.getLogged();
                     };
 
-                    $rootScope.setLogado = function (value)
+                    $rootScope.setLogged = function (value)
                     {
                         return $rootScope.sessao.setLogged(value);
                         //$rootScope.logado = Boolean(value);
@@ -125,9 +125,9 @@
 
                     $rootScope.getIdUsuarioAutenticado = function ()
                     {
-                        if ($rootScope.usuario.tipoLogin === "colaborador")
+                        if ($rootScope.user.tipoLogin === "colaborador")
                         {
-                            return $rootScope.usuario.objeto.CPF;
+                            return $rootScope.user.objeto.CPF;
                         }
 
                         return null;
@@ -140,15 +140,15 @@
                         $rootScope.sessao.cleanSessionData();
                     };
 
-                    $rootScope.usuarioEstaLogadoV1 = function ()
+                    $rootScope.isUserLoggedV1 = function ()
                     {
-                        //devConsoleLog("$rootScope.usuarioEstaLogadoV1");
-                        return $rootScope.sessao.usuarioEstaLogadoOuLocalStorageV1();
+                        //devConsoleLog("$rootScope.isUserLoggedV1");
+                        return $rootScope.sessao.isUserLoggedOrLocalStorageV1();
                     };
 
-                    $rootScope.verificarAutenticacao = function ()
+                    $rootScope.verifyAuthentication = function ()
                     {
-                        //devConsoleLog("$rootScope.verificarAutenticacao");
+                        //devConsoleLog("$rootScope.verifyAuthentication");
                         $rootScope.redirectUnloggedUserV1();
                     };
 
@@ -156,7 +156,7 @@
                     {
                         //devConsoleLog("$rootScope.redirectUnloggedUserV1");
 
-                        if (!$rootScope.usuarioEstaLogadoV1())
+                        if (!$rootScope.isUserLoggedV1())
                         {
                             //devConsoleLog('self.redirectUnloggedUserV1: !self.usuarioEstaLogadoV1()');
                             //return;
@@ -216,8 +216,8 @@
 
                     $rootScope.setAuthenticationData = function (dados)
                     {
-                        $rootScope.usuario        = Object.assign(AUTH_MODEL_DATA, dados);
-                        $rootScope.usuario.objeto = angular.copy(dados);
+                        $rootScope.user        = Object.assign(AUTH_MODEL_DATA, dados);
+                        $rootScope.user.objeto = angular.copy(dados);
                         $rootScope.normalizeAuthenticationData();
                     };
 
