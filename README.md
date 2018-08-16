@@ -1,5 +1,11 @@
 # figured-blog-exercise
 
+## install/publish
+
+execute:
+
+`sh publish.sh`
+
 ## structure
 
  - `ngjs/` - angular.js client application
