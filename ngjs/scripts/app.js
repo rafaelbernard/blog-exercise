@@ -221,13 +221,6 @@
                         $rootScope.normalizeAuthenticationData();
                     };
 
-                    $rootScope.setDadosAutenticacaoColaborador = function (dados)
-                    {
-                        dados.tipoLogin = "colaborador";
-                        $rootScope.setAuthenticationData(dados);
-                        return $rootScope.sessao.setUser(dados);
-                    };
-
                     $rootScope.normalizeAuthenticationData = function ()
                     {
                         //devConsoleLog("$rootScope.normalizeAuthenticationData");
@@ -300,8 +293,8 @@
                     })
                     // rotas de aplicacao
                     .when("/inicial/colaborador", {
-                        templateUrl: "views/inicial-colaborador.html",
-                        controller: "InicialColaboradorController",
+                        templateUrl: 'views/initial.html',
+                        controller: 'InicialColaboradorController',
                         controllerAs: "inicial",
                         label: "Inicial"
                     })
