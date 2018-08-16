@@ -84,7 +84,7 @@
 
                     $rootScope.setLogado = function (value)
                     {
-                        return $rootScope.sessao.setLogado(value);
+                        return $rootScope.sessao.setLogged(value);
                         //$rootScope.logado = Boolean(value);
                         //return this;
                     };
@@ -136,7 +136,7 @@
                     $rootScope.cleanSessionData = function ()
                     {
                         //devConsoleLog("$rootScope.cleanSessionData");
-                        $rootScope.setLogado(false);
+                        $rootScope.setLogged(false);
                         $rootScope.sessao.cleanSessionData();
                     };
 

@@ -52,7 +52,7 @@
                     return;
                 }
 
-                self.setLogado(true);
+                self.setLogged(true);
                 self.setDadosAutenticacao(localStorage);
             }
         };
@@ -110,7 +110,7 @@
             return logado;
         };
 
-        self.setLogado = function (value)
+        self.setLogged = function (value)
         {
             logado = Boolean(value);
             return self;
@@ -119,9 +119,8 @@
         self.cleanSessionData = function ()
         {
             //devConsoleLog("sessao.cleanSessionData");
-            self.setLogado(false);
-            self.user        = null;
-            self.colaborador = null;
+            self.setLogged(false);
+            self.user = null;
             limparLocalStorage();
         };
 

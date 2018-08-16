@@ -39,7 +39,7 @@
 
                     self.r = user;
 
-                    $rootScope.sessao.setLogado(true);
+                    $rootScope.sessao.setLogged(true);
                     $rootScope.sessao.setUser(user);
 
                     //$location.path("/inicial/colaborador");
