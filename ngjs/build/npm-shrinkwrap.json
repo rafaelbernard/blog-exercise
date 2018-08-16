@@ -1,5 +1,5 @@
 {
-  "name": "cpv_colaborador",
+  "name": "figured_blog_exercise",
   "version": "0.0.1",
   "dependencies": {
     "abbrev": {
@@ -15,9 +15,9 @@
       "dev": true
     },
     "angular": {
-      "version": "1.6.9",
+      "version": "1.7.3",
       "from": "angular@latest",
-      "resolved": "https://registry.npmjs.org/angular/-/angular-1.6.9.tgz"
+      "resolved": "https://registry.npmjs.org/angular/-/angular-1.7.3.tgz"
     },
     "angular-animate": {
       "version": "1.6.9",
@@ -47,9 +47,9 @@
       "resolved": "https://registry.npmjs.org/angular-local-storage/-/angular-local-storage-0.7.1.tgz"
     },
     "angular-material": {
-      "version": "1.1.9",
+      "version": "1.1.10",
       "from": "angular-material@latest",
-      "resolved": "https://registry.npmjs.org/angular-material/-/angular-material-1.1.9.tgz"
+      "resolved": "https://registry.npmjs.org/angular-material/-/angular-material-1.1.10.tgz"
     },
     "angular-messages": {
       "version": "1.6.9",
@@ -57,14 +57,14 @@
       "resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.6.9.tgz"
     },
     "angular-resource": {
-      "version": "1.7.0",
-      "from": "angular-resource@1.7.0",
-      "resolved": "https://registry.npmjs.org/angular-resource/-/angular-resource-1.7.0.tgz"
+      "version": "1.7.3",
+      "from": "angular-resource@latest",
+      "resolved": "https://registry.npmjs.org/angular-resource/-/angular-resource-1.7.3.tgz"
     },
     "angular-route": {
-      "version": "1.7.0",
-      "from": "angular-route@1.7.0",
-      "resolved": "https://registry.npmjs.org/angular-route/-/angular-route-1.7.0.tgz"
+      "version": "1.7.3",
+      "from": "angular-route@1.7.3",
+      "resolved": "https://registry.npmjs.org/angular-route/-/angular-route-1.7.3.tgz"
     },
     "angular-sanitize": {
       "version": "1.6.9",
@@ -2716,11 +2716,17 @@
       }
     },
     "gulp-uglify": {
-      "version": "3.0.0",
-      "from": "gulp-uglify@latest",
-      "resolved": "https://registry.npmjs.org/gulp-uglify/-/gulp-uglify-3.0.0.tgz",
+      "version": "3.0.1",
+      "from": "gulp-uglify@3.0.1",
+      "resolved": "https://registry.npmjs.org/gulp-uglify/-/gulp-uglify-3.0.1.tgz",
       "dev": true,
       "dependencies": {
+        "safe-buffer": {
+          "version": "5.1.2",
+          "from": "safe-buffer@>=5.1.2 <6.0.0",
+          "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz",
+          "dev": true
+        },
         "through2": {
           "version": "2.0.3",
           "from": "through2@>=2.0.0 <3.0.0",
@@ -6995,15 +7001,15 @@
       "dev": true
     },
     "uglify-js": {
-      "version": "3.3.18",
+      "version": "3.4.7",
       "from": "uglify-js@>=3.0.5 <4.0.0",
-      "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-3.3.18.tgz",
+      "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-3.4.7.tgz",
       "dev": true,
       "dependencies": {
         "commander": {
-          "version": "2.15.1",
-          "from": "commander@>=2.15.0 <2.16.0",
-          "resolved": "https://registry.npmjs.org/commander/-/commander-2.15.1.tgz",
+          "version": "2.16.0",
+          "from": "commander@>=2.16.0 <2.17.0",
+          "resolved": "https://registry.npmjs.org/commander/-/commander-2.16.0.tgz",
           "dev": true
         },
         "source-map": {
@@ -7026,9 +7032,9 @@
       "dev": true
     },
     "underscore": {
-      "version": "1.9.0",
-      "from": "underscore@1.9.0",
-      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.9.0.tgz"
+      "version": "1.9.1",
+      "from": "underscore@1.9.1",
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.9.1.tgz"
     },
     "union-value": {
       "version": "1.0.0",

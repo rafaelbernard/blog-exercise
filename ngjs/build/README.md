@@ -1,7 +1,7 @@
 README
 =======
 
-## Dependências
+## dependencies
 
 A instalação de dependências é feita pelos programas na basta **build/**. Este diretório contém 
 a instalação das dependências bower, npm e gulp.

@@ -1,16 +1,16 @@
 {
-  "name": "cpv_colaborador",
+  "name": "figured_blog_exercise",
   "version": "0.0.1",
   "repository": "https://github.com/icons4u/AcheCPVColaborador",
   "dependencies": {
-    "angular": "1.6.9",
+    "angular": "^1.7.3",
     "angular-animate": "1.6.9",
     "angular-aria": "1.6.9",
     "angular-chart.js": "^1.1.1",
     "angular-local-storage": "^0.7.1",
-    "angular-material": "^1.1.9",
+    "angular-material": "^1.1.10",
     "angular-messages": "1.6.9",
-    "angular-resource": "^1.7.0",
+    "angular-resource": "^1.7.3",
     "angular-route": "^1.7.0",
     "angular-sanitize": "1.6.9",
     "angular-ui-mask": "^1.8.7",
@@ -22,10 +22,10 @@
     "underscore": "^1.9.0"
   },
   "scripts": {
-    "start": "bower install && npm install && gulp",
-    "dev": "npm prune && npm install && bower prune && bower install && gulp watch",
-    "publish": "npm prune && npm install && bower prune && bower install && gulp",
-    "publish-update": "bower install && bower update && npm install && npm update && gulp"
+    "start": "npm install && gulp",
+    "dev": "npm prune && npm install && gulp watch",
+    "publish": "npm prune && npm install && gulp",
+    "publish-update": "npm install && npm update && gulp"
   },
   "devDependencies": {
     "del": "^3.0.0",

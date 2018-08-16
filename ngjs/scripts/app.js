@@ -4,11 +4,8 @@
 
     angular
         .module("app", [
-            "angulartics",
-            "angulartics.google.analytics",
             "ngRoute",
             "LocalStorageModule",
-            "ngCpfCnpj",
             'ngSanitize',
             'ngMaterial',
             'ngResource',
@@ -29,7 +26,7 @@
                           sessao)
                 {
                     // ===========
-                    // CONSTANTES
+                    // CONS
                     // ===========
                     //$rootScope.CONFIG_USO = configUso;
                     $rootScope.CONFIG_USO = window._CONFIG;
@@ -46,7 +43,7 @@
                     // OBJECTS
                     // =========
                     $rootScope.seo = {
-                        description: "CPV Em Campo"
+                        description: "Figured"
                     };
 
                     // ==================

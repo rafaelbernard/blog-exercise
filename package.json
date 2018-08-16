@@ -2,11 +2,11 @@
   "name": "figured_blog_exercise",
   "version": "0.0.1",
   "scripts": {
-    "install": "cd build && npm install",
+    "install": "cd ngjs/build && npm install",
     "uninstall": "cd build && npm uninstall",
     "start": "cd build && npm start",
-    "dev": "cd build && npm run-script dev",
-    "publish": "cd build && npm run-script publish"
+    "dev": "cd ngjs/build && npm run-script dev",
+    "publish": "cd ngjs/build && npm run-script publish"
   },
   "dependencies": {}
 }

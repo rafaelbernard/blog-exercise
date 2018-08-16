@@ -16,3 +16,39 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::post('/post', [
+//    'uses'       => 'PostController@create',
+//    'as'         => 'post.create',
+//    'middleware' => 'auth'
+//]);
+
+//Route::resource('post', 'PostController', [
+//    //'only' => ['index', 'show', 'store']
+//    'except' => ['create', 'edit']
+//]);
+
+//Route::prefix('v1')->group(function(){
+//    Route::post('/post', [
+//
+//    ]);
+//});
+
+Route::group(['prefix' => 'v1'], function () {
+
+    Route::resource('post', 'PostController', [
+        'except' => ['edit', 'create']
+    ]);
+
+//    Route::post('/post', [
+//
+//    ]);
+
+    Route::post('user', [
+        'uses' => 'AuthController@store'
+    ]);
+
+    Route::post('user/signin', [
+        'uses' => 'AuthController@signin'
+    ]);
+});
