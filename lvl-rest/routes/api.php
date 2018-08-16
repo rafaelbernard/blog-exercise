@@ -28,21 +28,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    'except' => ['create', 'edit']
 //]);
 
-//Route::prefix('v1')->group(function(){
-//    Route::post('/post', [
-//
-//    ]);
-//});
-
-Route::group(['prefix' => 'v1'], function () {
-
+Route::prefix('v1')->group(function () {
     Route::resource('post', 'PostController', [
         'except' => ['edit', 'create']
     ]);
-
-//    Route::post('/post', [
-//
-//    ]);
 
     Route::post('user', [
         'uses' => 'AuthController@store'
@@ -52,3 +41,18 @@ Route::group(['prefix' => 'v1'], function () {
         'uses' => 'AuthController@signin'
     ]);
 });
+
+//Route::group(['prefix' => 'v1'], function () {
+//
+//    Route::resource('post', 'PostController', [
+//        'except' => ['edit', 'create']
+//    ]);
+//
+//    Route::post('user', [
+//        'uses' => 'AuthController@store'
+//    ]);
+//
+//    Route::post('user/signin', [
+//        'uses' => 'AuthController@signin'
+//    ]);
+//});

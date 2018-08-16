@@ -9,9 +9,7 @@
             'ngSanitize',
             'ngMaterial',
             'ngResource',
-            "chart.js",
             "ui.mask",
-            "ui.select",
         ])
         .run(
             ["$location",
@@ -28,7 +26,6 @@
                     // ===========
                     // CONS
                     // ===========
-                    //$rootScope.CONFIG_USO = configUso;
                     $rootScope.CONFIG_USO = window._CONFIG;
 
                     $rootScope.NOW = new Date();

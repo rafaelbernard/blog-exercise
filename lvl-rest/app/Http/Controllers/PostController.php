@@ -25,7 +25,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title        = $request->input('title');
+        $content      = $request->input('content');
+        $is_published = $request->input('is_published');
+        $user_id      = $request->input('user_id');
+
+        $post = [
+            'title'     => $title,
+            'view_post' => [
+                'href'   => 'api/v1/post/999',
+                'method' => 'GET'
+            ]
+        ];
+
+        $response = [
+            'msg'  => 'created',
+            'post' => $post
+        ];
+
+        return response()->json($response, 201);
+
+        return "It works!";
     }
 
     /**
@@ -36,7 +56,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return ['msg' => 'ok', 'id' => $id];
+        return response()->json();
+        return "It works! $id";
     }
 
 
@@ -49,7 +71,10 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $title        = $request->input('title');
+        $content      = $request->input('content');
+        $is_published = $request->input('is_published');
+        $user_id      = $request->input('user_id');
     }
 
     /**
@@ -61,5 +86,16 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+
+        $response = [
+            'msg'    => 'post deletede',
+            'create' => [
+                'href'   => 'api/v1/post',
+                'method' => 'POST',
+                'params' => 'title, content, is_published'
+            ]
+        ];
+
+        return $response;
     }
 }
