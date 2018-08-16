@@ -1,0 +1,233 @@
+<div class="container principal" data-ng-init="farmacia.buscarConviteFarmaciaPorRouteParam()">
+        <div class="row login_container">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nopad">
+                
+                <!-- loading -->
+                <md-progress-circular class="progress_custom md-accent md-hue-1 loading_cep" md-diameter="20" md-mode="indeterminate" data-ng-show="farmacia.requisicaoEmAndamento"></md-progress-circular>
+
+                <span class="logo_credenciamento"></span>
+
+                <div class="areaLogin area_credenciamento">
+                    <div class="header_login">
+                        <!-- <span class="logo_login" alt=""></span> -->
+                        <p>Intenção de Credenciamento</p>
+                    </div>
+                    
+                    <div data-ng-show="farmacia.conviteFarmacia">
+                            
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-centered" data-ng-if="!farmacia.intencaoCredenciamentoRealizada && farmacia.conviteFarmacia.conviteFarmaciaCredenciamento">
+                            <p>Convite realizado em {{farmacia.conviteFarmacia.inclusao | date:'d/MM/yyyy HH:mm':'UTC'}} já associado ao CNPJ {{farmacia.conviteFarmacia.conviteFarmaciaCredenciamento.cnpjFarmacia | cnpjFormatado}} em {{farmacia.conviteFarmacia.conviteFarmaciaCredenciamento.inclusao | date:'dd/MM/yyyy H:mm':'UTC'}}</p>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-centered" data-ng-if="!farmacia.intencaoCredenciamentoRealizada && !farmacia.conviteFarmacia.conviteFarmaciaCredenciamento">
+                            <p>Convite realizado em {{farmacia.conviteFarmacia.inclusao | date:'dd/MM/yyyy H:m':'UTC'}}</p>
+                            
+                            <form name="formIntencaoCredenciamento" method='post' class='contact-form commentsblock' id="formAdesao"
+                                    data-ng-submit="farmacia.enviarFormularioCredenciamentoLanding(dadosCredenciamento)">
+                                
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <label for='cnpj'>CNPJ:<span> *</span></label>
+                                    <input type='text' name='cnpj' id='cnpj' class='text' required data-ng-cnpj data-ui-mask="99.999.999/9999-99" data-ng-model="dadosCredenciamento.cnpj" />
+                                </div>
+                                
+                                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                    <label for='razaoSocial' class='grunion-field-label text'>Razão Social:<span> *</span></label>
+                                    <input type='text' name='razaoSocial' id='razaoSocial' value='' class='text' required data-ng-model="dadosCredenciamento.razaoSocial" />
+                                </div>
+                                
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <label for='nomeFantasia' class='grunion-field-label text'>Nome Fantasia:<span> *</span></label>
+                                    <input type='text' name='nomeFantasia' id='nomeFantasia' class='text' required data-ng-model="dadosCredenciamento.nomeFantasia" />
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <div class="campo_cep">
+                                        <label for='cep'>CEP:<span> *</span></label>
+                                        <input type='text' name='cep' id='cep' value='' class='text' required data-ui-mask-placeholder data-ui-mask="99999-999" data-ng-blur="farmacia.buscarEnderecoPeloCep(dadosCredenciamento)" data-ng-model="dadosCredenciamento.cep" />
+                                    </div>
+                                
+                                    <div class="buscar_cep">                                
+                                        <input type="button" class="btn_buscar_cep radius" data-ng-disabled="farmacia.requisicaoBuscaEndereco || !dadosCredenciamento.cep" data-ng-click="farmacia.buscarEnderecoPeloCep(dadosCredenciamento)" value="">
+                                        <label class="loading_cep">
+                                            <md-progress-circular class="progress_generic md-accent md-hue-1" md-diameter="30" style="" md-mode="indeterminate" data-ng-show="farmacia.requisicaoBuscaEndereco"></md-progress-circular>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <label>Tipo de Logradouro:</label>
+                                    <div class="area_select">
+                                        <select name="tipoLogradouro" required data-ng-init="farmacia.getTipoLogradouro()"
+                                                data-ng-model="dadosCredenciamento.tipoLogradouro"
+                                                data-ng-disabled="(farmacia.necessitaVerificarCep && !farmacia.cepMunicipal)">
+                                            <option value="">-- Selecione --</option>
+                                            <!--=======================-->
+                                            <!--OBS: usamos values={{}} para usar o bind. ngValue tem outro uso-->
+                                            <!--=======================-->
+                                            <option data-ng-repeat="tipoLogradouro in farmacia.listaTipoLogradouro"
+                                                    value="{{tipoLogradouro.nomeTipoLogradouro}}">{{tipoLogradouro.nomeTipoLogradouro}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <label for='g696-endereo' class='grunion-field-label text'>Endereço:<span> *</span></label>
+                                        <input type='text' name='g696-endereo' id='g696-endereo' value='' class='text' required data-ng-disabled="(farmacia.necessitaVerificarCep && !farmacia.cepMunicipal)" ng-model="dadosCredenciamento.endereco" />
+                                </div>
+                                    
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                    <label for='g696-nmero' class='grunion-field-label text'>Número:<span> *</span></label>
+                                    <input type='text' name='g696-nmero' id='g696-nmero' value='' class='text' required ng-model="dadosCredenciamento.numero" />
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">                                                
+                                    <label for="complemento">COMPLEMENTO
+                                        <input type="text" id="complemento" data-ng-model="dadosCredenciamento.complemento">
+                                    </label>
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">  
+                                    <label for='bairro' class='grunion-field-label text'>Bairro:<span> *</span></label>
+                                    <input type='text' name='bairro' id='bairro' value='' class='text' required data-ng-disabled="(farmacia.necessitaVerificarCep && !farmacia.cepMunicipal)" ng-model="dadosCredenciamento.bairro" />
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">  
+                                    <label for='g696-cidade' class='grunion-field-label text'>Cidade:<span> *</span></label>
+                                    <input type='text' name='g696-cidade' id='g696-cidade' value='' class='text' required data-ng-disabled="farmacia.necessitaVerificarCep" data-ng-model="dadosCredenciamento.cidade" />
+                                </div>
+                                
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">  
+                                    <label for='uf' class='grunion-field-label text'>Estado:<span> *</span></label>
+                                    <div class="area_select">
+                                        <select name="estado" id="uf" required data-ng-disabled="farmacia.necessitaVerificarCep"
+                                                data-ng-model="dadosCredenciamento.uf">
+                                            <option value="">-- Selecione --</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AM">AM</option>
+                                            <option value="AP">AP</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SE">SE</option>
+                                            <option value="SP">SP</option>
+                                            <option value="TO">TO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">  
+                                    <label for='g696-nomedoresponsvelpelotermodeadeso' class='grunion-field-label text'>
+                                        Nome do responsável pelo termo de adesão:<span> *</span></label>
+                                    <input type='text' name='g696-nomedoresponsvelpelotermodeadeso'
+                                            id='g696-nomedoresponsvelpelotermodeadeso' class='text' required
+                                            ng-model="dadosCredenciamento.nomeResponsavelAdesao" />
+                                </div>
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="formColunaEsquerda">
+                                        <label for='g696-cargo' class='grunion-field-label text'>Cargo:<span> *</span></label>
+                                        <input type='text' name='g696-cargo' id='g696-cargo' class='text' required
+                                                ng-model="dadosCredenciamento.cargoResponsavelAdesao" />
+                                    </div>
+                                </div>  
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <label for='g696-telefonecomddd' class='grunion-field-label text'>Telefone (com DDD):<span> *</span></label>
+                                    <input type='text' name='g696-telefonecomddd' id='g696-telefonecomddd' value='' class='text' ng-model="dadosCredenciamento.telefoneResponsavelAdesao" required />
+                                </div>
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">  
+                                    <label for='g696-emailresponsvelpelotermodeadeso' class='grunion-field-label email'>Email responsável pelo termo de adesão:<span> *</span></label>
+                                    <input type='email' name='g696-emailresponsvelpelotermodeadeso' id='g696-emailresponsvelpelotermodeadeso' value='' class='email' required aria-required='true' ng-model="dadosCredenciamento.emailResponsavelAdesao" />
+                                </div>
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">  
+                                    <label for='g696-nomedoproprietrioouresponsvellegal' class='grunion-field-label text'>Nome do proprietário ou responsável legal:<span> *</span></label>
+                                    <input type='text' name='g696-nomedoproprietrioouresponsvellegal' id='g696-nomedoproprietrioouresponsvellegal' value='' class='text' required ng-model="dadosCredenciamento.nomeResponsavelLegal" />
+                                </div>
+                                
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+                                    <label for='g696-emaildoresponsvellegal' class='grunion-field-label email'>Email do responsável legal:<span> *</span></label>
+                                        <input type='email' name='g696-emaildoresponsvellegal' id='g696-emaildoresponsvellegal' value='' ng-model="dadosCredenciamento.emailResponsavelLegal" class='email' required />
+                                </div>
+                                    
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <label for='g696-telefonecomddddoresponsvellegal' class='grunion-field-label text'>Telefone (com DDD) do responsável legal:<span> *</span></label>
+                                    <input type='text' name='g696-telefonecomddddoresponsvellegal' id='g696-telefonecomddddoresponsvellegal' value='' class='text' required ng-model="dadosCredenciamento.telefoneResponsavelLegal" />
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
+                                    <div id="checkboxFormAdesao">
+                                        <label>
+                                            Aceito as condições descritas no <strong>Termo de Adesão</strong>
+                                            <input type='checkbox' name='aceito' value='Sim' class='check_aceito checkbox' required data-ng-model="dadosCredenciamento.aceito" />
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p class='contact-submit'>
+                                        <input type='submit' value='ENVIAR SOLICITAÇÃO DE CREDENCIAMENTO' class='btn_enviar_credenciamento submit-btn'
+                                                data-ng-disabled="farmacia.requisicaoEmAndamento || formIntencaoCredenciamento.$invalid">
+                                    </p>
+                                
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div data-ng-show="formIntencaoCredenciamento.$dirty && formIntencaoCredenciamento.$invalid">
+                                    <div class="error" data-ng-if="formIntencaoCredenciamento.cnpj.$error.cnpj">- CNPJ: Valor inválido </div>
+                                </div>
+                            
+                            </form>
+                        
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                        
+                        <div data-ng-show="farmacia.intencaoCredenciamentoRealizada">
+                            Credenciamento finalizado com sucesso!
+                        </div>
+                    
+                    </div>
+
+                    
+                </div>
+                
+                
+            </div>
+            
+            <!-- <span class="logo_ache_rodape"></span> -->
+            <!-- <div ng-include="'../includes/box_newsletter.html'"></div> -->
+        </div>
+        <!-- /row -->
+    </div>
+
+    
+
+
+
+
+
+
+
+    
+    
+    
+    

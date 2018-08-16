@@ -1,0 +1,546 @@
+
+
+html, body {background-color:#ffffff;}
+.site {background-color:transparent;}
+h1 {color:#2e3192; font-size:35px; text-transform:uppercase;}
+h2 {color:#2e3192; font-size:24px; }
+.container_principal {}
+.container_principal .row:first-child {margin-top:190px;}
+.pagina_login .container {margin-top:0 !important;}
+.grey {color:#6d6e71;}
+
+/* Geral */
+.text-underline { text-decoration: underline; }
+.btn-button { background-color:#ec008c; text-align:center; font-size:18px; color:#ffffff; border-radius:6px; border:none; padding: 5px; }
+
+/* HEADER */
+.logo_cpvemcampo {float:left; width:100px; height:60px; background-color:#cccccc; margin:0 10px 0 20px;}
+.links_menu {list-style-type:none; margin:0; padding:0; width:100%; text-align:center; display:inline-flex;}
+.links_menu li {float:none; width:74px; margin:0 10px 0 0; text-align:center; text-transform:uppercase; font-size:10px;}
+.links_menu li a {text-align:center; color:#6d6e71;}
+
+.links_menu li.desativado {opacity:0.3;}
+.links_menu li.desativado:hover, .links_menu li.desativado a:hover {text-decoration:none;}
+.links_menu li.active {overflow:unset;}
+.links_menu li a span {display:block; margin:0 auto 5px auto; width:70px; height:70px; background-size:100% auto; background-repeat:no-repeat; background-position:top left;}
+.links_menu li.inicio a span {background-image:url(../images/icon_menu_home.png);}
+.links_menu li.inicio.active a span {background-image:url(../images/icon_menu_home_clicado.png);}
+.links_menu li.farmacias a span {background-image:url(../images/icon_menu_farmacias.png);}
+.links_menu li.farmacias.active a span {background-image:url(../images/icon_menu_farmacias_clicado.png);}
+.links_menu li.relatorios a span {background-image:url(../images/icon_menu_relatorios.png);}
+.links_menu li.relatorios.active a span {background-image:url(../images/icon_menu_relatorios_clicado.png);}
+.links_menu li.recados a span {background-image:url(../images/icon_menu_recados.png);}
+.links_menu li.recados.active a span {background-image:url(../images/icon_menu_recados_clicado.png);}
+.links_menu li.cadastropaciente a span {background-image:url(../images/icon_menu_cadastropacientes.png);}
+.links_menu li.cadastropaciente.active a span {background-image:url(../images/icon_menu_cadastropacientes_clicado.png );}
+.links_menu li.produtos a span {background-image:url(../images/icon_menu_produtos.png);}
+.links_menu li.produtos.active a span {background-image:url(../images/icon_menu_produtos_clicado.png);}
+.links_menu li.cuidador a span {background-image:url(../images/icon_menu_cuidador.png);}
+.links_menu li.cuidador.active a span {background-image:url(../images/icon_menu_cuidador_clicado.png);}
+.links_menu li.institucional a span {background-image:url(../images/icon_menu_institucional.png);}
+.links_menu li.institucional.active a span {background-image:url(../images/icon_menu_institucional_clicado.png);}
+.links_menu li.promocional a span {background-image:url(../images/icon_menu_promocional.png);}
+.links_menu li.promocional.active a span {background-image:url(../images/icon_menu_promocional_clicado.png);}
+.links_menu li.saudavelsaber a span {background-image:url(../images/icon_menu_saudavelsaber.png);}
+.links_menu li.saudavelsaber.active a span {background-image:url(../images/icon_menu_saudavelsaber_clicado.png);}
+.links_menu li.faq a span {background-image:url(../images/icon_menu_faq.png);}
+.links_menu li.faq.active a span {background-image:url(../images/icon_menu_faq_clicado.png);}
+
+/* LOGIN */
+.login_container {height:-webkit-fill-available; position:relative; }
+.areaLogin {width:400px; margin:40% auto 0 auto; text-align:center; background-color:#ffffff; border-radius:10px; overflow:hidden; padding:0 0 24px 0;}
+.logo_login {display:block; width:80%; margin:0 auto; height:30px; background-image:url(../images/logo_cpv_login.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; }
+.logo_ache_rodape {display:block; width:134px; height:53px; position:relative; background-image:url(../images/logo_ache_rodape.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; margin:30px auto 0 auto;}
+.areaLogin .header_login {background-color:#e8e9ea; padding:40px 0 30px 0; }
+.btn_login {width:230px; height:37px; margin:20px auto 0 auto; background-color:#ec008c; text-align:center; font-size:18px; border:none; color:#ffffff; border-radius:5px; font-weight:bold;}
+.areaLogin .header_login p {text-align:center; width:80%; margin:17px auto 0 auto;}
+.areaLogin .header_login p span {font-weight:bold;}
+.cpf_area, .matricula_area {position:relative; width:70%; height:auto; overflow:hidden; margin:15px auto 0 auto;}
+/* .cpf_area label, .matricula_area label {font-size:10px; position:absolute; top:16px; left:20px; } */
+.cpf_area label, .matricula_area label {font-size:10px; margin:0;}
+.cpf_area input, .matricula_area input {width:100%; height:40px; border:1px solid #6d6e71; border-radius:5px; text-align:left; font-size:20px; font-weight:normal;}
+.formulario_convite .cpf_area input, .formulario_convite .matricula_area input {border:none; padding:0 8px; height:40px;}
+.cpf_area input::placeholder,
+.cpf_area input::-webkit-input-placeholder,
+.cpf_area input:-ms-input-placeholder,
+.cpf_area input:-moz-placeholder,
+.cpf_area input::-moz-placeholder {color:transparent !important;}
+.matricula_area input::placeholder,
+.matricula_area input::-webkit-input-placeholder,
+.matricula_area input:-ms-input-placeholder,
+.matricula_area input:-moz-placeholder,
+.matricula_area input::-moz-placeholder {color:transparent !important;}
+.btn_login_area {position:relative; display:table; margin:0 auto;}
+.btn_login_area.consulta {display:block;}
+.btn_login_area .progress_custom {position:absolute; right:38px !important; bottom:0; left:unset;}
+.btn_login_area .progress_custom.loading_login {bottom:8px;}
+.btn_login_area input.btn_enviar_convite {}
+.btn_login_area md-progress-circular.progress_adicionar {position:absolute; right:38px !important; bottom:5px; left:unset;}
+.btn_login_area md-progress-circular.progress_consultar {position:absolute; right:7px !important; bottom:3px; left:unset;}
+.footer_farmacias .row.area_busca_cnpj {margin-top:0; padding:0;}
+.footer_farmacias .row.area_busca_cnpj .matricula_area {width:100%;}
+.footer_farmacias .row.area_busca_cnpj .btn_login {width:100%; margin:36px auto 0;}
+.footer_farmacias .row.area_busca_cnpj .btn_login.consulta {width:none;}
+.footer_farmacias .row.area_busca_cnpj .btn_login:disabled {opacity:0.3;}
+
+.footer_farmacias .row.area_busca_cnpj input:disabled {opacity:0.3;}
+.footer_farmacias .row.area_busca_cnpj input[disabled] {opacity:0.3;}
+
+
+button[disabled], html input[type=button][disabled], input[type=reset][disabled], input[type=submit][disabled] {opacity:0.3;}
+.btn_autorizacao, .btn_autorizacao:hover {border-radius:5px; background-color:#FBA600; color:#ffffff; text-align:center; padding:2px 64px; font-weight:bold; display:table; margin:0 auto 6px auto; font-size:12px; text-decoration:none;}
+.no-pad-left {padding-left:0 !important;}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: transparent !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: transparent !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: transparent !important;
+}
+textarea::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent !important;
+}
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: transparent !important;
+}
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: transparent !important;
+}
+textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: transparent !important;
+}
+.text_caso {text-align:center; margin:10px auto 0 auto; line-height:15px;}
+
+/* HOME */
+.progress_custom {background-image:url(../images/load.gif); background-repeat:no-repeat; background-position:top left !important; background-size:100% 100%; width:50px; height:50px; float:none; left:45%; bottom:237px; position:absolute;}
+.col-centered {float:none; margin:0 auto;}
+header .ola {float:right; color:#ffffff; margin:11px 30px 0 0;}
+header .sair {float:right; color:#ffffff; margin:10px 0 0 30px;}
+header .sair a span {width:20px; height:20px; background-image:url(../images/btn_sair_header.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; display:block; float:left; margin:0 10px 0 0;}
+header .sair a {color:#ffffff;}
+.header_app {width:100%; height:40px; background-color:#ec008c; position:fixed; z-index:20; top:0;}
+.header_app .container {padding:0;}
+.banner_home {margin:0 0 10px 0;}
+.banner_home img {width:100%; height:auto;}
+.box_cadastros_cpv_home {}
+.box_cadastros_cpv_home img {width:100%; height:auto;}
+.box_cadastros_cpv_home .tit {}
+.box_cadastros_cpv_home .mes_corrente {}
+.box_cadastros_cpv_home .porcentagem {}
+.area_menu {margin-left:0; margin-right:0; padding:12px 0 20px 25px; background-color:#e6e7e8; margin-bottom:10px; margin-top:40px; overflow-x:auto; position:fixed; z-index:20; top:0; width:100%;}
+.box_solicite_home {width:100%; height:40px;}
+.box_solicite_home img {width:100%; height:auto;}
+.box_solicite_home {}
+.box_solicite_home {}
+.box_solicite_home {}
+.pagina_login {background-image:url(../images/bg_login_app.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; height:-webkit-fill-available;}
+.pagina_login .header_app {display:none;}
+.progress_loading { background-image:url(../images/load.gif); }
+.progress_generic {background-image:url(../images/load.gif); width:40px; height:40px; margin:0 auto; background-size:100% auto; display:block;}
+.btn_ver_mais_mensagens {width:100%; height:20px; border-radius:4px; text-align:center; color:#ffffff; font-size:14px; background-color:#ec008c; display:block; margin:20px 0 0 0;}
+.btn_ver_mais_mensagens:hover {color:#ffffff;}
+
+
+/* FARMÁCIAS */
+.topicos_texto {margin:20px 0 0 0; padding:0 0 0 20px}
+.topicos_texto li {font-size:19px;}
+.farmacias_passoapasso {width:100%; height:auto; margin:15px auto 30px auto;}
+.footer_farmacias {border-radius:13px; background-color:#ebebeb; padding:15px;}
+.footer_farmacias .cpf_area, .footer_farmacias .matricula_area {position:relative; width:50%; height:auto; overflow:hidden; margin:15px auto 0 auto;}
+.footer_farmacias .cpf_area input, .footer_farmacias .matricula_area input {width:100%; height:40px; border-radius:5px; text-align:left; font-size:25px; font-weight:normal; border:none; padding:0 0 0 8px;}
+.footer_farmacias .btn_login {margin:15px auto 0 auto; display:block;}
+.acordo {width:100%; text-align:left; margin:70px auto 0 auto; font-weight:normal;}
+.acordo input {float:left; margin:4px 15px 0 0;}
+.acordo span.span_marca {}
+.acordo a {color:#ec008c; font-weight:500; display:contents;}
+.btn_login.btn_enviar_convite {margin:20px auto 0 auto !important; display:block;}
+.ou_area {text-align:center; font-size:18px; color:#6d6e71; margin:5px auto -12px auto;}
+.logo {background-image:url(../images/logo_cpv_em_campo.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; display:block; width:242px; height:24px; float:left; margin:10px 0 0 0;}
+.loading_cep {float:left; display:block; margin:22px 0 0 10px !important; width:20px;}
+.tabela_convites  {width:94%; margin:20px auto 0 auto !important; }
+.tabela_convites .odd {background-color:#ffffff; padding:4px 10px;}
+.tabela_convites .even {background-color: #ededed; padding:4px 10px;}
+.tabela_convites > tbody > tr:nth-child(odd) > td {
+    background-color:#ffffff;
+}
+h3.sem_resultado {text-align:center;}
+.tabela_convites > tbody > tr:nth-child(even) > td {
+    background-color: #ededed;
+}
+.loading_farma {margin-top:30px;}
+.tabela_convites > tbody > tr > td {padding:4px 10px; font-size:16px;}
+.tabela_convites > thead > tr > th {padding:4px 10px; font-size:16px; font-weight:bold;}
+.btn_reenviar_convite {width:auto; height:auto; padding:3px 10px; border-radius:4px; background-color:#2e3192; color:#ffffff; border:none; float:right;}
+.btn_atualizar_convites {width:auto; height:auto; padding:5px 15px; border-radius:4px; background-color:#6d6e71; color:#ffffff; border:none; float:right; margin:0 44px 0 0;}
+.form_envia_convite {margin:0 0 40px 0;}
+.farmacia_email[disabled] {background-color:#e7e7e8; }
+.farmacia_celular[disabled] {background-color:#e7e7e8;}
+.text_intro_farmacia {font-size:19px; margin:20px 0 10px 0;}
+
+/* MENSAGENS */
+.container_mensagens .row {border-radius:13px; background-color:#ebebeb; padding:15px; width:100%;}
+.box_recados {}
+.box_recados img {width:100%; height:auto; margin:70px auto 0 auto;}
+
+
+.box_mensagens {padding:0 0 0 40px; border-left:1px solif #b6b6b8;}
+
+.lista_mensagens {list-style-type:none;}
+.lista_mensagens li {position:relative;
+    -webkit-box-shadow: -1px 0px 32px -4px rgba(0,0,0,0.44);
+    -moz-box-shadow: -1px 0px 32px -4px rgba(0,0,0,0.44);
+    box-shadow: -1px 0px 32px -4px rgba(0,0,0,0.44);}
+.lista_mensagens.mensagems_home li {box-shadow:none; position:relative;}
+.lista_mensagens.mensagems_home li:last-child span.shadow {background-position:left bottom; background-repeat:repeat-x; background-image:url(../images/bg_box_mensagens.png); display:block; width:100%; height:37px; position:absolute; bottom:0; left:0;}
+.lista_mensagens li .icon_mensagem {display:block; width:40px; height:40px; background-image:url(../images/icon_mensagem.png);background-size:100% auto; background-repeat:no-repeat; background-position:top left; position:absolute; left:-51px; top:5px;}
+.lista_mensagens li .nome_mensagem {font-size:18px; font-weight:bold; margin:10px 0 0 0;}
+.lista_mensagens li .data_mensagem {color:#b0b1b2; font-size:16px;}
+.lista_mensagens li .texto_mensagem {color:#6d6e71; font-size:16px;}
+.lista_mensagens {}
+.pagina_recados .box_recados img {margin:30px auto 0 auto;}
+.area_mensagens {border-left:1px solid #aaabad;}
+.area_mensagens .lista_mensagens {padding:0 0 0 15px;}
+.area_mensagens .lista_mensagens li {background-color:#ffffff; border-radius:6px; overflow:hidden; padding:10px 10px 20px 68px; margin:0 0 15px 0;}
+.area_mensagens .lista_mensagens li .icon_mensagem {left:17px; top:12px;}
+.area_mensagens .lista_mensagens {}
+.area_mensagens .lista_mensagens {}
+
+
+
+/* O PROGRAMA */
+.area_programa {width:100%; height:auto;}
+.area_img_programa {position:relative;}
+.area_img_programa .btn_baixar_programa {display:block; position:absolute; top:59%; left:17.6%; width:35%;}
+.area_img_programa .btn_baixar_programa img {width:100%; height:auto;}
+
+/* PRODUTOS PARTICIPANTES */
+.container_produtos .row, .container_principal .row {border-radius:13px; background-color:#ebebeb; padding:15px;}
+.container_principal.container_home .row {background-color:#ffffff; padding:0;}
+.area_busca {width:100%; height:auto; padding:15px 25px; border-top:1px solid #c9cacb; border-bottom:1px solid #c9cacb; position:relative; margin:22px 0 30px 0;}
+.area_busca input {width:100%; height:45px; border-radius:5px; padding:0 0 0 50px; border:none;}
+.area_busca button {display:block; width:25px; height:26px; background-image:url(../images/lupa.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; position:absolute; left:35px; top:26px; border:none; background-color:transparent;}
+.area_produtos {margin:40px 0 0 0;}
+.lista_produtos {border-bottom:1px solid #6d6e71; padding:0 0 15px 0; width:100%;}
+.lista_produtos dt {font-size:22px; margin:0 0 3px; position:relative;}
+.lista_produtos dd {width:45%;float:left; margin:0; font-size:17px;}
+.lista_produtos.produtos_prescritos dd {width:175px; }
+.lista_produtos:last-child {border-bottom:none;}
+
+.lista_produtos dd a {color:#6d6e71;}
+.area_produtos .item_aberto {height:auto; overflow:visible;}
+.area_produtos .item_fechado {height:0; overflow:hidden;}
+.lista_produtos .icon_seta_faq {top:-4px;}
+
+
+/* PRODUTO SINGLE */
+.img_produto_full {width:100%; height:auto; border-radius:5px; margin:0 0 20px 0;}
+.produto_title {font-size:25px; margin:0 0 13px 0;}
+.area_produtos span {display:block; font-weight:bold; text-transform:uppercase; margin:7px 0 5px 0;}
+.disclaimer_produto {width:100%; height:auto; padding:9px; text-align:center; border:1px solid red; font-size:11px; border-radius:5px; margin:0;}
+.disclaimer_produto span {display:inline; font-weight:normal;}
+
+.area_item_produto {padding:0 0 5px 0; margin:0 0 20px 0; border-bottom:1px solid #6d6e71;}
+.area_item_produto h2 {color:#6d6e71; font-size:22px; position:relative; padding:0 30px 0 0;}
+.icon_seta_faq {position:absolute; right:0; top:0; width:30px; height:30px; display:block; background-image:url(../images/icon_seta_faq.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto;}
+.area_item_produto p {height:0; overflow:hidden;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;  }
+.area_item_produto .item_aberta {height:auto; overflow:visible;}
+.area_item_produto .item_fechada {height:0; overflow:hidden;}
+.area_item_produto .item_aberta p {font-size:19px; line-height:20px; color:#000000; height:auto !important; overflow:visible; display:block;}
+.btn_downloadbula {width:100%; height:auto; padding:5px 0; text-align:center; color:#ffffff; font-size:15px; margin:0 0 5px 0; background-color:#ec008c; text-transform:uppercase; display:block; border-radius:5px;}
+
+
+
+/* FAQ */
+.container_faq .row:first-child {border-radius:13px; background-color:#ebebeb; padding:15px;}
+.area_item_faq {padding:0 0 20px 0; margin:0 0 20px 0; border-bottom:1px solid #6d6e71;}
+.area_item_faq h2 {color:#6d6e71; font-size:22px; position:relative; padding:0 30px 0 0;}
+.icon_seta_faq {position:absolute; right:0; top:0; width:30px; height:30px; display:block; background-image:url(../images/icon_seta_faq.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto;}
+.icon_seta_faq.cima {background-image:url(../images/icon_seta_faq_cima.png);}
+.icon_seta_faq.baixo {background-image:url(../images/icon_seta_faq.png);}
+.area_item_faq p {height:0; overflow:hidden;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;  }
+.area_item_faq .pergunta_aberta {height:auto; overflow:visible;}
+.area_item_faq .pergunta_fechada {height:0; overflow:hidden;}
+.area_item_faq .pergunta_aberta p {font-size:17px; line-height:20px; color:#6d6e71; height:auto !important; overflow:visible; display:block;}
+.area_duvida {background-color:#6d6e71; border-radius:10px; margin-top:30px; padding-top:30px; padding-bottom:30px;}
+.faq_duvida_left {width:90%; margin:0 auto;}
+.faq_duvida_left p.tit {color:#ffffff; font-size:30px; font-weight:100; line-height:37px;}
+.faq_duvida_left p.tit span {font-weight:bold;}
+.faq_duvida_left p.desc {color:#ffffff; font-size:16px; font-weight:100;}
+.faq_duvida_right {width:90%; margin:0 auto;}
+.faq_duvida_right textarea {width:100%;border-radius:7px; padding:10px 15px; float:right;}
+.faq_duvida_right .btn_enviar_duvida {float:right; width:150px; height:60px; border-radius:4px; color:#ffffff; text-align:center; font-size:16px; margin:20px 0 0 0; background-color:#ec008c; border:0;}
+
+/* SAUDÁVEL SABER */
+.container_saudavel .row {border-radius:13px; background-color:#ebebeb; padding:15px; background-image:url(../images/bg_saudavel_saber.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; width:100%; height:816px;}
+.area_video {width:80%; height:auto; margin:37% auto 0 auto;}
+
+/* CUIDADOR */
+.container_cuidador .row:first-child {border-radius:13px; background-color:#ebebeb; padding:33% 15px 15px 15px; background-image:url(../images/bg_cuidador.png); background-repeat:no-repeat; background-position:top right; background-size:91% auto; position:relative; width:100%;}
+.lista_videos {padding:0; margin:0; list-style-type:none; height:800px; overflow-y:scroll;}
+.lista_videos li {padding:8px; margin:0 0 5px 10px; background-color:#ffffff; border-radius:3px; width:100%; position:relative;}
+.lista_videos li .thumb_video {width:125px; height:auto; float:left; margin:0 10px 0 0;}
+.lista_videos li .title_video {float:left; font-size:13px; color:#78777a; width:40%; height:100%; padding:5px 0 0 0;}
+.lista_videos .btn_video {width:40px; height:40px; display:block; background-image:url(../images/btn_video.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; position:absolute; right:26px; top:20px;}
+.lista_videos {}
+.area_video_cuidador {width:100%; height:auto; margin:0 auto;}
+.tit_video_cuidador {font-weight:100; font-size:16px; color:#ffffff; width:100%; padding:15px 0 0 50px;}
+.tit_video_cuidador span {display:block; font-weight:bold;}
+.img_footer_cuidador {background:url(../images/img_footer_cuidador.png);  background-repeat:no-repeat; background-position:top left; background-size:100% auto; float:right; display:block; width:380px; height:284px; background-color:transparent; position:absolute; bottom:0; right:0;}
+.img_footer_cuidador a {display:block; width:100%; height:100%; cursor:pointer;}
+
+/* MATERIAL PROMOCIONAL */
+.lista_materiais_pdv {margin:0 0 20px 0; padding:0 0 25px 0; width:100%; border-bottom:1px solid #d3d3d4;}
+.lista_materiais_pdv li {list-style:none; float:left; width:31%; padding:0 32px 0 27px; margin:0 13px 0 0; border-right:1px solid #6d6e71; position:relative; }
+.lista_materiais_pdv li label {font-size:13px;}
+.lista_materiais_pdv li input {border-radius:100px; width:20px; height:20px; margin:0 5px 0 0; position:absolute; left:0; top: 10px;}
+.lista_materiais_pdv li label {height:20px;}
+.container_promocional {}
+.container_promocional label {margin:14px 0 0 0;;}
+.container_promocional label input {}
+.input_form_promo {width:100%;}
+.input_form_promo input {height:40px; width:100%; border:1px solid #6d6e71; border-radius:3px; display:block; padding:0 10px;}
+.container_promocional {}
+.select_promo {width:100%; height:100%; background-color:transparent;}
+.select_promo option {background-color:transparent;}
+.area_cep .input_form_promo {width:73%;}
+.area_cep .input_form_promo input {width:100%;}
+.area_cep .input_form_promo.input_cep_promocional {float:left; margin:14px 5px 0 0;}
+.btn_buscar_cep {float:left; background-image:url(../images/bnt_buscar_cep.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; display:block; width:40px; height:40px; border:0; margin:34px 0 0 0;}
+.container_select {position:relative; height:40px; width:100%; border:1px solid #6d6e71; border-radius:3px; display:block; overflow:hidden;}
+.btn_select {display:block; width:36px; height:36px; background-image:url(../images/btn_select_form.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; position:absolute; right:0; top:0; z-index:-1;}
+.btn_enviar_material {width:210px; height:40px; border-radius:3px; background-color:#ec008c; color:#ffffff; text-align:center; font-size:20px; border:none; margin:0 auto; display:block;}
+.area_btns {padding-top:20px; margin:30px 0 0 0; border-top:1px solid #6d6e71;}
+.banner_manual {margin:30px auto 0 auto; width:100%; height:auto;}
+.btn_zoom_promocional {display:block; background-image:url(../images/btn_detalhe_material.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; width:20px; height:20px; margin:0; position:absolute; right:9px; top:10px;}
+.acabou {font-size:20px;}
+.conteudo_modal {}
+.conteudo_modal h2 {color:#2e3192; font-size:24px; width:100%; padding:0 0 17px 50px; font-weight:900;}
+.conteudo_modal img {width:100%; height:auto;}
+.md-dialog-container, md-dialog {border-radius:9px !important;}
+
+.lista_caracteristicas_material {list-style-type:none; border-bottom:1px solid #b6b6b8; padding:0 0 30px 50px;}
+.lista_caracteristicas_material li {list-style-type:none; font-size:19px; color:#6d6e71; margin:0 0 5px 0;}
+.lista_caracteristicas_material li span {font-weight:bold;}
+
+
+/* CADASTRO DE PACIENTES */
+.label_cadastro {font-size:12px; color:#78777a; font-weight:normal; display:block;}
+.input_cadastro {border-radius:6px; height:34px; border:1px solid #cccccc; display:block; width:100%; padding:0 13px;}
+.btn_cadastro_avancar {width:100%; height:45px; background-color:#ec008c; text-align:center; font-size:18px; color:#ffffff; border-radius:6px; border:none; margin:4px 0 0 0;}
+.mensagens_erro {list-style-type:none; clear:both; padding:20px 0 0 16px; margin:0;}
+.mensagens_erro li {}
+
+
+
+
+
+.area_tooltip {position:relative;}
+.area_tooltip .tooltip_status {display:none;
+    -webkit-box-shadow: 3px 4px 13px 0px rgba(50, 50, 50, 0.66);
+    -moz-box-shadow:    3px 4px 13px 0px rgba(50, 50, 50, 0.66);
+    box-shadow:         3px 4px 13px 0px rgba(50, 50, 50, 0.66);
+position:absolute; top:-20px; left:-50px; background-color:#ffffff;}
+
+.area_tooltip:hover .tooltip_status {display:block;}
+
+.container_principal .lista_convite_farmacia .row:first-child {margin-top:0 !important;}
+
+.lista_convite_farmacia {margin:0; padding:0;}
+.lista_convite_farmacia li {list-style-type:none; background-color:#ffffff; width:100%; padding:7px 0; border-radius:5px; margin:0 0 15px 0;}
+.lista_convite_farmacia li .row {background-color:transparent; padding:0;}
+.lista_convite_farmacia li span.icon_status_farmacia {display:inline; border-radius:100px;}
+.icon_status_farmacia.status1 {background-color:red;}
+.icon_status_farmacia.status2 {background-color:grey;}
+.icon_status_farmacia.status3 {background-color:yellow;}
+.lista_convite_farmacia li p {font-size:10px}
+.lista_convite_farmacia li p.responsavel {margin:0; font-size:14px;}
+.lista_convite_farmacia li p.responsavel span {font-size:15px;}
+.lista_convite_farmacia li p.responsavel_email {font-size:12px;}
+.lista_convite_farmacia li span {display:block; font-size:12px; font-weight:bold;}
+.sub_tit_farma {font-weight:bold; font-size:14px;}
+.area_btns {text-align:center;}
+.azul {color:#2e3192;}
+.tit_farmacias {font-size:33px;}
+.tit_enviado_sucesso {font-size:30px;}
+.sub_tit_enviado_sucesso {font-size:15px; font-weight:500;} 
+.cod_solicitacao {font-size:13px; padding:0 0 15px 0; border-bottom:1px solid #B6B7B8;}
+.cod_solicitacao span {color:#ec008c; font-size:20px; font-weight:500;}
+.passo-a-passo-farma {margin:22px 0 0 0;}
+.passo-a-passo-farma dt {color:#2e3192; font-size:20px; font-weight:500; margin:0 0 17px 0;}
+.passo-a-passo-farma dd {font-size:15px;}
+.area_farma_borda {border-left:1px solid #D0D1D2; padding-left:38px !important;}
+.tit_passoapasso {color:#2e3192; font-size:20px; font-weight:500; margin:30px 0 17px 0;}
+.img_passos_farmacia {max-width:477px; height:auto; width:100%; margin:0 0 30px 0;}
+.btn_indique_farmacia {width:auto; height:auto; padding:13px 30px; margin:0 auto; background-color:#EF008C; color:#ffffff; text-align:center; font-size:16px; border-radius:5px; border:none; outline:none; clear:both; display:block;}
+.img_curtir_sucesso {width:80px; height:auto;}
+
+.lista_convite_farmacia li .cod_farmacia {}
+.lista_convite_farmacia li .cod_farmacia span {display:inline; background-color:#6D6E71; border-radius:4px; padding:2px 5px; color:#ffffff; font-weight:bold;}
+.lista_convite_farmacia li .status_farmacia {margin:0 0 10px 0;}
+.lista_convite_farmacia li .status_farmacia p {display:block; margin:0;}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia {width:10px; height:10px; border-radius:100; display:inline-table; background-color:#FAA61A;}
+.lista_convite_farmacia li .status_farmacia span {display:inline-table; font-weight:normal; text-transform:uppercase; font-size:11px;}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia.status1 {background-color:red;}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia.status2 {}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia.status3 {}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia.status4 {}
+.lista_convite_farmacia li .status_farmacia span.icon_status_farmacia.status5 {}
+.lista_convite_farmacia li .status_farmacia {}
+.lista_convite_farmacia li p.nome_farmacia {font-size:14px; font-weight:bold; text-transform:uppercase;}
+.lista_convite_farmacia li p.cnpj_farmacia {display:inline-table; font-size:15px;}
+.lista_convite_farmacia li p.cnpj_farmacia span {display:inline-table; }
+.ver_detalhes {text-align:center; border-top:2px solid #78777a; padding:5px 0; cursor: pointer;}
+.ver_detalhes a {color:#ec008c; font-weight:500; font-size:11px; text-decoration:none;  cursor: pointer;}
+.lista_convite_farmacia li .sub_tit_farma {font-size:14px;}
+.row_separator {padding-top:13px; border-top:1px solid #EAEAEB;}
+
+@media (min-width: 768px) {
+    .btn-buscar-crm {
+        margin-top: 18px;
+    }
+}
+.btn-buscar-crm:disabled {opacity:0.4;}
+.fase-ativa {}
+.fase-inativa {opacity:0.3;}
+.separador_cadastro1 {height:1px; width:100%; background-color:#cccccc; margin:15px 0 30px 0;}
+.separador_cadastro2 {height:1px; width:100%; background-color:#cccccc; margin:40px 0;}
+.separador_cadastro3 {height:1px; width:100%; background-color:#cccccc; margin:0 0 20px 0;}
+.separador_cadastro4 {height:1px; width:100%; background-color:#cccccc; margin:20px 0;}
+.no-pad {padding-left:0; padding-right:0;}
+.container_principal  .row.row_input {margin-top:0 !important; padding:0;}
+.atencao_cadastro {font-size:34px; color:#2e3192; font-weight:500; margin:0;}
+.atencao_cadastro_sub {font-size:16px; line-height:17px;}
+.col_input_ddd {padding-left:0; padding-right:0;}
+.col_input_phone {padding-right:0;}
+.wrap_form {width:100%; height:100%; border-radius:6px; height:34px; border:1px solid #cccccc; background-color:#ffffff; background-image:url(../images/seta_wrap_select.png); background-position:top right; background-repeat:no-repeat; overflow:hidden;}
+.wrap_form select {border:none; background-color:transparent; width:120%; height:100%;}
+.btn_cadastro_paciente {width:auto; height:45px; background-color:#ec008c; text-align:center; font-size:18px; color:#ffffff; border-radius:6px; border:none; margin:0 0 30px 0; float:right; padding:0 50px;}
+.btn_cadastro_paciente:disabled {opacity:0.4;}
+.icon_cadastro_paciente {width:80%; margin:20px auto 0 auto; height:auto; display:block;}
+.tit_page_cadastro_paciente {text-align:center; margin:10px auto 0 auto; font-size:24px; color:#6D6E70; font-weight:bold;}
+.etapa_cadastro_pacientes {margin:15px auto 0 auto; padding:0; width:85%;}
+.etapa_cadastro_pacientes li {padding:5px 0 4px 20px; height:auto; color:#6D6E70; font-size:13px; text-align:left; margin:5px 0 4px 20px; list-style-type:none; line-height:17px; border-radius:6px;}
+.etapa_cadastro_pacientes li.active {color:#ffffff; background-color:#ec008c;}
+.carregando_cadastro {}
+
+.icon_convite_farmacia {width:58%; margin:20px auto 0 auto; height:auto; display:block;}
+
+
+
+.dialogdemoBasicUsage #popupContainer {
+    position: relative; }
+
+  .dialogdemoBasicUsage .footer {
+    width: 100%;
+    text-align: center;
+    margin-left: 20px; }
+
+  .dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+    font-size: 0.8em;
+    margin-top: 50px; }
+
+  .dialogdemoBasicUsage button {
+    width: 200px; }
+
+  .dialogdemoBasicUsage div#status {
+    color: #c60008; }
+
+  .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+    margin-bottom: 0; }
+
+
+    /* RELATÓRIOS */
+    .fieldsArea {margin:0 auto;}
+    .tabs_form {padding:20px 0 15px 0; background-color:#f3f3f3; width:100%;
+        -webkit-box-shadow: 0px 5px 23px -5px rgba(0,0,0,0.41);
+        -moz-box-shadow: 0px 5px 23px -5px rgba(0,0,0,0.41);
+        box-shadow: 0px 5px 23px -5px rgba(0,0,0,0.41);
+    }
+    .tab_relatorio {width:100%; margin:0; padding:0; text-align:center;}
+    .tab_relatorio li {color:#ffffff; font-size:16px; height:30px; border-radius:4px 4px 0 0; width:45%; display:inline-table; background-color:#EC008B; list-style-type:none; margin:0 15px 0 0; text-align:center; line-height:30px; text-align:center;}
+    .tab_relatorio li.active {background-color:#f3f3f3; color:#6d6e71;}
+    .tab_relatorio li:last-child {margin:0;}
+    .select_area {width:100%; height:35px; overflow:hidden; position:relative; border:1px solid #6d6e71; border-radius:5px; margin:0 0 15px 0; background-image:url(../images/seta_select.png); background-position:99.4% 2px; background-repeat:no-repeat; background-size:29px; background-color:#ffffff;}
+    .select_area label, .input_area label {font-size:10px; top:10px; left:20px; position:absolute;}
+    .select_area select {width:120%; height:100%; padding:0 31% 0 72px;}
+    .select_area select[disabled] {background-color:#e7e7e8; border:none;}
+    .input_area input[disabled] {background-color:#e7e7e8; border:none;}
+    .input_area {margin:0 0 15px 0; position:relative; border:1px solid #6d6e71; width:100%; height:35px; border-radius:5px;}
+    .input_area input {width:100%; height:100%; padding:0 0 0 72px;}
+    .btn_busca_farma {width:100%; height:37px; margin:0 auto; background-color:#ec008c; text-align:center; font-size:16px; border:none; color:#ffffff; border-radius:5px;}
+    .btn_processar_relatorio {}
+    .etapa2_relatorio {}
+    .btn_processar_relatorio {width:100%; height:37px; margin:0; background-color:#2e3192; text-align:center; font-size:16px; border:none; color:#ffffff; border-radius:5px;}
+    .bloco_direito {padding-top:50px;}
+    .bloco_direito.inactive {opacity:0.3; padding-top:50px;}
+    .bloco_direito.active {opacity:1; padding-top:50px;}
+    .btns_relatorio {text-align:center; margin:30px 0; padding:0;}
+    .btns_relatorio li {display:inline-table; text-align:center; width:30%; list-style-type:none;}
+    .btns_relatorio li.active {}
+    .btns_relatorio li button {opacity:0.3;}
+    .btns_relatorio li.active button {opacity:1;}
+    .progress_relatorios {margin:30px auto 0 auto; top:20px;}
+    .fieldsArea {}
+    .fieldsArea {}
+    .fieldsArea {}
+    .fieldsArea {}
+    .fonte-grafico {text-align:center; margin:20px auto 0 auto; font-size:18px; font-style:italic;}
+    .fonte-grafico strong {font-weight:bold;}
+    .container_mensagens .row.area_cadastro_geral {min-height:-webkit-fill-available;}
+
+    /* CREDENCIAMENTO DA FARMÁCIA */
+    .pagina_credenciamento {background-image:url(../images/bg_login_app.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; height:-webkit-fill-available;}
+    .pagina_credenciamento .header_app {display:none;}
+
+    .pagina_credenciamento .areaLogin {width:70%; margin:40px auto 0; text-align:center; background-color:#ffffff; border-radius:10px; overflow:hidden; padding:0 0 24px 0;}
+    .pagina_credenciamento .logo_ache_rodape {display:block; width:134px; height:53px; position:absolute; background-image:url(../images/logo_ache_rodape.png); background-repeat:no-repeat; background-position:top left; background-size:100% auto; bottom:85px; left:0; right:0;}
+    .pagina_credenciamento .areaLogin .header_login {background-color:#e8e9ea; padding:10px 0; margin:0 0 15px 0;}
+    .pagina_credenciamento .areaLogin .header_login p {text-align:center; width:80%; margin:0 auto; font-size:26px; color:#2e3192; text-transform:uppercase; font-weight:500;}
+    .pagina_credenciamento .areaLogin .header_login p span {font-weight:bold;}
+    .logo_credenciamento {width:254px; height:54px; display:block; margin:40px auto 0; background-repeat:no-repeat; background-size:100% auto; background-image:url(../images/logo_area_credenciamento.png);}
+    .area_credenciamento label {display:block; text-align:left; margin:10px 0 0 0; font-size:12px;}
+    .area_credenciamento input {width:100%; height:40px;}
+    .campo_cep {float:left; width:70%;}
+    .buscar_cep {float:left; width:40px; margin:27px 0 0 5px; background-size:auto 100%; background-color:transparent; height:40px;}
+    .buscar_cep input.btn_buscar_cep {width:40px; height:40px; margin:0; }
+    .area_select {width:100%; height:40px; border:1px solid #cccccc; overflow:hidden; background-image:url(../images/seta_select_baixo.png); background-repeat:no-repeat; background-size:35px 34px; background-position:98% 2px;}
+    .area_select select {width:130%; height:100%; border:none; background-color:transparent;}
+    .area_credenciamento .btn_enviar_credenciamento {width:60%; height:40px; background-color:#ec008c; border:none; color:#ffffff;}
+    .area_credenciamento #checkboxFormAdesao {float:left; padding:0 0 0 14px; margin:0 0 15px 0;}
+    .area_credenciamento #labelCheckConcorda {float:left; width:90%; text-align:left;}
+    .area_credenciamento .check_aceito {width:13px; height:13px; float:left; margin:0 4px 0 0;}
+
+
+    @media (min-width: 1232px) {
+    .container {
+        width: 1024px;
+    }
+    .select_area {background-position:348px 2px;}
+    .areaLogin {margin:120px auto 0 auto;}
+    .logo_ache_rodape {}
+    .area_menu {overflow-x:visible;}
+}
+
+
+@media (max-width: 992px) {
+    .areaLogin {margin:17% auto 0 auto;}
+    .etapa_cadastro_pacientes li {margin:5px 0 4px 0; padding:5px 0 4px 12px; font-size:11px;}
+    .passo-a-passo-farma dt {font-size:19px; margin:0 0 2px;}
+    .tit_farmacias {margin:10px 0 0 0;}
+    .img_passos_farmacia {max-width:377px;}
+}

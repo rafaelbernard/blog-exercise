@@ -1,0 +1,93 @@
+<md-dialog aria-label="Mango (Fruit)">
+        <form ng-cloak>
+          <!-- <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>{{ $root.materialSelecionado }}</h2>
+              <span flex></span>
+              <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+              </md-button>
+            </div>
+          </md-toolbar> -->
+      
+          <md-dialog-content>
+              
+            <div class="md-dialog-content conteudo_modal">
+              <div ng-if="$root.materialSelecionado === 'ade'">
+                  <h2 class="tit_modal">ADESIVO</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7018289</li>
+                    <li><span>Código Bio:</span> 7018288</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Clientes em geral (cadastrados ou não)</li>
+                    <li><span>Objetivo:</span> Indicação de que a loja (PDV) é credenciada ao Programa Cuidados pela Vida (AQUI TEM). Adesivo deve ser colado no vidro balcão.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_adesivo.png" alt=""/>
+              </div>
+              <div ng-if="$root.materialSelecionado === 'spap'">
+                  <h2 class="tit_modal">SACO DE PAPEL</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7019277</li>
+                    <li><span>Código Bio:</span> 7019278</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Clientes em geral (cadastrados ou não)</li>
+                    <li><span>Objetivo:</span> Entrega dos produtos vendidos dentro de um saquinho, com a divulgação do Programa.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_saco.png" alt=""/>
+              </div>
+              <div ng-if="$root.materialSelecionado === 'omon'">
+                  <h2 class="tit_modal">ORELHA DE MONITOR</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7019603</li>
+                    <li><span>Código Bio:</span> 7019604</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Clientes em geral (cadastrados ou não)</li>
+                    <li><span>Objetivo:</span> Indicação de que a loja (PDV) é credenciada ao Programa Cuidados pela Vida. Material deve ser colado no monitor de consulta de preço ou check-out.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_orelha.png" alt=""/>
+              </div>
+              <div ng-if="$root.materialSelecionado === 'bex'">
+                  <h2 class="tit_modal">BEXIGA</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7019695</li>
+                    <li><span>Código Bio:</span> 7019694</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Clientes em geral (cadastrados ou não)</li>
+                    <li><span>Objetivo:</span> Decoração para lojas (PDV's) em eventos pontuais, como: lançamentos, promoções, dia "d", etc.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_bexiga.png" alt=""/>
+              </div>
+              <div ng-if="$root.materialSelecionado === 'papo'">
+                  <h2 class="tit_modal">PAPER APOIO</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7018287</li>
+                    <li><span>Código Bio:</span> 7018286</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Balconistas</li>
+                    <li><span>Objetivo:</span> Material de apoio/consulta rápida à lista completa de produtos participantes no Programa CPV.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_paper.png" alt=""/>
+              </div>
+              <div ng-if="$root.materialSelecionado === 'zip'">
+                  <h2 class="tit_modal">ZIP</h2>
+                  <ul class="lista_caracteristicas_material">
+                    <li><span>Código Aché:</span> 7018295</li>
+                    <li><span>Código Bio:</span> 7018294</li>
+                    <li><span>Característica:</span> Institucional CPV</li>
+                    <li><span>Público-Alvo:</span> Pacientes NÃO cadastrados</li>
+                    <li><span>Objetivo:</span> Entrega de amostra grátis dentro do Zip.</li>
+                  </ul>
+                  <img src="../images/mat_apoio_zip.png" alt=""/>
+              </div>
+            </div>
+          </md-dialog-content>
+      
+          <md-dialog-actions layout="row">
+            <!-- <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>More on Wikipedia</md-button> -->
+            <span flex></span>
+            <!-- <md-button ng-click="answer('not useful')">Not Useful</md-button> -->
+            <!-- <md-button ng-click="answer('useful')"> Useful -->
+            </md-button>
+          </md-dialog-actions>
+        </form>
+      </md-dialog>

@@ -1,0 +1,48 @@
+{
+  "name": "cpv_colaborador",
+  "version": "0.0.1",
+  "repository": "https://github.com/icons4u/AcheCPVColaborador",
+  "dependencies": {
+    "angular": "1.6.9",
+    "angular-animate": "1.6.9",
+    "angular-aria": "1.6.9",
+    "angular-chart.js": "^1.1.1",
+    "angular-local-storage": "^0.7.1",
+    "angular-material": "^1.1.9",
+    "angular-messages": "1.6.9",
+    "angular-resource": "^1.7.0",
+    "angular-route": "^1.7.0",
+    "angular-sanitize": "1.6.9",
+    "angular-ui-mask": "^1.8.7",
+    "angulartics": "^1.6.0",
+    "angulartics-google-analytics": "^0.5.0",
+    "bootstrap": "^3.3.7",
+    "chart.js": "^2.7.2",
+    "ui-select": "^0.19.8",
+    "underscore": "^1.9.0"
+  },
+  "scripts": {
+    "start": "bower install && npm install && gulp",
+    "dev": "npm prune && npm install && bower prune && bower install && gulp watch",
+    "publish": "npm prune && npm install && bower prune && bower install && gulp",
+    "publish-update": "bower install && bower update && npm install && npm update && gulp"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.1.tgz",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-expect-file": "0.0.7",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "https://registry.npmjs.org/gulp-jshint/-/gulp-jshint-2.1.0.tgz",
+    "gulp-livereload": "https://registry.npmjs.org/gulp-livereload/-/gulp-livereload-3.8.1.tgz",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "https://registry.npmjs.org/gulp-rename/-/gulp-rename-1.2.2.tgz",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.8.tgz",
+    "jshint": "https://registry.npmjs.org/jshint/-/jshint-2.9.5.tgz",
+    "npm-shrinkwrap": "^6.1.0"
+  }
+}

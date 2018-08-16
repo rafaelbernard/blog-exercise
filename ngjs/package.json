@@ -1,0 +1,12 @@
+{
+  "name": "cpv_colaborador",
+  "version": "0.0.1",
+  "scripts": {
+    "install": "cd build && npm install",
+    "uninstall": "cd build && npm uninstall",
+    "start": "cd build && npm start",
+    "dev": "cd build && npm run-script dev",
+    "publish": "cd build && npm run-script publish"
+  },
+  "dependencies": {}
+}

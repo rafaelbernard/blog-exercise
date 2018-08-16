@@ -1,0 +1,28 @@
+{
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "_": true,
+    "$": true,
+    "alert": true,
+    "angular": true,
+    "configUso": true,
+    "confirm": true,
+    "console": true,
+    "devConsoleLog": true,
+    "exibirMensagemErro": true,
+    "formatDate": true,
+    "formatDateToApi": true,
+    "formatDateToStrView": true,
+    "isValidCPF": true,
+    "isValidDate": true,
+    "navigator": true,
+    "online": true,
+    "sendFeedback": true,
+    "sendFeedbackMensagemErro": true,
+    "setTimeout": true,
+    "tratarMensagemErro": true,
+    "tratarRetornoQuestionarios": true,
+    "window": true
+  }
+}

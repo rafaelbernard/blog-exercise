@@ -1,0 +1,111 @@
+<div data-ng-include src="'views/includes/_menu.v1.html'"></div>
+
+<div class="container container_principal container_produtos">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-centered">
+            <h1 class="tit_pagina">PRODUTOS PARTICIPANTES</h1>
+            <p class="intro_pagina">O Programa Cuidados pela Vida conta com mais de 100 produtos participantes, desde medicamentos prescritos e isentos de prescrição a dermocosméticos, com a qualidade Aché, Biosintética e Profuse.</p>
+
+            <!-- <div class="area_busca">
+                <input type="text" placeholder="Digite o nome do produto">
+                <button type="submit"></button>
+            </div> -->
+
+            <div class="area_produtos">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <!--<img class="img_produto_full" src="{{ produto.imagens.image_produto_grande.url }}" alt="">-->
+                    <img class="img_produto_full" data-ng-src="{{produtoDetalhe.imagens.image_produto_grande.url}}" alt="{{produtoDetalhe.produtoSingle.title}}">
+                    <p class="disclaimer_produto" ng-if="produtoDetalhe.prodTipo.slug == 'medicamentos-prescritos'">
+                        <span class="sprite advert"></span><span>Não</span> tome medicamentos
+                        <span>sem</span> a orientação do seu médico. A
+                        <span>persistirem</span> os sintomas, o médico deverá ser <span>consultado</span>.</p>
+    
+                        <!-- <a ng-if="produtoDetalhe.tipourl != 'URL Teleorientação' && produtoDetalhe.urlnetfarma" class="btn_sucesso_cadastro radius colorCompre returnWidth alignBtnCompre" href="/netfarma/{{ produtoDetalhe.prodSlug }}" ><i class="compre-agora"></i> Compre Agora</a> -->
+    
+                        <!-- <a ng-if="produtoDetalhe.tipourl == 'URL Teleorientação' && produtoDetalhe.urlteleorientacao" 
+                        class="btn_sucesso_cadastro radius colorCompre returnWidth alignBtnCompre paddingsmall" 
+                        href="{{ produtoDetalhe.urlteleorientacao }}" >Fale com o enfermeiro</a> -->
+                        
+                        <a data-ng-show="produtoDetalhe.prodPdfLink" data-ng-href="{{produtoDetalhe.prodPdfLink}}" target="_blank" class="btn_downloadbula">Download da Bula <Bula></Bula></a>
+                </div>
+    
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <h1 class="produto_title azul">{{ produtoDetalhe.prodTitle }}</h1>
+                    <p ng-show="produtoDetalhe.customFields.principio_ativo[0]" class="principio_ativo">
+                        <span>Princípio ativo: </span>{{ produtoDetalhe.customFields.principio_ativo[0] }}</p>
+                    <p ng-show="produtoDetalhe.customFields.apresentacao[0]" class="apresentacao"><span>Apresentação: </span>{{ produtoDetalhe.customFields.apresentacao[0] }}</p>
+    
+                    <p ng-show="produtoDetalhe.customFields.indicacao_e_aplicacao[0]" class="apresentacao"><span>Indicação: </span>{{ produtoDetalhe.customFields.indicacao_e_aplicacao[0] }}</p>
+    
+                    <p ng-show="produtoDetalhe.customFields.contraindicacao[0]" class="apresentacao"><span>Contraindicação: </span>{{ produtoDetalhe.customFields.contraindicacao[0] }}</p>
+                    <!-- <p class="ean"><span>EAN: </span>{{ produto.customFields.ean[0] }}</p> -->
+                    <!--<p>{{ produto.customFields.familia[0] }}</p>-->
+                    <!--<iframe src="{{ produto.customFields.url_da_bula[0] }}" style="width:100%; height:745px;" frameborder="0"></iframe>-->
+                    <!--<p ng-show="produto.produtoSingle.custom_fields.numero_anvisa[0]"><span>MS: </span>{{ produto.prodNumeroAnvisa }}</p>-->
+    
+    
+                    <div class="btns product clearfix">
+                        
+                        <!--<a ng-show="produto.produtoSingle.custom_fields.url_da_bula[0]"-->
+                        <!--href="http://content.cuidadospelavida.com.br/download-attachment/{{produto.produtoSingle.custom_fields.url_da_bula[0]}}/"-->
+                        <!--target="_blank" class="btn_downloadbula">Ver Bula-->
+                        <!--<Bula></Bula>-->
+                        <!--</a>-->
+                        <!--<a class="btn_pagina_produto" href="{{produto.produtoSingle.custom_fields.url_do_produto[0]}}"-->
+                        <!--target="_blank" ng-show="produto.produtoSingle.custom_fields.url_do_produto[0]">PÁGINA DO PRODUTO</a>-->
+    
+                        <!--<a class="link_pagina_produto azul" ng-show="produto.produtoSingle.custom_fields.url_do_produto[0]" href="{{produto.produtoSingle.custom_fields.url_do_produto[0]}}" target="_blank"><span class="sprite"></span>Acesse aqui o site do fabricante.</a>-->
+                    </div>
+                    <!--<a ng-show="produto.prodPdfLink[0].url" href="{{ produto.prodPdfLink[0].url }}" target="_blank"-->
+                    <!--class="btn_downloadbula">Download Bula</a>-->
+    
+                    <!--<div class="control_pdf clearfix">-->
+                    <!--<button class="btn_pdf_left" ng-click="prevPage()">&lt;</button>-->
+                    <!--<p class="paginas">{{currentPage}}/{{totalPages}}</p>-->
+                    <!--<button class="btn_pdf_right" ng-click="nextPage()">&gt;</button>-->
+                    <!--</div>-->
+                    <!--<pdfviewer class="pdf_container clearfix" src="images/bulas/bula-betalor.pdf" on-page-load='pageLoaded(page,total)' id="viewer"></pdfviewer>-->
+
+                </div>
+               
+            
+            </div>
+            <!-- /area_produtos -->
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-centered" data-ng-show="produtoDetalhe.customFields">
+            <div class="area_item_produto">
+                <h2 ng-click="item1 = !item1">Composição<span class="icon_seta_faq"></span></h2>
+                <div ng-class="item1 ? 'item_aberta' : 'item_fechada'" ng-bind-html="toTrustedHTML(produtoDetalhe.customFields.composicao[0])"></div>
+            </div>
+            <div class="area_item_produto" ng-if="produtoDetalhe.prodTipo.slug == 'medicamentos-prescritos'">
+                <h2 ng-click="item2 = !item2">Posologia<span class="icon_seta_faq"></span></h2>
+                <div ng-class="item2 ? 'item_aberta' : 'item_fechada'" ng-bind-html="toTrustedHTML(produtoDetalhe.customFields.posologia[0])"></div>
+            </div>
+            <div class="area_item_produto" ng-if="produtoDetalhe.prodTipo.slug != 'medicamentos-prescritos'">
+                <h2 ng-click="item3 = !item3">Modo de Usar<span class="icon_seta_faq"></span></h2>
+                <div ng-class="item3 ? 'item_aberta' : 'item_fechada'" ng-bind-html="toTrustedHTML(produtoDetalhe.customFields.modo_de_usar[0])"></div>
+            </div>
+            <div class="area_item_produto">
+                <h2 ng-click="item4 = !item4">Informações<span class="icon_seta_faq"></span></h2>
+                <div ng-class="item4 ? 'item_aberta' : 'item_fechada'" ng-bind-html="toTrustedHTML(produtoDetalhe.customFields.informacoes[0])"></div>
+            </div>
+            <div class="area_item_produto">
+                <h2 ng-click="item5 = !item5">Ver Bula<span class="icon_seta_faq"></span></h2>
+                <div ng-class="item5 ? 'item_aberta' : 'item_fechada'" ng-bind-html="toTrustedHTML(produtoDetalhe.customFields.bula_completa[0])"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+

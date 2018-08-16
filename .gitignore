@@ -3,3 +3,17 @@
 # IDE
 *.iml
 .idea
+
+# APP/LOGS
+logs/*
+!.gitkeep
+node_modules
+bower_components
+tmp
+.DS_Store
+.idea
+*.iml
+dist
+n*.log
+styles/*.min.css
+bs-config.json

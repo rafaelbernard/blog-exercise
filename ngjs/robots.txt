@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mips.cuidadospelavida.com.br/sitemap.xml

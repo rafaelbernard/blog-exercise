@@ -1,0 +1,72 @@
+<div data-ng-include src="'views/includes/_menu.v1.html'"></div>
+
+
+
+<div class="container container_principal container_faq">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-centered">
+            <h1 class="tit_pagina">FAQ</h1>
+            
+
+           
+
+
+            <div class="area_item_faq" ng-repeat="pergunta in faq.itemsFaq">
+                <h2 ng-click="pergunta1 = !pergunta1">{{ pergunta.title }}<span ng-class="pergunta1 ? 'cima' : 'baixo'" class="icon_seta_faq"></span></h2>
+                <div ng-class="pergunta1 ? 'pergunta_aberta' : 'pergunta_fechada'" ng-bind-html="toTrustedHTML(pergunta.content)"></div>
+            </div>
+
+
+            <!-- <div class="area_item_faq">
+                <h2 ng-click="pergunta1 = !pergunta1">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta1 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div>
+            <div class="area_item_faq">
+                <h2 ng-click="pergunta2 = !pergunta2">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta2 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div>
+            <div class="area_item_faq">
+                <h2 ng-click="pergunta3 = !pergunta3">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta3 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div>
+            <div class="area_item_faq">
+                <h2 ng-click="pergunta4 = !pergunta4">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta4 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div>
+            <div class="area_item_faq">
+                <h2 ng-click="pergunta5 = !pergunta5">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta5 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div>
+            <div class="area_item_faq">
+                <h2 ng-click="pergunta6 = !pergunta6">Lorem ipsum dolor sit amet, consectetur adipiscing elit?<span class="icon_seta_faq"></span></h2>
+                <p ng-class="pergunta6 ? 'pergunta_aberta' : 'pergunta_fechada'">Pelo presente termo, o ESTABELECIMENTO abaixo identificado, neste ato representado na forma de seu ato constitutivo, solicita sua inclusão na rede credenciada do PROGRAMA DE BENEFÍCIOS CUIDADOS PELA VIDA, cujo objetivo é conceder benefícios aos consumidores, doravante designados PARTICIPANTES, usuários dos medicamentos.</p>
+            </div> -->
+        </div>
+
+        <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 col-centered area_duvida clearfix">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div class="faq_duvida_left">
+                    <p class="tit">AINDA FICOU COM ALGUMA <span>DÚVIDA</span>?</p>
+                    <p class="desc">Deixe sua mensagem que entraremos em contato com você.</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">    
+                <form name="formularioContato" 
+                        data-ng-submit="faq.enviarFormularioFaq()">
+                    <div class="faq_duvida_right">
+                        <!--<label for="email" class="desc">E-mail:</label>
+                        <input type="email" id="email" name="email" data-ng-model="faq.formularioContato.email" value="" class="" placeholder="seu@email.com" required>-->
+                        <textarea name="mensagem" id="mensagem" cols="30" rows="10" data-ng-model="faq.formularioContato.mensagem" placeholder="MENSAGEM" required></textarea>
+                        <!--<input type="text" id="assunto" name="assunto" value="duvida-faq-cpvemcampo" data-ng-model="faq.formularioContato.assunto" class="escondido">
+                        <input type="text" id="fonte" name="fonte" value="cpvemcampo" data-ng-model="faq.formularioContato.fonte" class="escondido">
+                        <input type="text" id="codTipoFormulario" name="codTipoFormulario" data-ng-model="faq.formularioContato.codTipoFormulario" value="faq" class="escondido" >-->
+                        <input type="submit" value="ENVIAR" class="btn_enviar_duvida">
+                    </div>
+                </form>
+            </div>    
+        </div>
+    </div>
+</div>
+
+
+

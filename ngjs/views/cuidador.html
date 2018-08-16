@@ -1,0 +1,189 @@
+<div data-ng-include src="'views/includes/_menu.v1.html'"></div>
+
+<div class="container container_principal container_cuidador">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <ul class="lista_videos" ng-init="selected=1">
+                <li class="clearfix selected" rel="tab1" ng:click="selected=1" ng:class="{'active' : selected==1 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_01.jpg" />
+                    <p class="title_video">Uma visão geral</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab2" ng:click="selected=2" ng:class="{'active' : selected==2 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_02.jpg" />
+                    <p class="title_video">Do diagnóstico e evolução</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab3" ng:click="selected=3" ng:class="{'active' : selected==3 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_03.jpg" />
+                    <p class="title_video">O dia a dia com o paciente</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab4" ng:click="selected=4" ng:class="{'active' : selected==4 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_04.jpg" />
+                    <p class="title_video">Cuidar-se para cuidar</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab5" ng:click="selected=5" ng:class="{'active' : selected==5 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_05.jpg" />
+                    <p class="title_video">Sintomas comuns e de alerta</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab6" ng:click="selected=6" ng:class="{'active' : selected==6 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_06.jpg" />
+                    <p class="title_video">A importância do cuidador</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab7" ng:click="selected=7" ng:class="{'active' : selected==7 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_07.jpg" />
+                    <p class="title_video">Cuidados com o paciente</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab8" ng:click="selected=7" ng:class="{'active' : selected==8 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_08.jpg" />
+                    <p class="title_video">Estilo de Vida e Autonomia na Terceira Idade com Marcio Atalla</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab9" ng:click="selected=9" ng:class="{'active' : selected==9 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_09.jpg" />
+                    <p class="title_video">Bem-estar, qualidade de vida e longevidade - Autonomia na Terceira Idade</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab10" ng:click="selected=10" ng:class="{'active' : selected==10 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_10.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Movimento e Equilíbrio</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab11" ng:click="selected=11" ng:class="{'active' : selected==11 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_11.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Massa óssea e massa muscular</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab12" ng:click="selected=12" ng:class="{'active' : selected==12 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_12.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Alongamento e amplitude articular</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab13" ng:click="selected=13" ng:class="{'active' : selected==13 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_13.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Alimentação</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab14" ng:click="selected=14" ng:class="{'active' : selected==14 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_14.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Suplementação alimentar</p>
+                    <a class="btn_video"></a>
+                </li>
+                <li class="clearfix" rel="tab15" ng:click="selected=15" ng:class="{'active' : selected==15 }">
+                    <img class="thumb_video" src="../images/thumb_cuidador_15.jpg" />
+                    <p class="title_video">Cuidados na Terceira Idade: Estilo de vida e Autonomia</p>
+                    <a class="btn_video"></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div id="tab1" class="area_video_cuidador" ng:show="selected == 1">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/wAqmPWoX8yo" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 1</span>Nesta vídeoaula, iremos tratar sobre o processo de diagnóstico da doença de Alzheimer, trazendo a visão de médicos, cuidadores e familiares.
+                </p>
+            </div>
+            <div id="tab2" class="area_video_cuidador" ng:show="selected == 2">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/P99IBwkkDas" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 2</span>Nesta segunda vídeoaula, será abordada a importância de outros profissionais de saúde no tratamento do Alzheimer, assim como as dificuldades no tratamento.                    
+                </p>
+            </div>
+            <div id="tab3" class="area_video_cuidador" ng:show="selected == 3">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/dqpH_vEfpEg" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 3</span>O neurologista Rodrigo Schultz aborda temas como os distúrbios de comportamento e a importância da organização familiar.                    
+                </p>
+            </div>
+
+            <div id="tab4" class="area_video_cuidador" ng:show="selected == 4">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/XB6HFNQsINc" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 4</span>Nesta quarta vídeoaula, abordaremos os cuidados com o cuidador. Profissional que também precisa de atenção.
+                </p>
+            </div>
+            
+            <div id="tab5" class="area_video_cuidador" ng:show="selected == 5">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/kxoGMKsP4Cg" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 5</span>Nesta vídeoaula abordaremos sobre as diversas fases do Alzheimer e como manejá-lo na visão dos diversos profissionais envolvidos e seus cuidadores.                    
+                </p>
+            </div>
+
+            <div id="tab6" class="area_video_cuidador" ng:show="selected == 6">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/WzZ_tnXctp8" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 6</span>Saiba mais sobre a importância do Cuidador e seu papel no manejo dos sintomas do mal de Alzheimer.                    
+                </p>
+            </div>
+
+            <div id="tab7" class="area_video_cuidador" ng:show="selected == 7">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/rbSN2KZOXEI" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 7</span>Cuidados na fase avançada do Alzheimer: deglutição, alimentação, dignidade e conforto.                    
+                </p>
+            </div>
+           
+            <div id="tab8" class="area_video_cuidador" ng:show="selected == 8">
+                <iframe width="100%" height="250" src="https://www.youtube.com/embed/rgplwTMkflw" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 8</span>Na nova série do Cuidados Pela Vida, Marcio Atalla, professor de educação física e nutricionista, dá dicas sobre bem-estar e autonomia na terceira idade.                    
+                </p>
+            </div>            
+            <div id="tab9" class="area_video_cuidador" ng:show="selected == 9">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/WjMejh2a72o" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 9</span>A expectativa de vida aumentou, porém muitos idosos tem a autonomia comprometida. Neste vídeo, Marcio Atalla dá dicas de como ter mais qualidade no dia a dia.
+                </p>
+            </div>  
+            <div id="tab10" class="area_video_cuidador" ng:show="selected == 10">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/Y9L4v1v6LhM" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 10</span>Neste vídeo, Marcio Atalla fala sobre um assunto muito importante: o equilíbrio. Como evitar as quedas tão frequentes quando as pessoas tem mais idade? Assista!                    
+                </p>
+            </div>            
+            <div id="tab11" class="area_video_cuidador" ng:show="selected == 11">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/V-icXDhK7oU" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 11</span>Neste vídeo, Marcio Atalla fala sobre a importância de uma dieta correta e a prática de atividade física para autonomia e qualidade de vida na terceira idade.                    
+                </p>
+            </div>            
+            <div id="tab12" class="area_video_cuidador" ng:show="selected == 12">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/GJOIlGt5JM4" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 12</span>Neste vídeo, Marcio Atalla fala sobre artrose, amplitude articular e a importância do alongamento na terceira idade.                    
+                </p>
+            </div>            
+            <div id="tab13" class="area_video_cuidador" ng:show="selected == 13">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/WIvx7hD1O_w" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 13</span>Neste vídeo Marcio Atalla bate um papo com a Dra. Juliana Bravo onde explicam os cuidados e importância da alimentação na terceira idade.                    
+                </p>
+            </div>            
+            <div id="tab14" class="area_video_cuidador" ng:show="selected == 14">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/7U5MDIa92hc" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 14</span>Suplementação alimentar na terceira idade: Bom ou ruim? Marcio Atalla e a nutricionista Juliana Bravo falam sobre o assunto.                    
+                </p>
+            </div>            
+            <div id="tab15" class="area_video_cuidador" ng:show="selected == 15">
+                <iframe width="100%" height="190" src="https://www.youtube.com/embed/cHs5qeZ186M" frameborder="0" allowfullscreen></iframe>
+                <p class="tit_video_cuidador">
+                    <span>VIDEO 15</span>Encerrando a série, Marcio Atalla dá dicas para proporcionar mais qualidade de vida na terceira idade.                     
+                </p>
+            </div>                    
+        </div>
+        <span class="img_footer_cuidador"><a href="https://cuidadospelavida.com.br/revista/setembro-outubro-2016" target="_blank"></a></span>
+    </div>
+    
+    
+</div>
+
+
+
