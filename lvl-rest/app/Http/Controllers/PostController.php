@@ -77,7 +77,7 @@ class PostController extends Controller
         }
 
         $response = [
-            'msg' => 'An erro ocurred while creating the post'
+            'msg' => 'An error ocurred while creating the post'
         ];
 
         return response()->json($response, 404);
@@ -119,13 +119,46 @@ class PostController extends Controller
         $this->validate($request, [
             'title'   => 'required',
             'content' => 'required',
-            'userId'  => 'required'
+            'user_id' => 'required'
         ]);
 
-        $title       = $request->input('title');
-        $content     = $request->input('content');
-        $isPublished = $request->input('isPublished');
-        $userId      = $request->input('userId');
+        $title        = $request->input('title');
+        $content      = $request->input('content');
+        $is_published = $request->input('is_published');
+        $user_id      = $request->input('user_id');
+
+        $post = Post::with('user')->findOrFail($id);
+
+        if (!$post->user()->where('users.id', $user_id)->first())
+        {
+            return response()->json(['msg' => 'User is not the same that created the post. Fail.'], 401);
+        }
+
+        $post->title   = $title;
+        $post->content = $content;
+
+        if ($post->update())
+        {
+            //$post->user()->associate($user_id);
+
+            $post->view_post = [
+                'href'   => 'api/v1/post/' . $post->id,
+                'method' => 'GET'
+            ];
+
+            $response = [
+                'msg'  => 'Post updated',
+                'post' => $post
+            ];
+
+            return response()->json($response, 201);
+        }
+
+        $response = [
+            'msg' => 'An error ocurred while updating the post'
+        ];
+
+        return response()->json($response, 404);
     }
 
     /**
