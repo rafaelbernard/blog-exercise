@@ -34,5 +34,14 @@
             return $http.get(url, config);
         };
 
+        self.getPostById = function (id)
+        {
+            var config = {
+                cache: true
+            };
+            var url    = '../lvl-rest/public/api/v1/post/' + id;
+            return $http.get(url, config);
+        };
+
     }
 })();

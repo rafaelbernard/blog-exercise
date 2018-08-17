@@ -1,0 +1,11 @@
+<content data-ng-show="postController.postSingle" data-ng-init="postController._initPostSingle()">
+
+    <h1>{{postController.postSingle.title}}</h1>
+
+    <div>{{postController.postSingle.content}}</div>
+
+    <footer>
+        Created at: {{postController.postSingle.created_at | date:'dMY'}}
+    </footer>
+
+</content>

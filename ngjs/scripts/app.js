@@ -383,6 +383,12 @@
                         controllerAs: 'postController',
                         label: "Post"
                     })
+                    .when('/post/:id', {
+                        templateUrl: 'views/public/post-single.html',
+                        controller: 'PostController',
+                        controllerAs: 'postController',
+                        label: 'Post'
+                    })
                     .when("/not-found", {
                         templateUrl: "views/erro404.html",
                         controller: 'erro404Controller',

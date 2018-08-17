@@ -6,12 +6,12 @@
 
     PostController.$inject = [
         '$rootScope',
+        '$routeParams',
         'PostService',
-        "ErrorHandlerService",
-        "PublicService"
+        "ErrorHandlerService"
     ];
 
-    function PostController($rootScope, postService, errorHandler, PublicService)
+    function PostController($rootScope, $routeParams, postService, errorHandler)
     {
         //$rootScope.verifyAuthentication();
 
@@ -72,9 +72,34 @@
                 );
         };
 
+        self.getPostById = function (id)
+        {
+            //devConsoleLog(self.postData);
+            $rootScope.infoMessage('Loading...');
+            postService.getPostById(id)
+                .then(
+                    function (response)
+                    {
+                        devConsoleLog(response.data);
+
+                        self.postSingle = response.data.post;
+                        $rootScope.removeMessage();
+                    })
+                .catch(function (response)
+                    {
+                        $rootScope.messageError(response.data);
+                    }
+                );
+        };
+
         self._initListPosts = function ()
         {
             self.listPosts();
+        };
+
+        self._initPostSingle = function ()
+        {
+            self.getPostById($routeParams.id);
         }
     }
 
