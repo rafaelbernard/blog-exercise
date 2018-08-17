@@ -4,19 +4,17 @@
         .module("app")
         .service('PostService', PostService);
 
-    PostService.$inject = ['$http', '$rootScope', "_CONFIG"];
+    PostService.$inject = ['$http', '$rootScope', '_CONFIG'];
 
     function PostService($http, $rootScope, _CONFIG)
     {
         var self = this;
 
-        self.token = $rootScope.CONFIG_USO.X_TOKEN_API;
-
         self.createPost = function (user)
         {
             var config = {
                 headers: {
-                    "x-token": ''
+                    "Authorization": "Bearer " + $rootScope.session.getUser().token
                 }
             };
             var url    = '../lvl-rest/public/api/v1/post';
@@ -28,8 +26,17 @@
             var config = {
                 headers: {
                     //"x-token": ''
-                    "Authorization": "Bearer " + $rootScope.sessao.user.token
+                    "Authorization": "Bearer " + $rootScope.session.getUser().token
                 }
+            };
+            var url    = '../lvl-rest/public/api/v1/post?all';
+            return $http.get(url, config);
+        };
+
+        self.listPublishedPosts = function ()
+        {
+            var config = {
+                cache: true
             };
             var url    = '../lvl-rest/public/api/v1/post';
             return $http.get(url, config);

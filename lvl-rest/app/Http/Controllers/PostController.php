@@ -15,7 +15,9 @@ class PostController extends Controller
 //                'store', 'update', 'destroy'
 //            ]]);
 
-        $this->middleware('jwt.auth');
+        $this->middleware('jwt.auth',
+            ['except' =>
+                 ['index', 'show']]);
     }
 
     /**

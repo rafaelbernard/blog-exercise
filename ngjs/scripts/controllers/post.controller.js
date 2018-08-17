@@ -23,20 +23,26 @@
         self._updating         = false;
         self.requestInProgress = false;
 
+        self.prepareAddPost = function ()
+        {
+            devConsoleLog("prepareAddPost");
+            self._creating = true;
+            self.postData  = {};
+        };
+
         self.createPost = function ()
         {
             //devConsoleLog(self.postData);
             self.requestInProgress = true;
 
-            // @todo Fix user info
-            self.postData.user_id      = 1;
+            // @todo fix
             self.postData.is_published = 1;
 
             postService.createPost(self.postData)
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
+                        //devConsoleLog(response.data);
 
                         self._creating         = false;
                         self._updating         = false;
@@ -96,6 +102,7 @@
 
         self._initListPosts = function ()
         {
+            $rootScope.verifyAuthentication();
             self.listPosts();
         };
 

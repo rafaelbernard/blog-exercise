@@ -22,11 +22,11 @@
         self._updating         = false;
         self.requestInProgress = false;
 
-        self.listPosts = function ()
+        self.listPublishedPosts = function ()
         {
             //devConsoleLog(self.postData);
             $rootScope.infoMessage('Loading...');
-            postService.listPosts(self.postData)
+            postService.listPublishedPosts(self.postData)
                 .then(
                     function (response)
                     {
@@ -62,13 +62,14 @@
                 );
         };
 
-        self._initListPosts = function ()
+        self._init = function ()
         {
-            self.listPosts();
+            self.listPublishedPosts();
         };
 
         self._initPostSingle = function ()
         {
+            devConsoleLog("_initPostSingle");
             self.getPostById($routeParams.id);
         }
     }

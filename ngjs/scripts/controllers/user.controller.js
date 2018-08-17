@@ -13,7 +13,7 @@
 
     function UserController($rootScope, userService, errorHandler, PublicService)
     {
-        $rootScope.verifyAuthentication();
+        //$rootScope.verifyAuthentication();
 
         var self = this;
 

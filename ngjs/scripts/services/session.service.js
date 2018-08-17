@@ -2,14 +2,16 @@
 {
     //"use strict";
     angular
-        .module("app")
-        .service("Sessao", Sessao);
+        .module('app')
+        .service('Session', Session);
 
-    Sessao.$inject = ['localStorageService', "timestampToDateObjectFilter"];
+    Session.$inject = ['localStorageService', "timestampToDateObjectFilter"];
 
-    function Sessao(localStorageService, timestampToDateObjectFilter)
+    function Session(localStorageService, timestampToDateObjectFilter)
     {
         var self = this;
+
+        self.user = null;
 
         // BOOLEAN
         var logged = false;
@@ -139,16 +141,9 @@
         self.setAuthenticationData = function (data)
         {
             //devConsoleLog("sessao.setAuthenticationData");
-            self.user        = Object.assign(AUTH_MODEL_DATA, data);
-            self.user.token  = data.token || {};
-            self.user.object = angular.copy(data);
-            self.normalizeAuthenticationData();
+            self.user       = data.user;
+            self.user.token = data.token || {};
             armazenarEmLocalStorage();
-        };
-
-        self.normalizeAuthenticationData = function ()
-        {
-            //devConsoleLog("sessao.normalizeAuthenticationData");
         };
 
     }

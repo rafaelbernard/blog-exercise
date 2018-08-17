@@ -11,20 +11,22 @@
             <button class="btn btn-sm btn-secondary" data-ng-click="postController.listPublishedPosts()">
                 <span class="fas fa-list-alt"></span> Published
             </button>
-            <button class="btn btn-sm btn-primary" data-ng-click="postController.addPrepare()">
+            <button class="btn btn-sm btn-primary" data-ng-click="postController.prepareAddPost()">
                 <i class="fas fa-plus"></i>
             </button>
         </div>
     </div>
 
-    <div data-ng-include="'views/private/frm-post.html'"></div>
+    <div data-ng-show="postController._creating || postController._updating" data-ng-include="'views/private/frm-post.html'"></div>
 
-    <!--<div data-ng-repeat="post in postController.postList">-->
-        <!--<section>-->
-            <!--<h1>{{post.title}}</h1>-->
-        <!--</section>-->
-    <!--</div>-->
+    <div class="p-2" data-ng-repeat="post in postController.postList">
+        <section>
+            <h1 class="h4">
+                <a data-ng-href="post/{{post.id}}">{{post.title}}</a>
+            </h1>
+        </section>
 
-    <div data-ng-include="'views/includes/posts-list.html'"></div>
+        <hr>
+    </div>
 
 </div>

@@ -1,21 +1,20 @@
-<div class="container card-body">
-    <form name="form" data-ng-submit="postController.createPost()">
+<div class="card">
+    <div class="card-body">
+        <form name="form" data-ng-submit="postController.createPost()">
 
-        <label>Title</label>
-        <input type="text" class="form-control" required data-ng-model="postController.postData.title">
+            <label>Title</label>
+            <input type="text" class="form-control" required data-ng-model="postController.postData.title">
 
-        <label>Content (supports markdown)</label>
-        <textarea id="content" class="form-control" required data-ng-model="postController.postData.content">{{postController.postData.content}}</textarea>
+            <label>Content (markdown supported)</label>
+            <textarea id="content" class="form-control" required data-ng-model="postController.postData.content">{{postController.postData.content}}</textarea>
 
-        <!--<label>Re-type password</label>-->
-        <!--<input type="rpassword" required data-ng-model="postData.email">-->
+            <div class="form-group text-right">
+                <input type="submit" class="btn btn-primary"
+                       data-ng-disabled="postController.requestInProgress || form.$invalid || isUnchanged(postController.postData)"
+                       value="Save">
+                <input type="reset" class="btn btn-danger" value="Cancel">
+            </div>
 
-        <div class="form-group text-right">
-            <input type="submit" class="btn btn-primary"
-                   data-ng-disabled="postController.requestInProgress || form.$invalid || isUnchanged(postController.postData)"
-                   value="Save">
-            <input type="reset" class="btn btn-danger" value="Cancel">
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>

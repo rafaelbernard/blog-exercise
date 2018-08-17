@@ -30,17 +30,15 @@
                 {
                     self.requestInProgress = false;
 
-                    if (!response.data)
+                    if (!response.data || !response.data.user && !response.data.token)
                     {
                         return sendFeedback("Auth error");
                     }
 
-                    var user = response.data;
+                    var data = response.data;
 
-                    self.r = user;
-
-                    $rootScope.sessao.setLogged(true);
-                    $rootScope.sessao.setUser(user);
+                    $rootScope.session.setLogged(true);
+                    $rootScope.session.setAuthenticationData(data);
 
                     $location.path('/admin/post');
                 })

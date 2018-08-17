@@ -12,7 +12,13 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware('jwt.auth',
+            [
+                'except' =>
+                    [
+                        'signin'
+                    ]
+            ]);
     }
 
     public function store(Request $request)
@@ -90,7 +96,7 @@ class AuthController extends Controller
             return response()->json(['msg' => 'Could not create token'], 500);
         }
 
-        $user = User::find($email);
+        $user = User::where('email', $email)->firstOrFail();
 
         $response = [
             'msg'   => 'Success',

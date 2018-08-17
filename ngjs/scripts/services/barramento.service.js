@@ -761,13 +761,13 @@
             {
                 params = {cnpj: cnpj};
             }
-            else if ($rootScope.sessao.getUser().cargo === 'GERENTE')
+            else if ($rootScope.session.getUser().cargo === 'GERENTE')
             {
-                params = {managerEmail: $rootScope.sessao.getUser().Email};
+                params = {managerEmail: $rootScope.session.getUser().Email};
             }
             else
             {
-                params = {agentEmail: $rootScope.sessao.getUser().Email};
+                params = {agentEmail: $rootScope.session.getUser().Email};
             }
 
             var route         = '/v1/api/corp/sales/lead/accreditedLead';
@@ -810,12 +810,12 @@
                 responsiblePhone: params.telefoneResponsavelFarmacia,
                 responsibleMobilePhone: params.celularResponsavelFarmacia,
                 responsibleEmail: params.emailResponsavelFarmacia,
-                agentName: $rootScope.sessao.getUser().Nome,
-                agentMobilePhone: $rootScope.sessao.getUser().Dados.CelularCorporativo,
-                agentEmail: $rootScope.sessao.getUser().Email,
-                managerName: $rootScope.sessao.getUser().Dados.Gestores[0].Nome,
-                managerMobilePhone: $rootScope.sessao.getUser().Dados.Gestores[0].CelularCorporativo,
-                managerEmail: $rootScope.sessao.getUser().Dados.Gestores[0].Email,
+                agentName: $rootScope.session.getUser().Nome,
+                agentMobilePhone: $rootScope.session.getUser().Dados.CelularCorporativo,
+                agentEmail: $rootScope.session.getUser().Email,
+                managerName: $rootScope.session.getUser().Dados.Gestores[0].Nome,
+                managerMobilePhone: $rootScope.session.getUser().Dados.Gestores[0].CelularCorporativo,
+                managerEmail: $rootScope.session.getUser().Dados.Gestores[0].Email,
                 businessActivity: 'Drogaria',
                 leadExistsSevenPDV: false,
                 partnerId: 18,

@@ -20,13 +20,13 @@
                 '$rootScope',
                 '$route',
                 "$sce",
-                "Sessao",
+                'Session',
                 function ($location,
                           $http,
                           $rootScope,
                           $route,
                           $sce,
-                          sessao
+                          session
                 )
                 {
                     // ===========
@@ -66,13 +66,13 @@
                     $http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
                     // ==================
-                    // OBJETOS DE SESSAO
+                    // SESSION OBJECT
                     // ==================
-                    $rootScope.sessao = sessao;
+                    $rootScope.session = session;
 
-                    $rootScope.getDadosAutenticacao = function ()
+                    $rootScope.getAuthenticationData = function ()
                     {
-                        return $rootScope.sessao.getUser();
+                        return $rootScope.session.getUser();
                     };
 
                     /**
@@ -82,12 +82,12 @@
 
                     $rootScope.getLogged = function ()
                     {
-                        return $rootScope.sessao.getLogged();
+                        return $rootScope.session.getLogged();
                     };
 
                     $rootScope.setLogged = function (value)
                     {
-                        return $rootScope.sessao.setLogged(value);
+                        return $rootScope.session.setLogged(value);
                         //$rootScope.logado = Boolean(value);
                         //return this;
                     };
@@ -177,24 +177,24 @@
                     {
                         //devConsoleLog("$rootScope.cleanSessionData");
                         $rootScope.setLogged(false);
-                        $rootScope.sessao.cleanSessionData();
+                        $rootScope.session.cleanSessionData();
                     };
 
                     $rootScope.isUserLoggedV1 = function ()
                     {
                         //devConsoleLog("$rootScope.isUserLoggedV1");
-                        return $rootScope.sessao.isUserLoggedOrLocalStorageV1();
+                        return $rootScope.session.isUserLoggedOrLocalStorageV1();
                     };
 
                     $rootScope.verifyAuthentication = function ()
                     {
-                        //devConsoleLog("$rootScope.verifyAuthentication");
+                        devConsoleLog("$rootScope.verifyAuthentication");
                         $rootScope.redirectUnloggedUserV1();
                     };
 
                     $rootScope.redirectUnloggedUserV1 = function ()
                     {
-                        //devConsoleLog("$rootScope.redirectUnloggedUserV1");
+                        devConsoleLog("$rootScope.redirectUnloggedUserV1");
 
                         if (!$rootScope.isUserLoggedV1())
                         {
@@ -238,40 +238,6 @@
                         $rootScope.textoAlert  = texto;
                     };
 
-                    /**
-                     *
-                     * @returns {*}
-                     */
-                    $rootScope.verifyApplicationRoute = function ()
-                    {
-                        //devConsoleLog("$rootScope.verifyApplicationRoute");
-                        $rootScope.rotaDeAplicacao = true;
-
-                        var caminho = $location.path();
-
-                        var emCaminhoLandingConviteFarmacia = (caminho.indexOf("/farmacia/convite/") !== 1 && caminho.indexOf("/credenciamento/") !== 1);
-
-                        if (caminho === "/login" || emCaminhoLandingConviteFarmacia)
-                        {
-                            $rootScope.rotaDeAplicacao = false;
-                        }
-
-                        return $rootScope;
-                    };
-
-                    $rootScope.$on("$locationChangeStart", function (event, next, current)
-                    {
-                        // handle route changes
-                        //devConsoleLog("$locationChangeStart");
-                    });
-
-                    $rootScope.$on("$locationChangeSuccess", function (event, next, current)
-                    {
-                        // handle route changes
-                        //devConsoleLog("$locationChangeSuccess");
-                        $rootScope.verifyApplicationRoute();
-                    });
-
                     $rootScope.setAuthenticationData = function (dados)
                     {
                         $rootScope.user        = Object.assign(AUTH_MODEL_DATA, dados);
@@ -294,16 +260,7 @@
                     $rootScope._init = function ()
                     {
                         //devConsoleLog("rs._init");
-                        //devConsoleLog($location.path());
-
-                        $rootScope.verifyApplicationRoute();
-
-                        if (!$rootScope.applicationRoute)
-                        {
-                            return;
-                        }
-
-                        $rootScope.redirectUnloggedUserV1();
+                        //$rootScope.redirectUnloggedUserV1();
                     };
 
                     $rootScope._init();
@@ -331,42 +288,14 @@
                         label: 'Home'
                     })
                     // landings
-                    .when("/login", {
+                    .when('/login', {
                         templateUrl: "views/login.html",
                         controller: "LoginController",
                         controllerAs: "loginController",
                         label: "Login"
                     })
-                    .when("/farmacia/convite/:chaveConviteFarmacia/credenciamento", {
-                        templateUrl: "views/landing/farmacia/formulario-credenciamento.html",
-                        controller: "FarmaciaLandingController",
-                        controllerAs: "farmacia",
-                        label: "Farmácia"
-                    })
-                    // rotas de aplicacao
-                    .when("/inicial/colaborador", {
-                        templateUrl: 'views/initial.html',
-                        controller: 'InicialColaboradorController',
-                        controllerAs: "inicial",
-                        label: "Inicial"
-                    })
-                    .when("/farmacia/convite", {
-                        templateUrl: "views/farmacia/tabela-lista-convite.html",
-                        controller: "FarmaciaController",
-                        controllerAs: "farmacia",
-                        label: "Farmácia"
-                    })
-                    .when("/relatorios", {
-                        templateUrl: "views/relatorios.html",
-                        controller: "RelatorioController",
-                        controllerAs: "relatorio",
-                        label: "Relatórios"
-                    })
-                    .when("/cadastro-paciente", {
-                        templateUrl: "views/cadastro-paciente.html",
-                        controller: "cadastroController",
-                        controllerAs: "cadastroController",
-                        label: "Cadastro de Pacientes"
+                    .when('/admin', {
+                        redirectTo: '/admin/post'
                     })
                     .when('/admin/user', {
                         templateUrl: 'views/private/tpl-users-list.html',
@@ -382,11 +311,11 @@
                     })
                     .when('/post/:id', {
                         templateUrl: 'views/public/post-single.html',
-                        controller: 'PostController',
-                        controllerAs: 'postController',
+                        controller: 'PublicPostController',
+                        controllerAs: 'publicPostController',
                         label: 'Post'
                     })
-                    .when("/not-found", {
+                    .when('/not-found', {
                         templateUrl: "views/erro404.html",
                         controller: 'erro404Controller',
                         controllerAs: 'erro404',
