@@ -2,7 +2,10 @@
 
     <h1>{{postController.postSingle.title}}</h1>
 
-    <div>{{postController.postSingle.content}}</div>
+    <!--<marked>{{postController.postSingle.content}}</marked>-->
+    <!--<div>{{postController.postSingle.content}}</div>-->
+    <!--<div btf-markdown="postController.postSingle.content"></div>-->
+    <div marked="postController.postSingle.content"></div>
 
     <footer>
         Created at: {{postController.postSingle.created_at | date:'dMY'}}

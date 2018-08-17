@@ -43,6 +43,8 @@
                         self.requestInProgress = false;
                         self.postData          = {};
                         $rootScope.messageSuccess(response.data.msg || "Success");
+
+                        self.listPosts();
                     })
                 .catch(function (response)
                     {

@@ -3,13 +3,16 @@
     //'use strict';
 
     angular
-        .module("app", [
+        .module('app', [
             "ngRoute",
             "LocalStorageModule",
             'ngSanitize',
             'ngMaterial',
             'ngResource',
-            "ui.mask",
+            'ui.mask',
+            'hc.marked',
+            //'btford.markdown',
+            //'Showdown'
         ])
         .run(
             ['$location',
