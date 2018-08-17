@@ -23,6 +23,10 @@ Route::prefix('v1')->group(function () {
     ]);
 
     Route::resource('user', 'AuthController', [
-        'only' => ['store', 'signin', 'index', 'install']
+        'only' => ['store', 'index', 'install']
+    ]);
+
+    Route::post('user/signin', [
+        'uses' => 'AuthController@signin'
     ]);
 });

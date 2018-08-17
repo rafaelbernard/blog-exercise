@@ -1,20 +1,19 @@
 (function ()
 {
 
-    angular.module("app")
-        .controller('PostController', PostController);
+    angular.module('app')
+        .controller('PublicPostController', PublicPostController);
 
-    PostController.$inject = [
+    PublicPostController.$inject = [
         '$rootScope',
         '$routeParams',
         'PostService',
         "ErrorHandlerService"
     ];
 
-    function PostController($rootScope, $routeParams, postService, errorHandler)
+    function PublicPostController($rootScope,
+                                  $routeParams, postService, errorHandler)
     {
-        $rootScope.verifyAuthentication();
-
         var self = this;
 
         self.postData = {};
@@ -22,37 +21,6 @@
         self._creating         = false;
         self._updating         = false;
         self.requestInProgress = false;
-
-        self.createPost = function ()
-        {
-            //devConsoleLog(self.postData);
-            self.requestInProgress = true;
-
-            // @todo Fix user info
-            self.postData.user_id      = 1;
-            self.postData.is_published = 1;
-
-            postService.createPost(self.postData)
-                .then(
-                    function (response)
-                    {
-                        devConsoleLog(response.data);
-
-                        self._creating         = false;
-                        self._updating         = false;
-                        self.requestInProgress = false;
-                        self.postData          = {};
-                        $rootScope.messageSuccess(response.data.msg || "Success");
-
-                        self.listPosts();
-                    })
-                .catch(function (response)
-                    {
-                        self.requestInProgress = false;
-                        $rootScope.messageError(response.data);
-                    }
-                );
-        };
 
         self.listPosts = function ()
         {

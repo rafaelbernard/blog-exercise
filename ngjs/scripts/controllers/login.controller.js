@@ -7,14 +7,14 @@
     LoginController.$inject = [
         "$location",
         "$rootScope",
-        "AcheService",
-        "BarramentoService",
+        'BarramentoService',
+        'UserService'
     ];
 
     function LoginController($location,
                              $rootScope,
-                             acheService,
-                             barramentoService)
+                             barramentoService,
+                             userService)
     {
 
         var self = this;
@@ -25,7 +25,7 @@
 
             self.requestInProgress = true;
 
-            barramentoService.auth(dadosLogin)
+            userService.signin(dadosLogin)
                 .then(function (response)
                 {
                     self.requestInProgress = false;
@@ -42,12 +42,12 @@
                     $rootScope.sessao.setLogged(true);
                     $rootScope.sessao.setUser(user);
 
-                    //$location.path("/inicial/colaborador");
+                    $location.path('/admin/post');
                 })
                 .catch(function (response)
                 {
                     self.requestInProgress = false;
-                    barramentoService.messageError(response);
+                    $rootScope.messageError(response.data.msg || "Error");
                 });
         };
 

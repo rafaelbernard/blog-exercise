@@ -23,6 +23,12 @@
         self._updating         = false;
         self.requestInProgress = false;
 
+        self.prepareAddUser = function ()
+        {
+            self._creating = true;
+            self.userData  = {};
+        };
+
         self.createUser = function ()
         {
             //devConsoleLog(self.userData);
@@ -38,6 +44,8 @@
                         self.requestInProgress = false;
                         self.userData          = {};
                         $rootScope.messageSuccess(response.data.msg || "Success");
+
+                        self.listUsers();
                     })
                 .catch(function (response)
                     {

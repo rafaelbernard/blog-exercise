@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('jwt.auth',
+//            ['only' => [
+//                'store', 'update', 'destroy'
+//            ]]);
+
+        $this->middleware('jwt.auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,13 +55,19 @@ class PostController extends Controller
         $this->validate($request, [
             'title'   => 'required',
             'content' => 'required',
-            'user_id' => 'required'
+            //'user_id' => 'required'
         ]);
+
+        if (!$user = JWTAuth::parseToken()->authenticate())
+        {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
 
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
-        $user_id      = $request->input('user_id');
+        $user_id      = $user->id;
+        //$user_id      = $request->input('user_id');
 
         $post = new Post([
             'title'        => $title,
@@ -119,13 +136,17 @@ class PostController extends Controller
         $this->validate($request, [
             'title'   => 'required',
             'content' => 'required',
-            'user_id' => 'required'
         ]);
+
+        if (!$user = JWTAuth::parseToken()->authenticate())
+        {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
 
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
-        $user_id      = $request->input('user_id');
+        $user_id      = $user->id;
 
         $post = Post::with('user')->findOrFail($id);
 
@@ -170,6 +191,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+
+        if (!$user = JWTAuth::parseToken()->authenticate())
+        {
+            return response()->json(['msg' => 'User not found'], 404);
+        }
 
         if (!$post->delete())
         {

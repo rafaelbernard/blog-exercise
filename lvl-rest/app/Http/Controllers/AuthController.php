@@ -4,20 +4,39 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+//use Tymon\JWTAuth\JWTAuth;
+use JWTAuth;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email'    => 'required|email',
-            'name'     => 'required',
-            'password' => 'required|min:5'
+            'email'            => 'required|email',
+            'name'             => 'required',
+            'password'         => 'required|min:5',
+            'confirm_password' => 'required|min:5'
         ]);
 
-        $email    = $request->input('email');
-        $password = $request->input('password');
-        $name     = $request->input('name');
+        $email            = $request->input('email');
+        $password         = $request->input('password');
+        $confirm_password = $request->input('confirm_password');
+        $name             = $request->input('name');
+
+        if (!($password === $confirm_password))
+        {
+            $response = [
+                'msg' => 'Passwords does not match'
+            ];
+
+            return response()->json($response, 404);
+        }
 
         $user = new User([
             'name'     => $name,
@@ -58,16 +77,27 @@ class AuthController extends Controller
         $email    = $request->input('email');
         $password = $request->input('password');
 
-        $user = ['email' => $email];
+        $credentials = $request->only('email', 'password');
+
+        try
+        {
+            if (!$token = JWTAuth::attempt($credentials))
+            {
+                return response()->json(['msg' => 'Invalid credentials'], 401);
+            }
+        } catch (JWTException $e)
+        {
+            return response()->json(['msg' => 'Could not create token'], 500);
+        }
+
+        $user = User::find($email);
 
         $response = [
-            'msg'  => 'User signed in',
-            'user' => $user
-        ];
+            'msg'   => 'Success',
+            'user'  => $user,
+            'token' => $token];
 
-        return $response;
-
-        return "It works!";
+        return response()->json($response, 200);
     }
 
     public function index()

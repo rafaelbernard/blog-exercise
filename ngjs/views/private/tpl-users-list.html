@@ -8,13 +8,14 @@
             <button class="btn btn-sm btn-secondary" data-ng-click="userController.listUsers()">
                 <span class="fas fa-sync-alt"></span>
             </button>
-            <button class="btn btn-sm btn-secondary" data-ng-click="userController.addPrepare()">
-                <i class="fas fa-plus-alt"></i>
+
+            <button class="btn btn-sm btn-primary" data-ng-click="userController.prepareAddUser()">
+                <i class="fas fa-plus"></i>
             </button>
         </div>
     </div>
 
-    <div data-ng-include="'views/private/frm-user.html'"></div>
+    <div data-ng-show="userController._creating || userController._updating" data-ng-include="'views/private/frm-user.html'"></div>
 
     <table class="table table-bordered table-hover" data-ng-show="!criandoNovo">
         <thead>
@@ -25,10 +26,10 @@
             <th>
                 E-mail
             </th>
-            <th>Ano</th>
-            <th>Concurso</th>
-            <th>Instituição</th>
-            <th>&nbsp;</th>
+            <!--<th>Ano</th>-->
+            <!--<th>Concurso</th>-->
+            <!--<th>Instituição</th>-->
+            <!--<th>&nbsp;</th>-->
         </tr>
         </thead>
         <tbody data-ng-repeat="user in userController.userList">
@@ -40,39 +41,40 @@
                     <img data-ng-src="{{user.urlImagemEvento}}" title="{{user.nomeEvento}}">
                 </div>
             </td>
-            <td>{{user.anoEvento}}</td>
-            <td>
-                <span class="text-muted">[{{user.concurso.codConcurso}}]</span> {{user.concurso.nomeConcurso}}
-            </td>
-            <td>
-                {{user.instituicao.codInstituicao}}
-            </td>
-            <td class="text-center">
-                <button type="button" class="btn btn-secondary btn-sm" data-ng-click="userController.prepararEdicaoEvento(user)">
-                    <i class="fas fa-edit"></i>
-                </button>
+            <!--<td>{{user.anoEvento}}</td>-->
+            <!--<td>-->
+                <!--<span class="text-muted">[{{user.concurso.codConcurso}}]</span> {{user.concurso.nomeConcurso}}-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--{{user.instituicao.codInstituicao}}-->
+            <!--</td>-->
+            <!--<td class="text-center">-->
+                <!--<button type="button" class="btn btn-secondary btn-sm" data-ng-click="userController.prepararEdicaoEvento(user)">-->
+                    <!--<i class="fas fa-edit"></i>-->
+                <!--</button>-->
 
-                <a data-href="#/user/detalhe/{{user.codEvento}}" class="disabled btn btn-sm btn-secondary" title="Detalhes do user"><span class="fas fa-list-alt"></span></a>
+                <!--<a data-href="#/user/detalhe/{{user.codEvento}}" class="disabled btn btn-sm btn-secondary" title="Detalhes do user"><span class="fas fa-list-alt"></span></a>-->
 
-                <button type="button" class="btn btn-secondary btn-sm btn-danger" data-ng-show="!queroExcluir" ng-click="queroExcluir = true">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
+                <!--<button type="button" class="btn btn-secondary btn-sm btn-danger" data-ng-show="!queroExcluir" ng-click="queroExcluir = true">-->
+                    <!--<i class="fas fa-trash-alt"></i>-->
+                <!--</button>-->
 
-                <button type="button" class="btn btn-sm btn-danger" data-ng-show="queroExcluir" data-ng-click="excluirEvento(user.codEvento)">
-                    <i class="fas fa-ok"></i> Confirma?
-                </button>
+                <!--<button type="button" class="btn btn-sm btn-danger" data-ng-show="queroExcluir" data-ng-click="excluirEvento(user.codEvento)">-->
+                    <!--<i class="fas fa-ok"></i> Confirma?-->
+                <!--</button>-->
 
-                <button type="button" class="btn btn-sm btn-secondary" data-ng-click="userController.setEvento(user.codEvento)">
-                    <i class="far fa-check-square"></i> Selecionar user
-                </button>
-            </td>
+                <!--<button type="button" class="btn btn-sm btn-secondary" data-ng-click="userController.setEvento(user.codEvento)">-->
+                    <!--<i class="far fa-check-square"></i> Selecionar user-->
+                <!--</button>-->
+            <!--</td>-->
         </tr>
-        <tr data-ng-if="userController.userEmEdicao.codEvento == user.codEvento && userController._alterando">
-            <td colspan="6">
-                <div data-ng-include data-src="'view/template/administracao/frm-user.html'"></div>
-            </td>
-        </tr>
+        <!--<tr data-ng-if="userController.userEmEdicao.codEvento == user.codEvento && userController._alterando">-->
+            <!--<td colspan="6">-->
+                <!--<div data-ng-include data-src="'view/template/administracao/frm-user.html'"></div>-->
+            <!--</td>-->
+        <!--</tr>-->
         </tbody>
     </table>
+
 
 </div>

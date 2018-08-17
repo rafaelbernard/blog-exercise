@@ -5,7 +5,7 @@
         .module("app")
         .service("Sessao", Sessao);
 
-    Sessao.$inject = ["localStorageService", "timestampToDateObjectFilter"];
+    Sessao.$inject = ['localStorageService', "timestampToDateObjectFilter"];
 
     function Sessao(localStorageService, timestampToDateObjectFilter)
     {
@@ -16,12 +16,12 @@
 
         // OBJECTS - MODELOS
         var AUTH_MODEL_DATA = {
-            _login: {inclusao: null},
+            _login: {createdat: null},
             id: "",
-            cpf: "",
-            nome: "",
-            tipoLogin: "",
-            objeto: {},
+            email: "",
+            name: "",
+            token: {},
+            object: {},
             getId: function ()
             {
                 return this.id;
@@ -31,19 +31,19 @@
         var armazenarEmLocalStorage = function ()
         {
             //devConsoleLog("sessao._armazenarEmLocalStorage");
-            localStorageService.set("usuario", self.user);
+            localStorageService.set("user", self.user);
         };
 
-        var limparLocalStorage = function ()
+        var deleteLocalStorage = function ()
         {
             //devConsoleLog("sessao._limparLocalStorage");
-            localStorageService.remove("usuario");
+            localStorageService.remove('user');
         };
 
         var recoverLocalStorage = function ()
         {
             //devConsoleLog("sessao._recuperarLocalStorage");
-            var localStorage = localStorageService.get("usuario");
+            var localStorage = localStorageService.get('user');
 
             if (localStorage)
             {
@@ -60,17 +60,17 @@
         var validLocalStorage = function (localStorage)
         {
             //devConsoleLog("sessao.var.localStorageValido");
-            if (localStorage._login && localStorage._login.inclusao)
+            if (localStorage._login && localStorage._login.createdat)
             {
-                var _DATE_NOW                              = new Date();
-                //devConsoleLog("_DATE_AGORA: " + _DATE_AGORA);
-                var _DATE_AGORA_TIMEZONE_OFFSET_EM_MINUTOS = _DATE_NOW.getTimezoneOffset();
+                var _DATE_NOW                            = new Date();
+                //devConsoleLog("_DATE_NOW: " + _DATE_NOW);
+                var _DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES = _DATE_NOW.getTimezoneOffset();
                 /**
                  * convert to ms
                  * @type {number}
                  */
-                var milissegundosDateAgoraTimezoneOffset   = (_DATE_AGORA_TIMEZONE_OFFSET_EM_MINUTOS * 60 * 1000);
-                var milissegundosDateAgoraComOffset        = (_DATE_NOW.getTime() - milissegundosDateAgoraTimezoneOffset);
+                var milissegundosDateAgoraTimezoneOffset = (_DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES * 60 * 1000);
+                var milissegundosDateAgoraComOffset      = (_DATE_NOW.getTime() - milissegundosDateAgoraTimezoneOffset);
 
                 var _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE  = 60;
                 //devConsoleLog("_MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE: " + _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE);
@@ -83,7 +83,7 @@
                     //devConsoleLog("valida");
                     // renovando?
                     //devConsoleLog("teste de renovacao de sessao");
-                    localStorage._login.inclusao = _DATE_NOW;
+                    localStorage._login.createdat = _DATE_NOW;
                     return true;
                 }
                 //devConsoleLog("!(milissegundosDateAgoraComOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage");
@@ -121,7 +121,7 @@
             //devConsoleLog("sessao.cleanSessionData");
             self.setLogged(false);
             self.user = null;
-            limparLocalStorage();
+            deleteLocalStorage();
         };
 
         self.getUser = function ()
@@ -130,17 +130,18 @@
             return self.user;
         };
 
-        self.setUser = function (dados)
+        self.setUser = function (data)
         {
             //devConsoleLog("sessao.setUser");
-            self.setAuthenticationData(dados);
+            self.setAuthenticationData(data);
         };
 
-        self.setAuthenticationData = function (dados)
+        self.setAuthenticationData = function (data)
         {
             //devConsoleLog("sessao.setAuthenticationData");
-            self.user        = Object.assign(AUTH_MODEL_DATA, dados);
-            self.user.objeto = angular.copy(dados);
+            self.user        = Object.assign(AUTH_MODEL_DATA, data);
+            self.user.token  = data.token || {};
+            self.user.object = angular.copy(data);
             self.normalizeAuthenticationData();
             armazenarEmLocalStorage();
         };
@@ -148,7 +149,6 @@
         self.normalizeAuthenticationData = function ()
         {
             //devConsoleLog("sessao.normalizeAuthenticationData");
-
         };
 
     }

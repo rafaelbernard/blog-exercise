@@ -1,7 +1,12 @@
 <header class="header_app">
 
-    <div>
-        <a href="admin/post">Posts</a> / <a href="admin/user">Users</a>
+    <div data-ng-if="$root.sessao" class="row">
+        <div class="col-11">
+            <a data-ng-href="admin/post">Posts</a> / <a href="admin/user">Users</a>
+        </div>
+        <div class="col-1">
+            <a href="" data-ng-click="$root.exit()">Logoff</a>
+        </div>
     </div>
 
     <div class="container" data-ng-if="$root.sessao">
@@ -12,7 +17,7 @@
                     <a href="" data-ng-click="$root.sair()"><span></span>Sair</a>
                 </div>
                 <div class="ola">
-                    Olá, <span>{{$root.sessao.usuario.nome}}</span>
+                    Hello, <span>{{$root.sessao.user.name}}</span>
                 </div>
             </div>
         </div>

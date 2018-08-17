@@ -4,7 +4,7 @@
         .module("app")
         .service('PostService', PostService);
 
-    PostService.$inject = ['$http', "$rootScope", "_CONFIG"];
+    PostService.$inject = ['$http', '$rootScope', "_CONFIG"];
 
     function PostService($http, $rootScope, _CONFIG)
     {
@@ -27,7 +27,8 @@
         {
             var config = {
                 headers: {
-                    "x-token": ''
+                    //"x-token": ''
+                    "Authorization": "Bearer " + $rootScope.sessao.user.token
                 }
             };
             var url    = '../lvl-rest/public/api/v1/post';

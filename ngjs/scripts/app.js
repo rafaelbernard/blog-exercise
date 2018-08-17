@@ -17,7 +17,7 @@
         .run(
             ['$location',
                 '$http',
-                "$rootScope",
+                '$rootScope',
                 '$route',
                 "$sce",
                 "Sessao",
@@ -102,17 +102,17 @@
                         return $sce.trustAsHtml(html);
                     };
 
-                    $rootScope.setLastBreadcrumbLabel = function (newLabel)
-                    {
-                        var bc                  = breadcrumbs.getAll();
-                        bc[bc.length - 1].label = newLabel;
-                    };
-
-                    $rootScope.setLastButOneBreadcrumbLabel = function (newLabel)
-                    {
-                        var bc                  = breadcrumbs.getAll();
-                        bc[bc.length - 2].label = newLabel;
-                    };
+                    // $rootScope.setLastBreadcrumbLabel = function (newLabel)
+                    // {
+                    //     var bc                  = breadcrumbs.getAll();
+                    //     bc[bc.length - 1].label = newLabel;
+                    // };
+                    //
+                    // $rootScope.setLastButOneBreadcrumbLabel = function (newLabel)
+                    // {
+                    //     var bc                  = breadcrumbs.getAll();
+                    //     bc[bc.length - 2].label = newLabel;
+                    // };
 
                     $rootScope.isSuccessResponse = function (response)
                     {
@@ -201,7 +201,7 @@
                             //devConsoleLog('self.redirectUnloggedUserV1: !self.usuarioEstaLogadoV1()');
                             //return;
                             $rootScope.logoff();
-                            $location.path("/login");
+                            $location.path('/login');
                         }
                     };
 
@@ -212,11 +212,11 @@
                         return $rootScope;
                     };
 
-                    $rootScope.sair = function ()
+                    $rootScope.exit = function ()
                     {
                         //devConsoleLog("$rootScope.sair");
                         $rootScope.logoff();
-                        $location.path("/");
+                        $location.path('/');
                         return $rootScope;
                     };
 
@@ -324,10 +324,10 @@
                     .primaryPalette('blue');
 
                 $routeProvider
-                    .when("/", {
-                        templateUrl: "views/main.html",
-                        controller: 'MainController',
-                        controllerAs: 'main',
+                    .when('/', {
+                        templateUrl: 'views/main.html',
+                        controller: 'PublicPostController',
+                        controllerAs: 'publicPostController',
                         label: 'Home'
                     })
                     // landings
@@ -336,12 +336,6 @@
                         controller: "LoginController",
                         controllerAs: "loginController",
                         label: "Login"
-                    })
-                    .when("/landing/:urlLandingPage", {
-                        templateUrl: 'views/achevita.html',
-                        controller: 'mipController',
-                        controllerAs: 'mip',
-                        label: 'Achevita'
                     })
                     .when("/farmacia/convite/:chaveConviteFarmacia/credenciamento", {
                         templateUrl: "views/landing/farmacia/formulario-credenciamento.html",
@@ -413,7 +407,32 @@
     //devConsoleLog(window._CONFIG);
 
     angular
-        .module("app")
+        .module('app')
+        .directive('compareTo', function ()
+        {
+            return {
+                require: "ngModel",
+                scope: {
+                    otherModelValue: "=compareTo"
+                },
+                link: function (scope, element, attributes, ngModel)
+                {
+
+                    ngModel.$validators.compareTo = function (modelValue)
+                    {
+                        return modelValue == scope.otherModelValue;
+                    };
+
+                    scope.$watch("otherModelValue", function ()
+                    {
+                        ngModel.$validate();
+                    });
+                }
+            }
+        });
+
+    angular
+        .module('app')
         .constant("_", window._);
 
 })();
