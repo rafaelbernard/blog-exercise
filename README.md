@@ -2,9 +2,11 @@
 
 ## install/publish
 
-execute:
+1) execute:
 
 `sh publish.sh`
+
+2) create .env file at `lvl-rest/.env`
 
 ## structure
 
