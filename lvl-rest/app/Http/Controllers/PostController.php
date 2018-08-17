@@ -169,17 +169,22 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        if (!$post->delete())
+        {
+            return response()->json(['msg' => 'Deleting failed'], 404);
+        }
 
         $response = [
-            'msg'    => 'post deletede',
+            'msg'    => 'post deleted',
             'create' => [
-                'href'   => 'api/v1/post',
+                'href'   => 'public/api/v1/post',
                 'method' => 'POST',
-                'params' => 'title, content, is_published'
+                'params' => 'title, content, is_published, user_id'
             ]
         ];
 
-        return $response;
+        return response()->json($response, 200);
     }
 }

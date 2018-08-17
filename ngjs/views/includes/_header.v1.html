@@ -1,0 +1,21 @@
+<header class="header_app">
+
+    <div>
+        <a href="admin/post">Posts</a> / <a href="admin/user">Users</a>
+    </div>
+
+    <div class="container" data-ng-if="$root.sessao">
+        <div class="row">
+            <div class="col-12">
+                <span class="logo"></span>
+                <div class="sair">
+                    <a href="" data-ng-click="$root.sair()"><span></span>Sair</a>
+                </div>
+                <div class="ola">
+                    Olá, <span>{{$root.sessao.usuario.nome}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

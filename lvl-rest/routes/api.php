@@ -17,24 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::post('/post', [
-//    'uses'       => 'PostController@create',
-//    'as'         => 'post.create',
-//    'middleware' => 'auth'
-//]);
-
-//Route::resource('post', 'PostController', [
-//    //'only' => ['index', 'show', 'store']
-//    'except' => ['create', 'edit']
-//]);
-
 Route::prefix('v1')->group(function () {
     Route::resource('post', 'PostController', [
         'except' => ['edit', 'create']
     ]);
 
     Route::resource('user', 'AuthController', [
-        'only' => ['store', 'signin', 'index']
+        'only' => ['store', 'signin', 'index', 'install']
     ]);
 
 //    Route::resource('user', '', [

@@ -89,4 +89,14 @@ class AuthController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function install()
+    {
+        $response = [
+            'msg'     => 'Install allowed',
+            'install' => 'ok'
+        ];
+
+        return response()->json($response, 200);
+    }
 }

@@ -8,7 +8,6 @@
     "angular-aria": "^1.7.3",
     "angular-bootstrap": "^0.12.2",
     "angular-local-storage": "^0.7.1",
-    "angular-markdown-directive": "^0.3.1",
     "angular-marked": "https://registry.npmjs.org/angular-marked/-/angular-marked-1.2.2.tgz",
     "angular-material": "^1.1.10",
     "angular-messages": "^1.7.3",
@@ -19,7 +18,6 @@
     "bootstrap": "^4.1.3",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",
-    "showdown": "^1.8.6",
     "underscore": "^1.9.1"
   },
   "scripts": {

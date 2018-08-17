@@ -35,6 +35,8 @@ gulp.task('scripts', function ()
 
 gulp.task('vendor', function ()
 {
+    var vendor = require('./vendor.json');
+
     return gulp.src(vendor.source)
         .pipe(expectfile(vendor.source))
         .on('error', handleError)
@@ -52,7 +54,7 @@ gulp.task('css', function ()
     var source = [
         "node_modules/bootstrap/dist/css/bootstrap.min.css",
         "node_modules/angular-material/angular-material.min.css",
-        "node_modules/ui-select/dist/select.min.css",
+        //"node_modules/ui-select/dist/select.min.css",
         "../styles/*.css",
     ];
 
