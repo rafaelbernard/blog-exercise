@@ -159,12 +159,12 @@
                             texto += ' | Status: ' + status;
                         }
 
-                        if (texto.message)
-                        {
-                            var original = texto;
-                            var message  = texto.message;
-                            texto        = message + "\n" + original;
-                        }
+                        // if (texto.message)
+                        // {
+                        //     var original = texto;
+                        //     var message  = texto.message;
+                        //     texto        = message + "\n" + original;
+                        // }
 
                         $rootScope.classeAlert = 'danger';
                         $rootScope.textoAlert  = texto;
@@ -215,6 +215,24 @@
                         $rootScope.logoff();
                         $location.path("/");
                         return $rootScope;
+                    };
+
+                    $rootScope.removeMessage = function ()
+                    {
+                        //console.log("$rootScope.removerAlert");
+                        $rootScope.textoAlert  = '';
+                        $rootScope.classeAlert = '';
+                    };
+
+                    $rootScope.infoMessage = function (texto)
+                    {
+                        if (!texto)
+                        {
+                            texto = 'Processing...';
+                        }
+
+                        $rootScope.classeAlert = 'info';
+                        $rootScope.textoAlert  = texto;
                     };
 
                     /**
@@ -347,29 +365,23 @@
                         controllerAs: "relatorio",
                         label: "Relatórios"
                     })
-                    .when("/mensagens", {
-                        templateUrl: "views/mensagens.html",
-                        controller: "MensagensController",
-                        controllerAs: "mensagens",
-                        label: "Mensagens"
-                    })
                     .when("/cadastro-paciente", {
                         templateUrl: "views/cadastro-paciente.html",
                         controller: "cadastroController",
                         controllerAs: "cadastroController",
                         label: "Cadastro de Pacientes"
                     })
-                    .when("/materiais-promocionais", {
-                        templateUrl: "views/materiais-promocionais.html",
-                        controller: "MaterialPromocionalController",
-                        controllerAs: "materialPromocionalController",
-                        label: "Materiais Promocionais"
-                    })
                     .when('/admin/user', {
                         templateUrl: 'views/private/tpl-users-list.html',
                         controller: 'UserController',
                         controllerAs: "userController",
                         label: "User"
+                    })
+                    .when('/admin/post', {
+                        templateUrl: 'views/private/tpl-post-list.html',
+                        controller: 'PostController',
+                        controllerAs: 'postController',
+                        label: "Post"
                     })
                     .when("/not-found", {
                         templateUrl: "views/erro404.html",

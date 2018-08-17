@@ -2,32 +2,37 @@
 {
 
     angular.module("app")
-        .controller('UserController', UserController);
+        .controller('PostController', PostController);
 
-    UserController.$inject = [
-        "$rootScope",
-        'UserService',
+    PostController.$inject = [
+        '$rootScope',
+        'PostService',
         "ErrorHandlerService",
         "PublicService"
     ];
 
-    function UserController($rootScope, userService, errorHandler, PublicService)
+    function PostController($rootScope, postService, errorHandler, PublicService)
     {
         //$rootScope.verifyAuthentication();
 
         var self = this;
 
-        self.userData = {};
+        self.postData = {};
 
         self._creating         = false;
         self._updating         = false;
         self.requestInProgress = false;
 
-        self.createUser = function ()
+        self.createPost = function ()
         {
-            //devConsoleLog(self.userData);
+            //devConsoleLog(self.postData);
             self.requestInProgress = true;
-            userService.createUser(self.userData)
+
+            // @todo Fix user info
+            self.postData.user_id      = 1;
+            self.postData.is_published = 1;
+
+            postService.createPost(self.postData)
                 .then(
                     function (response)
                     {
@@ -36,7 +41,7 @@
                         self._creating         = false;
                         self._updating         = false;
                         self.requestInProgress = false;
-                        self.userData          = {};
+                        self.postData          = {};
                         $rootScope.messageSuccess(response.data.msg || "Success");
                     })
                 .catch(function (response)
@@ -47,30 +52,29 @@
                 );
         };
 
-        self.listUsers = function ()
+        self.listPosts = function ()
         {
-            //devConsoleLog(self.userData);
+            //devConsoleLog(self.postData);
             $rootScope.infoMessage('Loading...');
-            userService.listUsers(self.userData)
+            postService.listPosts(self.postData)
                 .then(
                     function (response)
                     {
                         devConsoleLog(response.data);
 
-                        self.userList = response.data.users;
+                        self.postList = response.data.posts;
                         $rootScope.removeMessage();
                     })
                 .catch(function (response)
                     {
-                        self.requestInProgress = false;
                         $rootScope.messageError(response.data);
                     }
                 );
         };
 
-        self._initListUsers = function ()
+        self._initListPosts = function ()
         {
-            self.listUsers();
+            self.listPosts();
         }
     }
 

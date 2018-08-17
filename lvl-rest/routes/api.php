@@ -33,26 +33,15 @@ Route::prefix('v1')->group(function () {
         'except' => ['edit', 'create']
     ]);
 
-    Route::post('user', [
-        'uses' => 'AuthController@store'
+    Route::resource('user', 'AuthController', [
+        'only' => ['store', 'signin', 'index']
     ]);
 
-    Route::post('user/signin', [
-        'uses' => 'AuthController@signin'
-    ]);
-});
-
-//Route::group(['prefix' => 'v1'], function () {
-//
-//    Route::resource('post', 'PostController', [
-//        'except' => ['edit', 'create']
-//    ]);
-//
-//    Route::post('user', [
+//    Route::resource('user', '', [
 //        'uses' => 'AuthController@store'
 //    ]);
 //
 //    Route::post('user/signin', [
 //        'uses' => 'AuthController@signin'
 //    ]);
-//});
+});

@@ -42,7 +42,7 @@ class AuthController extends Controller
         }
 
         $response = [
-            'msg'  => 'An erro ocurred while creating the user'
+            'msg' => 'An erro ocurred while creating the user'
         ];
 
         return response()->json($response, 404);
@@ -68,5 +68,25 @@ class AuthController extends Controller
         return $response;
 
         return "It works!";
+    }
+
+    public function index()
+    {
+        $users = User::all();
+
+        foreach ($users as $user)
+        {
+            $user->view_post = [
+                'href'   => "api/v1/user/{$user->id}",
+                'method' => 'GET'
+            ];
+        }
+
+        $response = [
+            'msg'   => 'List of users',
+            'users' => $users
+        ];
+
+        return response()->json($response, 200);
     }
 }

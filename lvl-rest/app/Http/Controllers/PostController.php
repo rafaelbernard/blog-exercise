@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +14,22 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "It works!";
+        $posts = Post::all();
+
+        foreach ($posts as $post)
+        {
+            $post->view_post = [
+                'href'   => "api/v1/post/{$post->id}",
+                'method' => 'GET'
+            ];
+        }
+
+        $response = [
+            'msg'   => 'List of posts',
+            'posts' => $posts
+        ];
+
+        return response()->json($response, 200);
     }
 
 
@@ -28,30 +44,43 @@ class PostController extends Controller
         $this->validate($request, [
             'title'   => 'required',
             'content' => 'required',
-            'userId'  => 'required'
+            'user_id' => 'required'
         ]);
 
-        $title       = $request->input('title');
-        $content     = $request->input('content');
-        $isPublished = $request->input('isPublished');
-        $userId      = $request->input('userId');
+        $title        = $request->input('title');
+        $content      = $request->input('content');
+        $is_published = $request->input('is_published');
+        $user_id      = $request->input('user_id');
 
-        $post = [
-            'title'    => $title,
-            'content'  => $content,
-            'userId'   => $userId,
-            'viewPost' => [
-                'href'   => 'api/v1/post/999',
+        $post = new Post([
+            'title'        => $title,
+            'content'      => $content,
+            'is_published' => $is_published,
+            'user_id'      => $user_id
+        ]);
+
+        if ($post->save())
+        {
+            $post->user()->associate($user_id);
+
+            $post->view_post = [
+                'href'   => 'api/v1/post/' . $post->id,
                 'method' => 'GET'
-            ]
-        ];
+            ];
+
+            $response = [
+                'msg'  => 'Post created',
+                'post' => $post
+            ];
+
+            return response()->json($response, 201);
+        }
 
         $response = [
-            'msg'  => 'created',
-            'post' => $post
+            'msg' => 'An erro ocurred while creating the post'
         ];
 
-        return response()->json($response, 201);
+        return response()->json($response, 404);
     }
 
     /**
@@ -62,9 +91,19 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return ['msg' => 'ok', 'id' => $id];
-        return response()->json();
-        return "It works! $id";
+        $post = Post::with('user')->where('id', $id)->firstOrFail();
+
+        $post->view_post = [
+            'href'   => "api/v1/post/{$post->id}",
+            'method' => 'GET'
+        ];
+
+        $response = [
+            'msg'  => 'the_post',
+            'post' => $post
+        ];
+
+        return response()->json($response, 200);
     }
 
 
