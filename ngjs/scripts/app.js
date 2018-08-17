@@ -133,6 +133,43 @@
                         return null;
                     };
 
+                    $rootScope.messageSuccess = function (texto)
+                    {
+                        if (!texto)
+                        {
+                            texto = 'Sucesso';
+                        }
+
+                        $rootScope.classeAlert = 'success';
+                        $rootScope.textoAlert  = texto;
+                    };
+
+                    $rootScope.messageError = function (texto, dados, status)
+                    {
+                        if (!texto)
+                        {
+                            texto = 'Erro!';
+                        }
+                        if (dados)
+                        {
+                            texto += ' | Dados: ' + dados;
+                        }
+                        if (status)
+                        {
+                            texto += ' | Status: ' + status;
+                        }
+
+                        if (texto.message)
+                        {
+                            var original = texto;
+                            var message  = texto.message;
+                            texto        = message + "\n" + original;
+                        }
+
+                        $rootScope.classeAlert = 'danger';
+                        $rootScope.textoAlert  = texto;
+                    };
+
                     $rootScope.cleanSessionData = function ()
                     {
                         //devConsoleLog("$rootScope.cleanSessionData");
@@ -328,17 +365,11 @@
                         controllerAs: "materialPromocionalController",
                         label: "Materiais Promocionais"
                     })
-                    .when("/programa", {
-                        templateUrl: "views/programa.html",
-                        // controller: "ProgramaController",
-                        // controllerAs: "programa",
-                        label: "O Programa"
-                    })
-                    .when("/faq", {
-                        templateUrl: "views/faq.html",
-                        controller: "FaqController",
-                        controllerAs: "faq",
-                        label: "FAQ"
+                    .when('/admin/user', {
+                        templateUrl: 'views/private/tpl-users-list.html',
+                        controller: 'UserController',
+                        controllerAs: "userController",
+                        label: "User"
                     })
                     .when("/not-found", {
                         templateUrl: "views/erro404.html",

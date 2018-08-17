@@ -62,15 +62,15 @@
             //devConsoleLog("sessao.var.localStorageValido");
             if (localStorage._login && localStorage._login.inclusao)
             {
-                var _DATE_AGORA                            = new Date();
+                var _DATE_NOW                              = new Date();
                 //devConsoleLog("_DATE_AGORA: " + _DATE_AGORA);
-                var _DATE_AGORA_TIMEZONE_OFFSET_EM_MINUTOS = _DATE_AGORA.getTimezoneOffset();
+                var _DATE_AGORA_TIMEZONE_OFFSET_EM_MINUTOS = _DATE_NOW.getTimezoneOffset();
                 /**
                  * convert to ms
                  * @type {number}
                  */
                 var milissegundosDateAgoraTimezoneOffset   = (_DATE_AGORA_TIMEZONE_OFFSET_EM_MINUTOS * 60 * 1000);
-                var milissegundosDateAgoraComOffset        = (_DATE_AGORA.getTime() - milissegundosDateAgoraTimezoneOffset);
+                var milissegundosDateAgoraComOffset        = (_DATE_NOW.getTime() - milissegundosDateAgoraTimezoneOffset);
 
                 var _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE  = 60;
                 //devConsoleLog("_MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE: " + _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE);
@@ -83,7 +83,7 @@
                     //devConsoleLog("valida");
                     // renovando?
                     //devConsoleLog("teste de renovacao de sessao");
-                    localStorage._login.inclusao = _DATE_AGORA;
+                    localStorage._login.inclusao = _DATE_NOW;
                     return true;
                 }
                 //devConsoleLog("!(milissegundosDateAgoraComOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage");

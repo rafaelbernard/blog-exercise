@@ -36,27 +36,5 @@
             return $http.post(url, formulario);
         };
 
-        self.enviarFormularioContatoV1 = function (formulario)
-        {
-            var url = _CONFIG.HOST_API + '/v1/public/formulario/contato';
-            return $http.post(url, formulario);
-        };
-
-        self.enviarFormularioCredenciamentoLanding = function (formulario)
-        {
-            var url = _CONFIG.HOST_API + "/v1/public/formulario/credenciamento/landing";
-            return $http.post(url, formulario);
-        };
-
-        self.buscarCidadesPorUF = function (uf)
-        {
-            var url = _CONFIG.HOST_API + '/v1/' + uf + '/cidades';
-            var config = {
-                cache: true
-            };
-
-            return $http.get(url, config);
-        };
-
     }
 })();

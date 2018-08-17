@@ -22,7 +22,6 @@
             $location.path("/inicial/colaborador");
         };
 
-
     }
 
 })();

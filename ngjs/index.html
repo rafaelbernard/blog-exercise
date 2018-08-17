@@ -25,11 +25,15 @@
 </head>
 <body>
 
-<div class="site ng-cloak">
+<div class="container ng-cloak">
 
     <!--<div data-ng-include src="'views/includes/_cabecalho.v1.html'"></div>-->
 
-    <data-ng-view></data-ng-view>
+    <section class="container-fluid" style="margin-top: 20px">
+        <div data-ng-include data-src="'views/includes/div-message.html'"></div>
+    </section>
+
+    <div data-ng-view></div>
 
 </div>
 

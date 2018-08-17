@@ -440,107 +440,6 @@
             return $http.get(self.urlBarramentoProxy, config);
         };
 
-        /**
-         *
-         * @param formulario
-         * @returns {{primeiroNome: (string|Document.NomeConsumidor|Document.formCadastroConclusao.NomeConsumidor), sobreNome: (string|Document.NomeConsumidor|Document.formCadastroConclusao.NomeConsumidor), dataNascPaciente: (*|string|string|Date), genero: (number|string|*), descricaoGenero: string}}
-         */
-        self.criarPacienteViaFormulario = function (formulario)
-        {
-            //devConsoleLog("criarPacienteViaFormulario");
-            //devConsoleLog(formulario);
-            var customer = {
-                cpf: formulario.cpf || formulario.CPFConsumidor,
-                emailPaciente: (formulario.email || formulario.EmailConsumidor || "n/d").toLowerCase(),
-                primeiroNome: formulario.nome || formulario.NomeConsumidor,
-                sobreNome: formulario.sobrenome || formulario.SobrenomeConsumidor,
-                dataNascPaciente: formatDateToApi(formulario.dataPaciente || formulario.DataNascConsumidor || ""),
-                genero: formulario.genero || formulario.Sexo,
-                descricaoGenero: (formulario.descricaoGenero || formulario.generoPersonalizado || "").toUpperCase(),
-                deviceId: "",
-                cep: formulario.cep,
-                tipoLogradouro: formulario.tipoLogradouro || formulario.TipoLogradouroConsumidor || "n/d",
-                logradouro: formulario.logradouro || formulario.LogradouroConsumidor || "n/d",
-                nrLogradouro: formulario.NrEnderConsumidor || "00",
-                cmpLogradouro: formulario.ComplEnderConsumidor,
-                bairro: formulario.BairroConsumidor || "n/d",
-                cidade: formulario.CidadeConsumidor,
-                uf: formulario.UFConsumidor,
-                dddCelularPaciente: formulario.DDDCelular,
-                celularPaciente: formulario.FoneCelular || "",
-                dddTelefonePaciente: formulario.dddTelefoneFixo || "",
-                telefonePaciente: formulario.telefoneFixo || "",
-                dddTelComercial: formulario.dddTelefoneComercial || formulario.dddTelComercial || "",
-                telComercial: formulario.telefoneComercial || formulario.telComercial || "",
-                ramal: formulario.ramalTelefoneComercial || "",
-                assuntoInteresse: formulario.listaAssuntoInteresse || formulario.assuntoInteresse || [],
-
-                statusPaciente: "T", // T - true (significa ativo)
-
-                idParceiro: _CONFIG.WS_BARRAMENTO.ID_PARCEIRO,
-                idCanal: _CONFIG.WS_BARRAMENTO.ID_CANAL,
-
-                // identificacao da fonte
-                idInclusao: $rootScope.sessao.getUser().cpf,
-                tipoIdInclusao: "cpf-colaborador"
-            };
-
-
-            // Genero
-            // Em branco caso nao seja personalizado
-            if (customer.genero !== "P")
-            {
-                customer.descricaoGenero = "";
-            }
-
-            return customer;
-        };
-
-        /**
-         *
-         * @param formulario
-         * @returns {{cpf: *, ean: *|string, tipoDocumento: string, ufProfissional: string, consultaProfissional: number|string|*, idParceiro: string, idCanal: string, idInclusao: *|string|Document.formularioCadastro.cpf, tipoIdInclusao: string}}
-         */
-        self.criarAdesaoViaFormulario = function (formulario)
-        {
-            devConsoleLog("criarAdesaoViaFormulario");
-            //devConsoleLog(formulario);
-
-            // tratamento para ean
-            // possibilidade devido aa estrutura do barramento
-            if (!formulario.ean && (formulario.produto && formulario.produto.ean))
-            {
-                formulario.ean = formulario.produto.ean;
-            }
-
-            if (!formulario.ean && (formulario.produto && formulario.produto.produto && formulario.produto.produto.ean))
-            {
-                formulario.ean = formulario.produto.produto.ean;
-            }
-
-            var subscription = {
-                cpf: formulario.cpf || formulario.CPFConsumidor,
-                ean: formulario.ean || formulario.EAN,
-                tipoDocumento: "CRM",
-                ufProfissional: formulario.ufProfissional || formulario.UFProfissional || "",
-                consultaProfissional: formulario.codigoProfissional || formulario.CodigoProfissional || "",
-
-                idParceiro: _CONFIG.WS_BARRAMENTO.ID_PARCEIRO,
-                idCanal: _CONFIG.WS_BARRAMENTO.ID_CANAL,
-
-                // identificacao da fonte
-                idInclusao: $rootScope.sessao.getUser().cpf,
-                tipoIdInclusao: "cpf-colaborador"
-            };
-
-            if (!subscription.ufProfissional)
-            {
-                subscription.tipoDocumento = "";
-            }
-
-            return subscription;
-        };
-
         self.cadastrarAdesao = function (adesao)
         {
             devConsoleLog("cadastrarAdesao");
@@ -810,42 +709,6 @@
             sendFeedbackMensagemErro(self.tratarMensagemErroRequisicao(response));
         };
 
-        /**
-         *
-         * @param cep
-         * @returns {Promise}
-         */
-        self.buscarEnderecoByCep = function (cep)
-        {
-            devConsoleLog("s.buscarEnderecoByCep");
-            if (!self.isTokenValido())
-            {
-                return self.generateToken()
-                    .then(function ()
-                    {
-                        return self.buscarEnderecoByCep(cep);
-                    });
-            }
-
-            var route         = "/v1/postalServices/postalCode('" + cep + "')";
-            var urlBarramento = self.host + route;
-            var config        = {
-                cache: true,
-                headers: {
-                    "Authorization": self.accessToken,
-                    "Content-Type": 'application/json; charset=utf-8',
-                    "InvalidateCache": self.invalidateCache,
-                    url: urlBarramento
-                },
-                params: {
-                    $format: 'json',
-                    route: route
-                }
-            };
-
-            return $http.get(self.urlBarramentoProxy, config);
-        };
-
         self.accreditedLeadStatus = function (cnpj)
         {
             devConsoleLog("s.accreditedLeadStatus: " + cnpj);
@@ -968,32 +831,6 @@
             };
 
             return $http.post(urlBarramento, data, config);
-        };
-
-        self.salesforceAuthenticate = function (login)
-        {
-            devConsoleLog("salesforceAuthenticate");
-            if (!self.isTokenValido())
-            {
-                //throw new Error('Token é necessário');
-                return self.generateToken()
-                    .then(function ()
-                    {
-                        return self.salesforceAuthenticate(login);
-                    });
-            }
-
-            login.apikey = _CONFIG.WS_BARRAMENTO.APP_PCS.APIKEY;
-
-            var config = {
-                headers: {
-                    "Authorization": self.accessToken,
-                    "InvalidateCache": "true"
-                }
-            };
-
-            var url = _CONFIG.HOST_API + "/v1/_/v2/api/corp/it/security/accessapp/SalesForce/Authenticate";
-            return $http.post(url, login, config);
         };
 
         self.auth = function (login)

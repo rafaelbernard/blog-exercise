@@ -183,7 +183,7 @@
                 .catch(function (response)
                        {
                            self.requestInProgress = false;
-                           barramentoService.showErrorMessage(response);
+                           barramentoService.messageError(response);
                        }
                 );
         };

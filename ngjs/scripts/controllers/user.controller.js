@@ -1,0 +1,51 @@
+(function ()
+{
+
+    angular.module("app")
+        .controller('UserController', UserController);
+
+    UserController.$inject = [
+        "$rootScope",
+        'UserService',
+        "ErrorHandlerService",
+        "PublicService"
+    ];
+
+    function UserController($rootScope, userService, errorHandler, PublicService)
+    {
+        //$rootScope.verifyAuthentication();
+
+        var self = this;
+
+        self.userData = {};
+
+        self._creating         = false;
+        self._updating         = false;
+        self.requestInProgress = false;
+
+        self.createUser = function ()
+        {
+            //devConsoleLog(self.userData);
+            self.requestInProgress = true;
+            userService.createUser(self.userData)
+                .then(
+                    function (response)
+                    {
+                        devConsoleLog(response.data);
+
+                        self._creating         = false;
+                        self._updating         = false;
+                        self.requestInProgress = false;
+                        self.userData          = {};
+                        $rootScope.messageSuccess(response.data.msg || "Success");
+                    })
+                .catch(function (response)
+                    {
+                        self.requestInProgress = false;
+                        $rootScope.messageError(response.data);
+                    }
+                );
+        };
+    }
+
+})();

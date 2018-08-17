@@ -24,7 +24,7 @@
                                 integracaoService,
                                 publicService)
     {
-        $rootScope.verifyAuthentication();
+        $rootScope.verificarAutenticacao();
 
         var self = this;
 
@@ -138,7 +138,7 @@
                         .catch(function (response)
                         {
                             devConsoleLog(response);
-                            //showErrorMessage(response);
+                            //exibirMensagemErro(response);
                             self.requestInProgress = false;
                         });
                 })
@@ -232,7 +232,7 @@
 
                         if (!barramentoColaboradorService.isSuccessResponse(response))
                         {
-                            barramentoColaboradorService.showErrorMessage(response);
+                            barramentoColaboradorService.exibirMensagemErro(response);
                             return;
                         }
                         self.salvarCadastro();
@@ -241,7 +241,7 @@
                     function (erro)
                     {
                         self.requestBuscaCRM = false;
-                        barramentoColaboradorService.showErrorMessage(erro);
+                        barramentoColaboradorService.exibirMensagemErro(erro);
                     }
                 );
         };
@@ -320,7 +320,7 @@
                     {
                         if (!barramentoColaboradorService.isSuccessResponseFromPacientePost(response))
                         {
-                            barramentoColaboradorService.showErrorMessage(response);
+                            barramentoColaboradorService.exibirMensagemErro(response);
                             self.requestInProgress = false;
                             return;
                         }
@@ -340,7 +340,7 @@
 
                                 if (!barramentoColaboradorService.isSuccessResponse(response))
                                 {
-                                    barramentoColaboradorService.showErrorMessage(response);
+                                    barramentoColaboradorService.exibirMensagemErro(response);
                                     self.requestInProgress = false;
                                     return;
                                 }
@@ -378,7 +378,7 @@
 
                             if (!barramentoColaboradorService.isSuccessResponse(response))
                             {
-                                barramentoColaboradorService.showErrorMessage(response);
+                                barramentoColaboradorService.exibirMensagemErro(response);
                                 sendFeedback("Houve uma falha de comunicação ao incluir sua adesão. Por favor, tente realizar a inclusão da adesão novamente.");
                                 return;
                             }
@@ -478,7 +478,7 @@
                     .catch(function (response)
                     {
                         devConsoleLog(response);
-                        //showErrorMessage(response);
+                        //exibirMensagemErro(response);
                         //self.requestInProgress = false;
                     });
 
@@ -537,7 +537,7 @@
                 .catch(function (response)
                 {
                     self.requestInProgress = false;
-                    barramentoColaboradorService.showErrorMessage(response);
+                    barramentoColaboradorService.exibirMensagemErro(response);
                 });
         };
 
@@ -625,7 +625,7 @@
 
                         if (!barramentoColaboradorService.isSuccessResponse(response))
                         {
-                            barramentoColaboradorService.showErrorMessage(response);
+                            barramentoColaboradorService.exibirMensagemErro(response);
                             return;
                         }
 
@@ -636,7 +636,7 @@
                     function (erro)
                     {
                         self.requestBuscaCRM = false;
-                        barramentoColaboradorService.showErrorMessage(erro);
+                        barramentoColaboradorService.exibirMensagemErro(erro);
                     }
                 );
         };

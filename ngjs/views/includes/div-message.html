@@ -1,0 +1,7 @@
+<div class="text-right" data-ng-show="$root.classeAlert === 'danger'" ng-click="$root.textoAlert = ''">
+    <span class="fas fa-eraser"></span>
+</div>
+<div class="alert alert-{{$root.classeAlert}}" role="alert" data-ng-show="$root.textoAlert !== ''">
+    <!--<img src="https://seguro.econrio.com.br/code/imagem/carregando/ajax-loader.gif" ng-show="$root.classeAlert === 'info'"/>-->
+    {{$root.textoAlert}}
+</div>

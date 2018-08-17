@@ -1,0 +1,24 @@
+<div class="container card-body">
+    <form name="form" data-ng-submit="userController.createUser()">
+
+        <label>Name</label>
+        <input type="text" class="form-control" required data-ng-model="userController.userData.name">
+
+        <label>E-mail</label>
+        <input type="email" class="form-control" required data-ng-model="userController.userData.email">
+
+        <label>Password</label>
+        <input type="password" class="form-control" required data-ng-model="userController.userData.password">
+
+        <!--<label>Re-type password</label>-->
+        <!--<input type="rpassword" required data-ng-model="userData.email">-->
+
+        <div class="form-group text-right">
+            <input type="submit" class="btn btn-primary"
+                   data-ng-disabled="userController.requestInProgress || form.$invalid || isUnchanged(userController.userData)"
+                   value="Save">
+            <input type="reset" class="btn btn-danger" value="Cancel">
+        </div>
+
+    </form>
+</div>
