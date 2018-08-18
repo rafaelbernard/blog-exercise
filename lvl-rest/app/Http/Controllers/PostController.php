@@ -180,11 +180,6 @@ class PostController extends Controller
 
         $post = Post::with('user')->findOrFail($id);
 
-        if (!$post->user()->where('users.id', $user_id)->first())
-        {
-            return response()->json(['message' => 'User is not the same that created the post. Fail.'], 401);
-        }
-
         $post->title        = $title;
         $post->content      = $content;
         $post->is_published = $is_published;
@@ -218,6 +213,7 @@ class PostController extends Controller
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy($id)
     {
