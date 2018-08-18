@@ -26,24 +26,26 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="bg-secondary">
 
-<div class="container ng-cloak">
+<div class="containerl-fluid bg-secondary p-2">
+    <div class="container bg-light ng-cloak">
 
-    <div data-ng-include src="'views/includes/_header.v1.html'"></div>
+        <div data-ng-include src="'views/includes/_header.v1.html'"></div>
 
-    <h1>Blog - Figured Exercise Challenge</h1>
+        <h1>Blog - Figured Exercise Challenge</h1>
 
-    <hr>
+        <hr>
 
-    <section class="container-fluid" style="margin-top: 20px">
-        <div data-ng-include data-src="'views/includes/div-message.html'"></div>
-    </section>
+        <section class="container-fluid" style="margin-top: 20px">
+            <div data-ng-include data-src="'views/includes/div-message.html'"></div>
+        </section>
 
-    <div data-ng-view></div>
+        <div data-ng-view></div>
 
-    <div data-ng-include src="'views/includes/_footer.v1.html'"></div>
+        <div data-ng-include src="'views/includes/_footer.v1.html'"></div>
 
+    </div>
 </div>
 
 <script src="dist/assets/js/vendor.min.js"></script>
