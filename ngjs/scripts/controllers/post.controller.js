@@ -60,16 +60,21 @@
                 );
         };
 
-        self.listPosts = function ()
+        self.listPosts = function (query)
         {
             //devConsoleLog(self.postData);
+            //devConsoleLog(query);
+
+            if (!query)
+            {
+                query = {};
+            }
+
             $rootScope.infoMessage('Loading...');
-            postService.listPosts(self.postData)
+            postService.listPosts(query)
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
-
                         self.postList = response.data.posts;
                         $rootScope.removeMessage();
                     })
@@ -102,7 +107,7 @@
 
         self._initListPosts = function ()
         {
-            $rootScope.verifyAuthentication();
+            //$rootScope.verifyAuthentication();
             self.listPosts();
         };
 

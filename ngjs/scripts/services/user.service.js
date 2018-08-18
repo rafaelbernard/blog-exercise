@@ -21,10 +21,11 @@
         self.createUser = function (user)
         {
             var config = {
-                headers: {
-                    "x-token": ''
+                    headers: {
+                        "Authorization": "Bearer " + $rootScope.session.getToken()
+                    }
                 }
-            };
+            ;
             var url    = '../lvl-rest/public/api/v1/user';
             return $http.post(url, user, config);
         };
@@ -33,7 +34,7 @@
         {
             var config = {
                 headers: {
-                    "x-token": ''
+                    "Authorization": "Bearer " + $rootScope.session.getToken()
                 }
             };
             var url    = '../lvl-rest/public/api/v1/user';

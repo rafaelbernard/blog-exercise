@@ -10,11 +10,6 @@ class PostController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('jwt.auth',
-//            ['only' => [
-//                'store', 'update', 'destroy'
-//            ]]);
-
         $this->middleware('jwt.auth',
             ['except' =>
                  ['index', 'show']]);
@@ -25,12 +20,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        $all = $request->query('withDraft');
+
+        if ($all === 'true')
+        {
+            if (!$user = JWTAuth::parseToken()->authenticate())
+            {
+                return response()->json(['msg' => 'You must be logged in'], 404);
+            }
+
+            $posts = Post::all()->sortBy('updated_at');
+        } else
+        {
+            $posts = Post::all()->where('is_published', 1)->sortBy('updated_at');
+        }
 
         foreach ($posts as $post)
         {
+            //$post->user()->find
+
             $post->view_post = [
                 'href'   => "api/v1/post/{$post->id}",
                 'method' => 'GET'

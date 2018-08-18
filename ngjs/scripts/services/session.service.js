@@ -11,7 +11,8 @@
     {
         var self = this;
 
-        self.user = null;
+        self.user  = null;
+        self.token = null;
 
         // BOOLEAN
         var logged = false;
@@ -44,8 +45,9 @@
 
         var recoverLocalStorage = function ()
         {
-            //devConsoleLog("sessao._recuperarLocalStorage");
+            devConsoleLog("sessao._recoverLocalStorage");
             var localStorage = localStorageService.get('user');
+            devConsoleLog(localStorage);
 
             if (localStorage)
             {
@@ -55,7 +57,7 @@
                 }
 
                 self.setLogged(true);
-                self.setAuthenticationData(localStorage);
+                self.setAuthenticationData(localStorage, localStorage.token);
             }
         };
 
@@ -97,7 +99,7 @@
 
         self.isUserLoggedOrLocalStorageV1 = function ()
         {
-            //devConsoleLog("sessao.isUserLoggedOrLocalStorageV1");
+            devConsoleLog("session.isUserLoggedOrLocalStorageV1");
 
             if (!self.getUser())
             {
@@ -138,11 +140,17 @@
             self.setAuthenticationData(data);
         };
 
-        self.setAuthenticationData = function (data)
+        self.getToken = function ()
+        {
+            return self.token;
+        };
+
+        self.setAuthenticationData = function (user, token)
         {
             //devConsoleLog("sessao.setAuthenticationData");
-            self.user       = data.user;
-            self.user.token = data.token || {};
+            self.user       = user;
+            self.user.token = token || {};
+            self.token      = token || {};
             armazenarEmLocalStorage();
         };
 

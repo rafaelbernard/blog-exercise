@@ -1,12 +1,14 @@
 # figured-blog-exercise
 
+Welcome to README file of the blog exercise challenge. I will try to go straight to the point so we have fun!
+
 ## install/publish
 
-1) execute:
+1) create .env file at `lvl-rest/.env`
+
+2) execute:
 
 `sh publish.sh`
-
-2) create .env file at `lvl-rest/.env`
 
 ## structure
 

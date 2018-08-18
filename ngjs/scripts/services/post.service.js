@@ -1,7 +1,7 @@
 (function ()
 {
     angular
-        .module("app")
+        .module('app')
         .service('PostService', PostService);
 
     PostService.$inject = ['$http', '$rootScope', '_CONFIG'];
@@ -14,22 +14,23 @@
         {
             var config = {
                 headers: {
-                    "Authorization": "Bearer " + $rootScope.session.getUser().token
+                    "Authorization": "Bearer " + $rootScope.session.getToken()
                 }
             };
             var url    = '../lvl-rest/public/api/v1/post';
             return $http.post(url, user, config);
         };
 
-        self.listPosts = function ()
+        self.listPosts = function (query)
         {
             var config = {
                 headers: {
                     //"x-token": ''
-                    "Authorization": "Bearer " + $rootScope.session.getUser().token
-                }
+                    "Authorization": "Bearer " + $rootScope.session.getToken()
+                },
+                params: query
             };
-            var url    = '../lvl-rest/public/api/v1/post?all';
+            var url    = '../lvl-rest/public/api/v1/post';
             return $http.get(url, config);
         };
 

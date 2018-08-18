@@ -2,18 +2,16 @@
 {
 
     angular.module("app")
-        .controller("LoginController", LoginController);
+        .controller('LoginController', LoginController);
 
     LoginController.$inject = [
-        "$location",
-        "$rootScope",
-        'BarramentoService',
+        '$location',
+        '$rootScope',
         'UserService'
     ];
 
     function LoginController($location,
                              $rootScope,
-                             barramentoService,
                              userService)
     {
 
@@ -38,7 +36,7 @@
                     var data = response.data;
 
                     $rootScope.session.setLogged(true);
-                    $rootScope.session.setAuthenticationData(data);
+                    $rootScope.session.setAuthenticationData(data.user, data.token);
 
                     $location.path('/admin/post');
                 })
