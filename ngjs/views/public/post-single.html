@@ -1,13 +1,15 @@
 <content data-ng-show="publicPostController.postSingle" data-ng-init="publicPostController._initPostSingle()">
 
-    <h1>{{postController.postSingle.title}}</h1>
+    <h1>{{publicPostController.postSingle.title}}</h1>
 
     <div marked="publicPostController.postSingle.content"></div>
     <!--<marked>{{publicPostController.postSingle.content}}</marked>-->
 
     <footer>
-        Created at: {{publicPostController.postSingle.created_at | date:'dMY'}} |
-        Updated at: {{publicPostController.postSingle.updated_at | date:'dMY'}}
+        <em>
+            Created at: {{publicPostController.postSingle.created_at | date:'dMY'}} |
+            Updated at: {{publicPostController.postSingle.updated_at | date:'dMY'}}
+        </em>
     </footer>
 
 </content>

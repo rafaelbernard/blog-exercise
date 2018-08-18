@@ -14,6 +14,8 @@
     function PublicPostController($rootScope,
                                   $routeParams, postService, errorHandler)
     {
+        $rootScope.isUserLoggedV1();
+
         var self = this;
 
         self.postData = {};

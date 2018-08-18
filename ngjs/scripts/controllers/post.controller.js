@@ -48,7 +48,7 @@
                         self._updating         = false;
                         self.requestInProgress = false;
                         self.postData          = {};
-                        $rootScope.messageSuccess(response.data.msg || "Success");
+                        $rootScope.messageSuccess(response.data.message || "Success");
 
                         self.listPosts();
                     })

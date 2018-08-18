@@ -186,6 +186,11 @@
                         return $rootScope.session.isUserLoggedOrLocalStorageV1();
                     };
 
+                    // $rootScope.verifyLoggedData = function ()
+                    // {
+                    //
+                    // };
+
                     $rootScope.verifyAuthentication = function ()
                     {
                         devConsoleLog("$rootScope.verifyAuthentication");
@@ -242,13 +247,6 @@
                     {
                         $rootScope.user        = Object.assign(AUTH_MODEL_DATA, dados);
                         $rootScope.user.objeto = angular.copy(dados);
-                        $rootScope.normalizeAuthenticationData();
-                    };
-
-                    $rootScope.normalizeAuthenticationData = function ()
-                    {
-                        //devConsoleLog("$rootScope.normalizeAuthenticationData");
-
                     };
 
                     $rootScope.isActiveRoute = function (route)

@@ -45,8 +45,13 @@
 
         self.getPostById = function (id)
         {
+            devConsoleLog($rootScope.session);
+
             var config = {
-                cache: true
+                cache: true,
+                headers: {
+                    "Authorization": "Bearer " + ($rootScope.session.getToken() || "")
+                }
             };
             var url    = '../lvl-rest/public/api/v1/post/' + id;
             return $http.get(url, config);

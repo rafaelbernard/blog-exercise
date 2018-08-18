@@ -28,7 +28,7 @@ class PostController extends Controller
         {
             if (!$user = JWTAuth::parseToken()->authenticate())
             {
-                return response()->json(['msg' => 'You must be logged in'], 404);
+                return response()->json(['message' => 'You must be logged in'], 404);
             }
 
             $posts = Post::all()->sortBy('updated_at');
@@ -48,8 +48,8 @@ class PostController extends Controller
         }
 
         $response = [
-            'msg'   => 'List of posts',
-            'posts' => $posts
+            'message' => 'List of posts',
+            'posts'   => $posts
         ];
 
         return response()->json($response, 200);
@@ -72,7 +72,7 @@ class PostController extends Controller
 
         if (!$user = JWTAuth::parseToken()->authenticate())
         {
-            return response()->json(['msg' => 'User not found'], 404);
+            return response()->json(['message' => 'User not found'], 404);
         }
 
         $title        = $request->input('title');
@@ -98,15 +98,15 @@ class PostController extends Controller
             ];
 
             $response = [
-                'msg'  => 'Post created',
-                'post' => $post
+                'message' => 'Post created',
+                'post'    => $post
             ];
 
             return response()->json($response, 201);
         }
 
         $response = [
-            'msg' => 'An error ocurred while creating the post'
+            'message' => 'An error ocurred while creating the post'
         ];
 
         return response()->json($response, 404);
@@ -120,7 +120,22 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with('user')->where('id', $id)->firstOrFail();
+        $post = Post::with('user')->where('id', $id)->first();
+
+        if (!$post)
+        {
+            return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        if (!$post->is_published)
+        {
+            $this->middleware('jwt.auth');
+
+            if (!JWTAuth::parseToken()->authenticate())
+            {
+                return response()->json(['message' => 'Post not found'], 404);
+            }
+        }
 
         $post->view_post = [
             'href'   => "api/v1/post/{$post->id}",
@@ -128,8 +143,8 @@ class PostController extends Controller
         ];
 
         $response = [
-            'msg'  => 'the_post',
-            'post' => $post
+            'message' => 'the_post',
+            'post'    => $post
         ];
 
         return response()->json($response, 200);
@@ -152,7 +167,7 @@ class PostController extends Controller
 
         if (!$user = JWTAuth::parseToken()->authenticate())
         {
-            return response()->json(['msg' => 'User not found'], 404);
+            return response()->json(['message' => 'User not found'], 404);
         }
 
         $title        = $request->input('title');
@@ -164,7 +179,7 @@ class PostController extends Controller
 
         if (!$post->user()->where('users.id', $user_id)->first())
         {
-            return response()->json(['msg' => 'User is not the same that created the post. Fail.'], 401);
+            return response()->json(['message' => 'User is not the same that created the post. Fail.'], 401);
         }
 
         $post->title   = $title;
@@ -180,15 +195,15 @@ class PostController extends Controller
             ];
 
             $response = [
-                'msg'  => 'Post updated',
-                'post' => $post
+                'message' => 'Post updated',
+                'post'    => $post
             ];
 
             return response()->json($response, 201);
         }
 
         $response = [
-            'msg' => 'An error ocurred while updating the post'
+            'message' => 'An error ocurred while updating the post'
         ];
 
         return response()->json($response, 404);
@@ -206,17 +221,17 @@ class PostController extends Controller
 
         if (!$user = JWTAuth::parseToken()->authenticate())
         {
-            return response()->json(['msg' => 'User not found'], 404);
+            return response()->json(['message' => 'User not found'], 404);
         }
 
         if (!$post->delete())
         {
-            return response()->json(['msg' => 'Deleting failed'], 404);
+            return response()->json(['message' => 'Deleting failed'], 404);
         }
 
         $response = [
-            'msg'    => 'post deleted',
-            'create' => [
+            'message' => 'post deleted',
+            'create'  => [
                 'href'   => 'public/api/v1/post',
                 'method' => 'POST',
                 'params' => 'title, content, is_published, user_id'

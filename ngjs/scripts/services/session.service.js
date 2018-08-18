@@ -53,17 +53,23 @@
             {
                 if (!validLocalStorage(localStorage))
                 {
+                    devConsoleLog("!validLocalStorage(localStorage)");
                     return;
                 }
 
                 self.setLogged(true);
                 self.setAuthenticationData(localStorage, localStorage.token);
+
+                devConsoleLog(self.token);
             }
         };
 
         var validLocalStorage = function (localStorage)
         {
-            //devConsoleLog("sessao.var.localStorageValido");
+            devConsoleLog("sessao.var.validLocalStorage");
+
+            return true;
+
             if (localStorage._login && localStorage._login.createdat)
             {
                 var _DATE_NOW                            = new Date();
@@ -73,13 +79,13 @@
                  * convert to ms
                  * @type {number}
                  */
-                var milissegundosDateAgoraTimezoneOffset = (_DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES * 60 * 1000);
-                var milissegundosDateAgoraComOffset      = (_DATE_NOW.getTime() - milissegundosDateAgoraTimezoneOffset);
+                var milissecondsDateNowTimezoneOffset    = (_DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES * 60 * 1000);
+                var milissegundosDateAgoraComOffset      = (_DATE_NOW.getTime() - milissecondsDateNowTimezoneOffset);
 
                 var _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE  = 60;
                 //devConsoleLog("_MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE: " + _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE);
                 var milissegundosValidadeDadosLocalStorage = _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE * 60 * 1000;
-                var milissegundosSessaoLocalStorage        = timestampToDateObjectFilter(localStorage._login.inclusao).getTime();
+                var milissegundosSessaoLocalStorage        = timestampToDateObjectFilter(localStorage._login.createdat).getTime();
                 //devConsoleLog("localStorage._login.inclusao: " + localStorage._login.inclusao);
 
                 if ((milissegundosDateAgoraComOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage)
