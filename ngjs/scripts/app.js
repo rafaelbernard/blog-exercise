@@ -165,7 +165,7 @@
                         if (data.message && data.exception)
                         {
                             data = data.message;
-                            if (data === "Token expired")
+                            if (data === "Token has expired")
                             {
                                 $location.path('/login');
                             }
