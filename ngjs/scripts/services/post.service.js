@@ -10,7 +10,7 @@
     {
         var self = this;
 
-        self.createPost = function (user)
+        self.createPost = function (post)
         {
             var config = {
                 headers: {
@@ -18,7 +18,18 @@
                 }
             };
             var url    = '../lvl-rest/public/api/v1/post';
-            return $http.post(url, user, config);
+            return $http.post(url, post, config);
+        };
+
+        self.updatePost = function (post)
+        {
+            var config = {
+                headers: {
+                    "Authorization": "Bearer " + $rootScope.session.getToken()
+                }
+            };
+            var url    = '../lvl-rest/public/api/v1/post/' + post.id;
+            return $http.patch(url, post, config);
         };
 
         self.listPosts = function (query)

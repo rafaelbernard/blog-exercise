@@ -22,9 +22,9 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $all = $request->query('withDraft');
+        $withDraft = $request->query('withDraft');
 
-        if ($all === 'true')
+        if ($withDraft === 'true')
         {
             if (!$user = JWTAuth::parseToken()->authenticate())
             {
@@ -185,8 +185,9 @@ class PostController extends Controller
             return response()->json(['message' => 'User is not the same that created the post. Fail.'], 401);
         }
 
-        $post->title   = $title;
-        $post->content = $content;
+        $post->title        = $title;
+        $post->content      = $content;
+        $post->is_published = $is_published;
 
         if ($post->update())
         {

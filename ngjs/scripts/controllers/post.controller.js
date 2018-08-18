@@ -26,7 +26,25 @@
         self.prepareAddPost = function ()
         {
             devConsoleLog("prepareAddPost");
-            self._creating = true;
+            self._creating             = true;
+            self._updating             = false;
+            self.postData              = {};
+            self.postData.is_published = 1;
+        };
+
+        self.prepareEditPost = function (post)
+        {
+            devConsoleLog("prepareEditPost");
+            self._creating        = false;
+            self._updating        = true;
+            self.postData         = angular.copy(post);
+            self.postDataOriginal = post;
+        };
+
+        self.resetForm = function ()
+        {
+            self._creating = false;
+            self._updating = false;
             self.postData  = {};
         };
 
@@ -34,9 +52,6 @@
         {
             //devConsoleLog(self.postData);
             self.requestInProgress = true;
-
-            // @todo fix
-            self.postData.is_published = 1;
 
             postService.createPost(self.postData)
                 .then(
@@ -58,6 +73,43 @@
                         $rootScope.messageError(response.data);
                     }
                 );
+        };
+
+        self.updatePost = function ()
+        {
+            //devConsoleLog(self.postData);
+            self.requestInProgress = true;
+
+            postService.updatePost(self.postData)
+                .then(
+                    function (response)
+                    {
+                        //devConsoleLog(response.data);
+
+                        self._creating         = false;
+                        self._updating         = false;
+                        self.requestInProgress = false;
+                        self.postData          = {};
+                        $rootScope.messageSuccess(response.data.message || "Success");
+
+                        self.listPosts();
+                    })
+                .catch(function (response)
+                    {
+                        self.requestInProgress = false;
+                        $rootScope.messageError(response.data);
+                    }
+                );
+        };
+
+        self.savePost = function ()
+        {
+            if (self._updating)
+            {
+                return self.updatePost();
+            }
+
+            return self.createPost();
         };
 
         self.listPosts = function (query)

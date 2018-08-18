@@ -47,7 +47,7 @@
         {
             devConsoleLog("sessao._recoverLocalStorage");
             var localStorage = localStorageService.get('user');
-            devConsoleLog(localStorage);
+            //devConsoleLog(localStorage);
 
             if (localStorage)
             {
@@ -68,6 +68,7 @@
         {
             devConsoleLog("sessao.var.validLocalStorage");
 
+            // @todo implement front-end token expiration
             return true;
 
             if (localStorage._login && localStorage._login.createdat)

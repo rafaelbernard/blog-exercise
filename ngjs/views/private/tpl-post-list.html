@@ -10,7 +10,7 @@
             </button>
             <!--<button class="btn btn-sm btn-secondary" data-ng-click="postController.listPublishedPosts()">-->
             <button class="btn btn-sm btn-secondary" data-ng-click="postController.listPosts({ 'withDraft': 'true'})">
-                <i class="fas fa-list-alt"></i> With draft
+                <i class="fas fa-sync-alt"></i> With draft
             </button>
             <button class="btn btn-sm btn-primary" data-ng-click="postController.prepareAddPost()">
                 <i class="fas fa-plus"></i>
@@ -21,10 +21,27 @@
     <div data-ng-show="postController._creating || postController._updating" data-ng-include="'views/private/frm-post.html'"></div>
 
     <div class="p-2" data-ng-repeat="post in postController.postList">
-        <section>
+        <section data-ng-class="{font-italic: !is_published}">
             <h1 class="h4">
                 <a data-ng-href="post/{{post.id}}">{{post.title}}</a>
             </h1>
+            <div>
+                <span data-ng-if="post.is_published">Published</span>
+                <span data-ng-if="!post.is_published">Draft</span>
+            </div>
+            <div>
+                <button
+                        data-ng-click="postController.prepareEditPost(post)"
+                        class="btn btn-outline-primary">
+                    Edit
+                </button>
+
+                <a data-ng-href="./post/{{post.id}}" target="_blank"
+                   data-ng-show="post.is_published"
+                   class="btn btn-outline-success">
+                    View
+                </a>
+            </div>
         </section>
 
         <hr>
