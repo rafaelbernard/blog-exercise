@@ -48,12 +48,17 @@
             devConsoleLog($rootScope.session);
 
             var config = {
-                cache: true,
-                headers: {
+                cache: true
+            };
+
+            if ($rootScope.session.getToken())
+            {
+                config.headers = {
                     "Authorization": "Bearer " + ($rootScope.session.getToken() || "")
                 }
-            };
-            var url    = '../lvl-rest/public/api/v1/post/' + id;
+            }
+
+            var url = '../lvl-rest/public/api/v1/post/' + id;
             return $http.get(url, config);
         };
 
