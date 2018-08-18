@@ -77,7 +77,7 @@
             {
                 config.headers = {
                     "Authorization": "Bearer " + ($rootScope.session.getToken() || "")
-                }
+                };
             }
 
             var url = '../lvl-rest/public/api/v1/post/' + id;

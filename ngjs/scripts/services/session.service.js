@@ -80,8 +80,8 @@
                  * convert to ms
                  * @type {number}
                  */
-                var milissecondsDateNowTimezoneOffset    = (_DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES * 60 * 1000);
-                var milissegundosDateAgoraComOffset      = (_DATE_NOW.getTime() - milissecondsDateNowTimezoneOffset);
+                var millisecondsDateNowTimezoneOffset    = (_DATE_NOW_TIMEZONE_OFFSET_IN_MINUTES * 60 * 1000);
+                var millisecondsDateNowWithOffset        = (_DATE_NOW.getTime() - millisecondsDateNowTimezoneOffset);
 
                 var _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE  = 60;
                 //devConsoleLog("_MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE: " + _MINUTOS_VALIDADE_DADOS_LOCAL_STORAGE);
@@ -89,7 +89,7 @@
                 var milissegundosSessaoLocalStorage        = timestampToDateObjectFilter(localStorage._login.createdat).getTime();
                 //devConsoleLog("localStorage._login.inclusao: " + localStorage._login.inclusao);
 
-                if ((milissegundosDateAgoraComOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage)
+                if ((millisecondsDateNowWithOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage)
                 {
                     //devConsoleLog("valida");
                     // renovando?

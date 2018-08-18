@@ -2,14 +2,10 @@
 
 namespace App;
 
-//use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class PostMysql extends Model
 {
-    protected $connection = 'mongodb';
-    protected $collection = 'posts';
-
     protected $fillable = ['title', 'content', 'is_published', 'user_id'];
 
     public function user()

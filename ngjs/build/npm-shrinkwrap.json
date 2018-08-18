@@ -69,11 +69,6 @@
       "from": "angular-sanitize@latest",
       "resolved": "https://registry.npmjs.org/angular-sanitize/-/angular-sanitize-1.7.3.tgz"
     },
-    "angular-ui-mask": {
-      "version": "1.8.7",
-      "from": "angular-ui-mask@1.8.7",
-      "resolved": "https://registry.npmjs.org/angular-ui-mask/-/angular-ui-mask-1.8.7.tgz"
-    },
     "ansi-colors": {
       "version": "1.1.0",
       "from": "ansi-colors@>=1.0.1 <2.0.0",
