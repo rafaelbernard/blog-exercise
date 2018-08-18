@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use JWTAuth;
 
@@ -39,10 +40,10 @@ class PostController extends Controller
 
         foreach ($posts as $post)
         {
-            //$post->user()->find
+            $post->user = User::where('id', $post->user_id)->first();
 
             $post->view_post = [
-                'href'   => "api/v1/post/{$post->id}",
+                'href'   => "api/v1/post/{$post->_id}",
                 'method' => 'GET'
             ];
         }
@@ -93,7 +94,7 @@ class PostController extends Controller
             $post->user()->associate($user_id);
 
             $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->id,
+                'href'   => 'api/v1/post/' . $post->_id,
                 'method' => 'GET'
             ];
 
@@ -120,28 +121,22 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with('user')->where('id', $id)->first();
+        $post = Post::where('_id', $id)->first();
 
         if (!$post)
         {
             return response()->json(['message' => 'Post not found'], 404);
         }
 
+        $post->user = User::where('id', $post->user_id)->first();
+
         if (!$post->is_published)
         {
-//            try
-//            {
-//                JWTAuth::parseToken()->authenticate();
-//            } catch (\Exception $e)
-//            {
-//                return response()->json(['message' => 'Post not found'], 404);
-//            }
-
             return response()->json(['message' => 'Post not found'], 401);
         }
 
         $post->view_post = [
-            'href'   => "api/v1/post/{$post->id}",
+            'href'   => "api/v1/post/{$post->_id}",
             'method' => 'GET'
         ];
 
@@ -176,7 +171,6 @@ class PostController extends Controller
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
-        $user_id      = $user->id;
 
         $post = Post::with('user')->findOrFail($id);
 
@@ -189,7 +183,7 @@ class PostController extends Controller
             //$post->user()->associate($user_id);
 
             $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->id,
+                'href'   => 'api/v1/post/' . $post->_id,
                 'method' => 'GET'
             ];
 

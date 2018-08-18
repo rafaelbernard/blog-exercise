@@ -23,7 +23,7 @@
     <div class="p-2" data-ng-repeat="post in postController.postList">
         <section data-ng-class="{'font-italic muted': !post.is_published}">
             <h1 class="h4">
-                <a data-ng-href="post/{{post.id}}">{{post.title}}</a>
+                <a data-ng-href="post/{{post._id}}">{{post.title}}</a>
             </h1>
             <div>
                 <p>- by {{post.user_id}}</p>
