@@ -129,11 +129,18 @@ class PostController extends Controller
 
         if (!$post->is_published)
         {
-            $this->middleware('jwt.auth');
+            try
+            {
+                //$this->middleware('jwt.auth');
+                JWTAuth::parseToken()->authenticate();
+            } catch (\Exception $e)
+            {
+                return response()->json(['message' => 'Post not found'], 404);
+            }
 
             if (!JWTAuth::parseToken()->authenticate())
             {
-                return response()->json(['message' => 'Post not found'], 404);
+                return response()->json(['message' => 'Post not found'], 401);
             }
         }
 
