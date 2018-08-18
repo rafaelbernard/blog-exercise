@@ -147,30 +147,37 @@
                         $rootScope.textoAlert  = texto;
                     };
 
-                    $rootScope.messageError = function (texto, dados, status)
+                    $rootScope.messageError = function (data, dados, status)
                     {
-                        if (!texto)
+                        if (!data)
                         {
-                            texto = 'Erro!';
+                            data = 'Erro!';
                         }
                         if (dados)
                         {
-                            texto += ' | Dados: ' + dados;
+                            data += ' | Dados: ' + dados;
                         }
                         if (status)
                         {
-                            texto += ' | Status: ' + status;
+                            data += ' | Status: ' + status;
                         }
 
-                        // if (texto.message)
-                        // {
-                        //     var original = texto;
-                        //     var message  = texto.message;
-                        //     texto        = message + "\n" + original;
-                        // }
+                        if (data.message && data.exception)
+                        {
+                            data = data.message;
+                            if (data === "Token expired")
+                            {
+                                $location.path('/login');
+                            }
+                        }
+
+                        if (data.message && !data.errors)
+                        {
+                            data = data.message;
+                        }
 
                         $rootScope.classeAlert = 'danger';
-                        $rootScope.textoAlert  = texto;
+                        $rootScope.textoAlert  = data;
                     };
 
                     $rootScope.cleanSessionData = function ()
