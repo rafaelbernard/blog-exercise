@@ -21,6 +21,17 @@
             return $http.post(url, post, config);
         };
 
+        self.deletePost = function (id)
+        {
+            var config = {
+                headers: {
+                    "Authorization": "Bearer " + $rootScope.session.getToken()
+                }
+            };
+            var url    = '../lvl-rest/public/api/v1/post/' + id;
+            return $http.delete(url, config);
+        };
+
         self.updatePost = function (post)
         {
             var config = {

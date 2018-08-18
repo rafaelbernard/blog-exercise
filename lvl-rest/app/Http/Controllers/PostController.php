@@ -221,11 +221,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('user')->findOrFail($id);
 
         if (!$user = JWTAuth::parseToken()->authenticate())
         {
             return response()->json(['message' => 'User not found'], 404);
+        }
+
+        if (!$post->user()->where('users.id', $user->id)->first())
+        {
+            return response()->json(['message' => 'User is not the same that created the post'], 401);
         }
 
         if (!$post->delete())

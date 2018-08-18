@@ -157,6 +157,24 @@
                 );
         };
 
+        self.deletePost = function (id)
+        {
+            //devConsoleLog(self.postData);
+            $rootScope.infoMessage('Deleting...');
+            postService.deletePost(id)
+                .then(
+                    function (response)
+                    {
+                        $rootScope.removeMessage();
+                        self.listPosts();
+                    })
+                .catch(function (response)
+                    {
+                        $rootScope.messageError(response.data);
+                    }
+                );
+        };
+
         self._initListPosts = function ()
         {
             //$rootScope.verifyAuthentication();
