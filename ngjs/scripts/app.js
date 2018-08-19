@@ -255,10 +255,10 @@
                         $rootScope.textoAlert  = texto;
                     };
 
-                    $rootScope.setAuthenticationData = function (dados)
+                    $rootScope.setAuthenticationData = function (data)
                     {
-                        $rootScope.user        = Object.assign(AUTH_MODEL_DATA, dados);
-                        $rootScope.user.objeto = angular.copy(dados);
+                        $rootScope.user        = Object.assign(AUTH_MODEL_DATA, data);
+                        $rootScope.user.ibject = angular.copy(data);
                     };
 
                     $rootScope.isActiveRoute = function (route)
@@ -325,17 +325,8 @@
                         controllerAs: 'publicPostController',
                         label: 'Post'
                     })
-                    .when('/not-found', {
-                        templateUrl: "views/erro404.html",
-                        controller: 'erro404Controller',
-                        controllerAs: 'erro404',
-                        label: 'Erro 404'
-                    })
                     .otherwise({
-                        templateUrl: 'views/erro404.html',
-                        controller: 'erro404Controller',
-                        controllerAs: 'erro404',
-                        label: 'Erro 404'
+                        redirectTo: '/'
                     });
 
                 $locationProvider.html5Mode(true);
