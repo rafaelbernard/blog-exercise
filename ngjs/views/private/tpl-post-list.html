@@ -20,13 +20,13 @@
 
     <div data-ng-show="postController._creating || postController._updating" data-ng-include="'views/private/frm-post.html'"></div>
 
-    <div class="p-2" data-ng-repeat="post in postController.postList">
+    <div class="p-2" data-ng-repeat="post in postController.postList" data-ng-show="!postController._creating && !postController._updating">
         <section data-ng-class="{'font-italic muted': !post.is_published}">
             <h1 class="h4">
                 <a data-ng-href="post/{{post._id}}">{{post.title}}</a>
             </h1>
             <div>
-                <p>- by {{post.user_id}}</p>
+                <p>- by {{post.user.name}}</p>
 
                 <span data-ng-if="post.is_published">Published</span>
                 <span data-ng-if="!post.is_published">Draft</span>

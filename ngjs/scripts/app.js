@@ -9,7 +9,6 @@
             'ngSanitize',
             'ngMaterial',
             'ngResource',
-            'ui.mask',
             'hc.marked',
             //'btford.markdown',
             //'Showdown'
@@ -136,15 +135,15 @@
                         return null;
                     };
 
-                    $rootScope.messageSuccess = function (texto)
+                    $rootScope.messageSuccess = function (text)
                     {
-                        if (!texto)
+                        if (!text)
                         {
-                            texto = 'Sucesso';
+                            text = 'Sucesso';
                         }
 
                         $rootScope.classeAlert = 'success';
-                        $rootScope.textoAlert  = texto;
+                        $rootScope.textoAlert  = text;
                     };
 
                     $rootScope.messageError = function (data, dados, status)
@@ -169,6 +168,12 @@
                             {
                                 $location.path('/login');
                             }
+                        }
+
+                        if (data.error && (data.error === "token_expired" || data.error === "token_not_provided"))
+                        {
+                            data = "Invalid token";
+                            $location.path('/login');
                         }
 
                         if (data.message && !data.errors)
@@ -239,7 +244,7 @@
                         $rootScope.classeAlert = '';
                     };
 
-                    $rootScope.infoMessage = function (texto)
+                    $rootScope.messageInfo = function (texto)
                     {
                         if (!texto)
                         {

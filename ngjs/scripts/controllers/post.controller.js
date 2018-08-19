@@ -122,7 +122,7 @@
                 query = {};
             }
 
-            $rootScope.infoMessage('Loading...');
+            $rootScope.messageInfo('Loading posts...');
             postService.listPosts(query)
                 .then(
                     function (response)
@@ -140,7 +140,7 @@
         self.getPostById = function (id)
         {
             //devConsoleLog(self.postData);
-            $rootScope.infoMessage('Loading...');
+            $rootScope.messageInfo('Loading...');
             postService.getPostById(id)
                 .then(
                     function (response)
@@ -160,10 +160,10 @@
         self.deletePost = function (id)
         {
             //devConsoleLog(self.postData);
-            $rootScope.infoMessage('Deleting...');
+            $rootScope.messageInfo('Deleting...');
             postService.deletePost(id)
                 .then(
-                    function (response)
+                    function ()
                     {
                         $rootScope.removeMessage();
                         self.listPosts();
@@ -184,7 +184,7 @@
         self._initPostSingle = function ()
         {
             self.getPostById($routeParams.id);
-        }
+        };
     }
 
 })();
