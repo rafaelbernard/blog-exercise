@@ -66,9 +66,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'   => 'required',
-            'content' => 'required',
-            //'user_id' => 'required'
+            'title'        => 'required',
+            'content'      => 'required',
+            'is_published' => 'required'
         ]);
 
         if (!$user = JWTAuth::parseToken()->authenticate())
@@ -80,7 +80,13 @@ class PostController extends Controller
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
         $user_id      = $user->id;
-        //$user_id      = $request->input('user_id');
+
+        $post_same_title = Post::where('title', $title)->first();
+
+        if ($post_same_title)
+        {
+            return response()->json(['message' => 'There is already a post with the same title'], 500);
+        }
 
         $post = new Post([
             'title'        => $title,
