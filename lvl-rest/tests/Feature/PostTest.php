@@ -15,6 +15,13 @@ class PostTest extends TestCase
         $response = $this->get('api/v1/post');
 
         $response->assertStatus(200);
+
+        // @todo also create test with fake data
+//        $posts = factory(\App\Post::class, 3)->create();
+//
+//        array_map(function ($post) {
+//            $this->seeJson($post->jsonSerialize());
+//        }, $posts->all());
     }
 
     public function testPostsListWithDraftWithoutToken()
