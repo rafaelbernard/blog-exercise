@@ -42,11 +42,11 @@
                     <i class="fas fa-trash-alt"></i> Delete
                 </button>
 
-                <button type="button" class="btn btn-outline-danger" data-ng-show="deleteIntention" data-ng-click="postController.deletePost(post.id)">
+                <button type="button" class="btn btn-outline-danger" data-ng-show="deleteIntention" data-ng-click="postController.deletePost(post._id)">
                     <i class="fas fa-ok"></i> Confirm?
                 </button>
 
-                <a data-ng-href="./post/{{post.id}}" target="_blank"
+                <a data-ng-href="./post/{{post._id}}" target="_blank"
                    data-ng-show="post.is_published"
                    class="btn btn-outline-success">
                     View

@@ -128,6 +128,7 @@ class PostController extends Controller
             return response()->json(['message' => 'Post not found'], 404);
         }
 
+        //$post->user = User::where('id', $post->user_id)->first();
         $post->user = User::where('id', $post->user_id)->first();
 
         if (!$post->is_published)
