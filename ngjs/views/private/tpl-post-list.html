@@ -26,7 +26,7 @@
                 <a data-ng-href="post/{{post._id}}">{{post.title}}</a>
             </h1>
             <div>
-                <p>- by {{post.user_id}}</p>
+                <p>- by {{post.user.name}}</p>
 
                 <span data-ng-if="post.is_published">Published</span>
                 <span data-ng-if="!post.is_published">Draft</span>

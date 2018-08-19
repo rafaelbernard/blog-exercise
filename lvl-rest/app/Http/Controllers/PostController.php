@@ -32,15 +32,15 @@ class PostController extends Controller
                 return response()->json(['message' => 'You must be logged in'], 404);
             }
 
-            $posts = Post::all()->sortBy('updated_at');
+            $posts = Post::with('user')->get()->sortBy('updated_at');
         } else
         {
-            $posts = Post::all()->where('is_published', 1)->sortBy('updated_at');
+            $posts = Post::with('user')->get()->where('is_published', 1)->sortBy('updated_at');
         }
 
         foreach ($posts as $post)
         {
-            $post->user = User::where('id', $post->user_id)->first();
+            //$post->user = User::where('id', $post->user_id)->first();
 
             $post->view_post = [
                 'href'   => "api/v1/post/{$post->_id}",
@@ -121,15 +121,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('_id', $id)->first();
+        $post = Post::where('_id', $id)->with('user')->first();
 
         if (!$post)
         {
             return response()->json(['message' => 'Post not found'], 404);
         }
-
-        //$post->user = User::where('id', $post->user_id)->first();
-        $post->user()->where('id', $post->user_id)->first();
 
         if (!$post->is_published)
         {

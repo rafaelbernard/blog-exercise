@@ -16,4 +16,11 @@ class PostTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testPostsListWithDraftWithoutToken()
+    {
+        $response = $this->get('api/v1/post?withDraft=true');
+
+        $response->assertStatus(500);
+    }
 }
