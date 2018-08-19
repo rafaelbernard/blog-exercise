@@ -8,8 +8,8 @@
 
     <footer>
         <em>
-            Created at: {{publicPostController.postSingle.created_at | date:'dMY'}} |
-            Updated at: {{publicPostController.postSingle.updated_at | date:'dMY'}}
+            Created at: {{publicPostController.postSingle.created_at | date:format:'dd-MM-YYYY HH:mm'}} |
+            Updated at: {{publicPostController.postSingle.updated_at | date:format:'dd-MM-YYYY HH:mm'}}
         </em>
     </footer>
 
