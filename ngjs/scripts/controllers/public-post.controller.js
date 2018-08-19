@@ -73,7 +73,7 @@
         {
             devConsoleLog("_initPostSingle");
             self.getPostById($routeParams.id);
-        }
+        };
     }
 
 })();

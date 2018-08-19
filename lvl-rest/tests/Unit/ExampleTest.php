@@ -14,6 +14,12 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        $this->assertTrue(TRUE);
+    }
+
+    public function testPostsList()
+    {
+        $this->get('v1/post')
+            ->assertResponseOk();
     }
 }

@@ -6,12 +6,10 @@
 
     UserController.$inject = [
         "$rootScope",
-        'UserService',
-        "ErrorHandlerService",
-        "PublicService"
+        'UserService'
     ];
 
-    function UserController($rootScope, userService, errorHandler, PublicService)
+    function UserController($rootScope, userService)
     {
         //$rootScope.verifyAuthentication();
 
@@ -79,7 +77,7 @@
         self._initListUsers = function ()
         {
             self.listUsers();
-        }
+        };
     }
 
 })();

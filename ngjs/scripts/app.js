@@ -9,7 +9,6 @@
             'ngSanitize',
             'ngMaterial',
             'ngResource',
-            'ui.mask',
             'hc.marked',
             //'btford.markdown',
             //'Showdown'
