@@ -129,7 +129,7 @@ class PostController extends Controller
         }
 
         //$post->user = User::where('id', $post->user_id)->first();
-        $post->user = User::where('id', $post->user_id)->first();
+        $post->user()->where('id', $post->user_id)->first();
 
         if (!$post->is_published)
         {

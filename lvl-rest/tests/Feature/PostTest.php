@@ -8,13 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PostTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+
+
+    public function testPostsList()
     {
-        $this->assertTrue(true);
+        $response = $this->get('api/v1/post');
+
+        $response->assertStatus(200);
     }
 }
