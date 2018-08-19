@@ -1,0 +1,15 @@
+<div class="container" data-ng-init="publicPostController._init()">
+    <!--<h1>Blog - Figured Exercise Challenge</h1>-->
+
+    <div class="p-2" data-ng-repeat="post in publicPostController.postList">
+        <section>
+            <h1 class="h4">
+                <a data-ng-href="post/{{post._id}}">{{post.title}}</a>
+            </h1>
+            <p><em>- by <strong>{{post.user.name}}</strong></em></p>
+        </section>
+
+        <hr>
+    </div>
+
+</div>

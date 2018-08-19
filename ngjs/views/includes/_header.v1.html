@@ -1,0 +1,26 @@
+<header class="header_app">
+
+    <div data-ng-if="$root.session.getUser()" class="row">
+        <div class="col-8">
+            <a data-ng-href="admin/post">Posts</a> / <a data-ng-href="admin/user">Users</a>
+        </div>
+        <div class="col-4 text-right">
+            <a href="" data-ng-click="$root.exit()">Logoff</a>
+        </div>
+    </div>
+
+    <!--<div class="container" data-ng-if="$root.sessao">-->
+    <!--<div class="row">-->
+    <!--<div class="col-12">-->
+    <!--<span class="logo"></span>-->
+    <!--<div class="sair">-->
+    <!--<a href="" data-ng-click="$root.sair()"><span></span>Sair</a>-->
+    <!--</div>-->
+    <!--<div class="ola">-->
+    <!--Hello, <span>{{$root.sessao.user.name}}</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+</header>

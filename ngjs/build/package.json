@@ -1,0 +1,46 @@
+{
+  "name": "figured_blog_exercise",
+  "version": "0.0.1",
+  "repository": "https://github.com/icons4u/AcheCPVColaborador",
+  "dependencies": {
+    "angular": "^1.7.3",
+    "angular-animate": "^1.7.3",
+    "angular-aria": "^1.7.3",
+    "angular-bootstrap": "^0.12.2",
+    "angular-local-storage": "^0.7.1",
+    "angular-marked": "https://registry.npmjs.org/angular-marked/-/angular-marked-1.2.2.tgz",
+    "angular-material": "^1.1.10",
+    "angular-messages": "^1.7.3",
+    "angular-resource": "^1.7.3",
+    "angular-route": "^1.7.3",
+    "angular-sanitize": "^1.7.3",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4",
+    "underscore": "^1.9.1"
+  },
+  "scripts": {
+    "start": "npm install && gulp",
+    "dev": "npm prune && npm install && gulp watch",
+    "publish": "npm prune && npm install && gulp",
+    "publish-update": "npm install && npm update && gulp"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.1.tgz",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-expect-file": "0.0.7",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "https://registry.npmjs.org/gulp-jshint/-/gulp-jshint-2.1.0.tgz",
+    "gulp-livereload": "https://registry.npmjs.org/gulp-livereload/-/gulp-livereload-3.8.1.tgz",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "https://registry.npmjs.org/gulp-rename/-/gulp-rename-1.2.2.tgz",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.8.tgz",
+    "jshint": "https://registry.npmjs.org/jshint/-/jshint-2.9.5.tgz",
+    "npm-shrinkwrap": "^6.1.0"
+  }
+}

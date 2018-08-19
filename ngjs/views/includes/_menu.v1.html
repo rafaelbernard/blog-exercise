@@ -1,0 +1,22 @@
+<div class="area_menu">
+    <div class="row">    
+        <div class="container">
+            <!--Coladorador-->
+            <ul class="links_menu">
+                <li class="inicio" ng-class="{active:$root.isActiveRoute('inicial/colaborador')}"><a data-ng-href="/inicial/colaborador"><span></span>Home</a></li>
+                <li class="farmacias" ng-class="{active:$root.isActiveRoute('farmacia/convite'), desativado:!$root.sessao.usuario.piloto}" data-ng-show="$root.sessao.usuario.piloto"><a data-ng-href="/farmacia/convite"><span></span>Farmácias</a></li>
+                <li class="farmacias" ng-class="{active:$root.isActiveRoute('farmacia/convite'), desativado:!$root.sessao.usuario.piloto}" data-ng-hide="$root.sessao.usuario.piloto"><a data-ng-href=""><span></span>Farmácias</a></li>
+                <!-- <li class="relatorios" ng-class="{active:$root.isActiveRoute('relatorios')}"><a data-ng-href="/relatorios"><span></span>Relatórios</a></li> -->
+                <li class="recados" ng-class="{active:$root.isActiveRoute('mensagens')}"><a data-ng-href="/mensagens"><span></span>Recados</a></li>
+                <li class="cadastropaciente" ng-class="{active:$root.isActiveRoute('cadastro-paciente')}"><a data-ng-href="/cadastro-paciente"><span></span>Cadastro Pacientes</a></li>
+                <li class="produtos" ng-class="{active:$root.isActiveRoute('produtos-participantes')}"><a data-ng-href="/produtos-participantes"><span></span>Produtos</a></li>
+                <li class="cuidador" ng-class="{active:$root.isActiveRoute('cuidador')}"><a data-ng-href="/cuidador"><span></span>Cuidador</a></li>
+                <li class="institucional" ng-class="{active:$root.isActiveRoute('programa')}"><a data-ng-href="/programa"><span></span>Institucional</a></li>
+                <!-- <li class="promocional desativado" ng-class="{active:$root.isActiveRoute('materiais-promocionais')}"><a data-ng-href="/materiais-promocionais"><span></span>Promocional</a></li> -->
+                <li class="promocional desativado" ng-class="{active:$root.isActiveRoute('materiais-promocionais')}"><a data-ng-href=""><span></span>Promocional</a></li>
+                <li class="saudavelsaber" ng-class="{active:$root.isActiveRoute('saudavel-saber')}"><a data-ng-href="/saudavel-saber"><span></span>Saudável Saber</a></li>
+                <li class="faq" ng-class="{active:$root.isActiveRoute('faq')}"><a data-ng-href="/faq"><span></span>FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>    

@@ -1,0 +1,12 @@
+{
+  "name": "figured_blog_exercise",
+  "version": "0.0.1",
+  "scripts": {
+    "install": "cd ngjs/build && npm install",
+    "uninstall": "cd build && npm uninstall",
+    "start": "cd build && npm start",
+    "dev": "cd lvl-rest && php composer.phar install && cd ../ngjs/build && npm run-script dev",
+    "publish": "cd lvl-rest && php composer.phar install && cd ../ngjs/build && npm run-script publish"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR" data-ng-app="app">
+<head>
+
+    <base href="/ngjs/">
+
+    <meta name="fragment" content="!">
+
+    <style type="text/css">
+        [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ $root.seo.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Figured - Blog Exercise</title>
+
+    <link rel="stylesheet" href="build/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <!--<link rel="stylesheet" href="dist/main.min.css">-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+</head>
+<body class="bg-secondary">
+
+<div class="containerl-fluid bg-secondary p-2">
+    <div class="container bg-light ng-cloak">
+
+        <div data-ng-include src="'views/includes/_header.v1.html'"></div>
+
+        <h1>Blog - Figured Exercise Challenge</h1>
+
+        <hr>
+
+        <section class="container-fluid" style="margin-top: 20px">
+            <div data-ng-include data-src="'views/includes/div-message.html'"></div>
+        </section>
+
+        <div data-ng-view></div>
+
+        <div data-ng-include src="'views/includes/_footer.v1.html'"></div>
+
+    </div>
+</div>
+
+<script src="dist/assets/js/vendor.min.js"></script>
+<script src="scripts/util.js"></script>
+<script src="scripts/app.js"></script>
+<script src="dist/assets/js/main.min.js"></script>
+
+</body>
+</html>

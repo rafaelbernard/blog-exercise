@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6 center-block">
+
+            <form data-ng-submit="loginController.loginV1(loginController.loginData)">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                <div class="form-group">
+                    <label class="text-left">E-mail</label>
+                    <input type="email" name="email" class="form-control" autofocus required data-ng-model="loginController.loginData.email">
+                </div>
+
+                <div class="form-group">
+                    <label class="">Password</label>
+                    <input type="password" name="password" class="form-control" required data-ng-model="loginController.loginData.password">
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">
+                        Sign-in
+                    </button>
+
+                    <!-- loading -->
+                    <md-progress-circular class="progress_custom md-accent md-hue-1 loading_cep" md-diameter="20" md-mode="indeterminate" data-ng-show="loginController.requestInProgress"></md-progress-circular>
+                </div>
+
+            </form>
+
+            <!--<div><a data-ng-href="/">Back</a></div>-->
+
+        </div>
+
+    </div>
+    <!-- /row -->
+</div>
+
