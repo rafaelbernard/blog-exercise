@@ -21,4 +21,9 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeOfUser($query, $userId)
+    {
+        return $query->where('user_id', $userId);
+    }
 }
