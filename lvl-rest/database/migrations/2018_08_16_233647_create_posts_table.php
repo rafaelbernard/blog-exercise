@@ -17,14 +17,23 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('title')->unique();
-            $table->text('content');
-            $table->integer('user_id');
-            $table->boolean('is_published');
-        });
+//        Schema::create('posts', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->timestamps();
+//            $table->string('title')->unique();
+//            $table->text('content');
+//            $table->integer('user_id');
+//            $table->boolean('is_published');
+//        });
+        Schema::connection($this->connection)
+            ->table('posts', function (Blueprint $table) {
+//                $table->increments('id');
+//                $table->timestamps();
+//                $table->string('title')->unique();
+//                $table->text('content');
+//                $table->integer('user_id');
+//                $table->boolean('is_published');
+            });
     }
 
     /**
@@ -34,6 +43,13 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+//        Schema::connection($this->connection)
+//            ->dropIfExists('posts');
+
+        Schema::connection($this->connection)
+            ->table('posts', function (Blueprint $collection)
+            {
+                $collection->drop();
+            });
     }
 }
