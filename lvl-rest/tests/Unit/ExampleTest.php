@@ -17,9 +17,9 @@ class ExampleTest extends TestCase
         $this->assertTrue(TRUE);
     }
 
-    public function testPostsList()
-    {
-        $this->get('v1/post')
-            ->assertResponseOk();
-    }
+//    public function testPostsList()
+//    {
+//        $this->get('v1/post')
+//            ->assertResponseOk();
+//    }
 }
