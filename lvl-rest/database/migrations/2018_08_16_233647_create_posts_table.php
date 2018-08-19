@@ -26,7 +26,7 @@ class CreatePostsTable extends Migration
 //            $table->boolean('is_published');
 //        });
         Schema::connection($this->connection)
-            ->create('posts', function (Blueprint $table) {
+            ->table('posts', function (Blueprint $table) {
 //                $table->increments('id');
 //                $table->timestamps();
 //                $table->string('title')->unique();
