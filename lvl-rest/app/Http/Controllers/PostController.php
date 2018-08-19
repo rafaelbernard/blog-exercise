@@ -178,6 +178,13 @@ class PostController extends Controller
 
         $post = Post::with('user')->findOrFail($id);
 
+        $post_same_title = Post::where('title', $title)->where('_id', '!=', $id)->first();
+
+        if ($post_same_title)
+        {
+            return response()->json(['message' => 'There is already a post with the same title'], 500);
+        }
+
         $post->title        = $title;
         $post->content      = $content;
         $post->is_published = $is_published;

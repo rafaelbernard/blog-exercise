@@ -122,7 +122,7 @@
                 query = {};
             }
 
-            $rootScope.infoMessage('Loading...');
+            $rootScope.infoMessage('Loading posts...');
             postService.listPosts(query)
                 .then(
                     function (response)
@@ -184,7 +184,7 @@
         self._initPostSingle = function ()
         {
             self.getPostById($routeParams.id);
-        }
+        };
     }
 
 })();
