@@ -43,7 +43,13 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+//        Schema::connection($this->connection)
+//            ->dropIfExists('posts');
+
         Schema::connection($this->connection)
-            ->dropIfExists('posts');
+            ->table('posts', function (Blueprint $collection)
+            {
+                $collection->drop();
+            });
     }
 }
