@@ -40,8 +40,6 @@ class PostController extends Controller
 
         foreach ($posts as $post)
         {
-            //$post->user = User::where('id', $post->user_id)->first();
-
             $post->view_post = [
                 'href'   => "api/v1/post/{$post->_id}",
                 'method' => 'GET'

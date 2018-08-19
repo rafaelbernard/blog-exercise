@@ -27,7 +27,7 @@
         self.listPublishedPosts = function ()
         {
             //devConsoleLog(self.postData);
-            $rootScope.infoMessage('Loading...');
+            $rootScope.messageInfo('Loading...');
             postService.listPublishedPosts(self.postData)
                 .then(
                     function (response)
@@ -47,7 +47,7 @@
         self.getPostById = function (id)
         {
             //devConsoleLog(self.postData);
-            $rootScope.infoMessage('Loading...');
+            $rootScope.messageInfo('Loading...');
             postService.getPostById(id)
                 .then(
                     function (response)

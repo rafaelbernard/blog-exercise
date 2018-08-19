@@ -135,15 +135,15 @@
                         return null;
                     };
 
-                    $rootScope.messageSuccess = function (texto)
+                    $rootScope.messageSuccess = function (text)
                     {
-                        if (!texto)
+                        if (!text)
                         {
-                            texto = 'Sucesso';
+                            text = 'Sucesso';
                         }
 
                         $rootScope.classeAlert = 'success';
-                        $rootScope.textoAlert  = texto;
+                        $rootScope.textoAlert  = text;
                     };
 
                     $rootScope.messageError = function (data, dados, status)
@@ -170,9 +170,9 @@
                             }
                         }
 
-                        if (data.error && data.error === "token_expired")
+                        if (data.error && (data.error === "token_expired" || data.error === "token_not_provided"))
                         {
-                            data = "Token has expired";
+                            data = "Invalid token";
                             $location.path('/login');
                         }
 
@@ -244,7 +244,7 @@
                         $rootScope.classeAlert = '';
                     };
 
-                    $rootScope.infoMessage = function (texto)
+                    $rootScope.messageInfo = function (texto)
                     {
                         if (!texto)
                         {

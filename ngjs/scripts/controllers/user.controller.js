@@ -11,7 +11,7 @@
 
     function UserController($rootScope, userService)
     {
-        //$rootScope.verifyAuthentication();
+        $rootScope.verifyAuthentication();
 
         var self = this;
 
@@ -31,12 +31,11 @@
         {
             //devConsoleLog(self.userData);
             self.requestInProgress = true;
+            $rootScope.messageInfo("Processing...");
             userService.createUser(self.userData)
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
-
                         self._creating         = false;
                         self._updating         = false;
                         self.requestInProgress = false;
@@ -56,7 +55,7 @@
         self.listUsers = function ()
         {
             //devConsoleLog(self.userData);
-            $rootScope.infoMessage('Loading...');
+            $rootScope.messageInfo('Loading...');
             userService.listUsers(self.userData)
                 .then(
                     function (response)

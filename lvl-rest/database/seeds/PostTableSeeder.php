@@ -14,7 +14,7 @@ class PostTableSeeder extends Seeder
     {
         $posts = [
             [
-                'title'        => 'Where To Buy Vinyl In Auckland',
+                'title'        => 'Where To Buy Vinyl In Auckland ' . uniqid(),
                 'content'      => 'Forget about tape players and CD’s, today’s music is all about streaming—or is it? There’s one form of music that’s been making it’s way back onto the scene and we love it. Vinyl (that’s records for you peeps you can’t remember) are those black, flat, round gems that you place on a player and listen as musician’s tune play out in all their scratchy goodness. And so, whether you’re a collector or are simply feeling a touch nostalgic, it’s time to get your hands on some good old, warm-toned vinyl. For the love of the LP, we bring you Auckland’s best vinyl stores. 
 Real Groovy 
 
@@ -59,11 +59,11 @@ Want more?
 
 Image credit: Jamakassi',
                 'is_published' => 1,
-                'user_id'=> 1
+                'user_id'      => 1
             ],
 
             [
-                'title'        => 'The Ultimate Luxury Weekend Escapes From Auckland',
+                'title'        => 'The Ultimate Luxury Weekend Escapes From Auckland ' . uniqid(),
                 'content'      => '![Image](https://tul.imgix.net/content/article/matuka-lodge.jpg)
                 
                 Each and every one of us has our own way of de-stressing and unwinding. Some of us like to treat ourselves to some retail therapy whereas some of us are perfectly content with a pint of ice-cream and a spoon. Although those do the trick most of the time, there are times when it all gets a bit too much and you just need to get away from the madness. A weekend retreat is what we’re talking about—but not just any retreat, a full-on luxurious escape where you live a couple days like royalty because you deserve it!
@@ -119,11 +119,11 @@ Twizel
 
 Near Mount Cook National Park is the charming little town of Twizel, offering the best of New Zealand’s scenery. Twizel is better known for being the on-shoot location for the critically acclaimed blockbuster hit The Lord of the Rings but it’s also a haven for a weekend escape. Matuka Lodge has a north-facing outdoor deck where you can just spend hours marvelling over the beauty our country has to offer under the watchful gaze of the Southern Alps.',
                 'is_published' => 1,
-                'user_id'=> 1
+                'user_id'      => 1
             ],
 
             [
-                'title'        => '8 Awesome Auckland Charities To Get Behind',
+                'title'        => '8 Awesome Auckland Charities To Get Behind ' . uniqid(),
                 'content'      => '![Image](https://tul.imgix.net/content/article/awesome-auckland-charities-to-get-behind.jpg?auto=format,compress&w=740&h=486&fit=crop&crop=edges)
                 
                 Are you looking to give back to the community? Interested in squeezing in a bit of purpose-searching in your weekly timetable? Or simply want to stretch your tax dollar that little bit further? Then investing your time and/or money into a local Auckland charity is the way to go. Luckily, our city is home to a number of worthwhile charities that are always open to a helping hand or a donation.
@@ -154,18 +154,11 @@ SPCA
 
 We can\'t forget about our furry little friends, they need love and care too! The SPCA dedicate to caring for the animals that are in need. Animals that have no homes, that have been abused and are living with illnesses are taken under the wing of th SPCA to rehabilitate, recover and hopefully find a secure place where they get to call home. There are lots of different ways you could show your support to the animal charity organisation. Donations are one way to help but adopting a pet from one of their shelters around Auckland is the way to go. This way you both have new companions!',
                 'is_published' => 0,
-                'user_id'=> 1
+                'user_id'      => 1
             ]
         ];
 
         array_map(function ($post) {
-//            DB::collection('posts')->insert([
-//                'title'        => $post->title,
-//                'content'      => $post->content,
-//                'user_id'      => 1,
-//                'is_published' => $post->is_published
-//            ]);
-
             App\Post::create($post);
         }, $posts);
     }

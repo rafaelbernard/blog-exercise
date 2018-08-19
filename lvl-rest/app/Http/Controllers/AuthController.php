@@ -44,6 +44,13 @@ class AuthController extends Controller
             return response()->json($response, 404);
         }
 
+        $user_same_email = User::where('email', $email)->first();
+
+        if ($user_same_email)
+        {
+            return response()->json(['message' => 'There is already a user using this e-mail'], 500);
+        }
+
         $user = new User([
             'name'     => $name,
             'email'    => $email,
