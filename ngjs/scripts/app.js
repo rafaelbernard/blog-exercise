@@ -170,6 +170,12 @@
                             }
                         }
 
+                        if (data.error && data.error === "token_expired")
+                        {
+                            data = "Token has expired";
+                            $location.path('/login');
+                        }
+
                         if (data.message && !data.errors)
                         {
                             data = data.message;

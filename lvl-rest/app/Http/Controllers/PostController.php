@@ -32,10 +32,10 @@ class PostController extends Controller
                 return response()->json(['message' => 'You must be logged in'], 404);
             }
 
-            $posts = Post::with('user')->get()->sortBy('updated_at');
+            $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get();
         } else
         {
-            $posts = Post::with('user')->get()->where('is_published', 1)->sortBy('updated_at');
+            $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get()->where('is_published', 1);
         }
 
         foreach ($posts as $post)
