@@ -39,7 +39,7 @@
                     "Authorization": "Bearer " + $rootScope.session.getToken()
                 }
             };
-            var url    = '../lvl-rest/public/api/v1/post/' + post.id;
+            var url    = '../lvl-rest/public/api/v1/post/' + post._id;
             return $http.patch(url, post, config);
         };
 
