@@ -176,6 +176,17 @@
                             $location.path('/login');
                         }
 
+                        if (data.error && (data.error === "user_not_found"))
+                        {
+                            data = "User not found";
+                            $location.path('/login');
+                        }
+
+                        if (data.error && !data.message)
+                        {
+                            data = data.error;
+                        }
+
                         if (data.message && !data.errors)
                         {
                             data = data.message;
@@ -197,11 +208,6 @@
                         //devConsoleLog("$rootScope.isUserLoggedV1");
                         return $rootScope.session.isUserLoggedOrLocalStorageV1();
                     };
-
-                    // $rootScope.verifyLoggedData = function ()
-                    // {
-                    //
-                    // };
 
                     $rootScope.verifyAuthentication = function ()
                     {
