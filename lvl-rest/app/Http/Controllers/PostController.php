@@ -68,15 +68,15 @@ class PostController extends Controller
             'is_published' => 'required'
         ]);
 
-        if (!$user = JWTAuth::parseToken()->authenticate())
-        {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+//        if (!$user = JWTAuth::parseToken()->authenticate())
+//        {
+//            return response()->json(['message' => 'User not found'], 404);
+//        }
 
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
-        $user_id      = $user->id;
+        //$user_id      = $user->id;
 
         $post_same_title = Post::where('title', $title)->first();
 
@@ -89,12 +89,12 @@ class PostController extends Controller
             'title'        => $title,
             'content'      => $content,
             'is_published' => $is_published,
-            'user_id'      => $user_id
+            //'user_id'      => $user_id
         ]);
 
         if ($post->save())
         {
-            $post->user()->associate($user_id);
+            //$post->user()->associate($user_id);
 
             $post->view_post = [
                 'href'   => 'api/v1/post/' . $post->_id,
