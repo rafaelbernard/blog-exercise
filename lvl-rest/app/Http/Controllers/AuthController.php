@@ -86,9 +86,6 @@ class AuthController extends Controller
             'password' => 'required|min:5'
         ]);
 
-        $email    = $request->input('email');
-        $password = $request->input('password');
-
         $credentials = $request->only('email', 'password');
 
         try
@@ -102,7 +99,7 @@ class AuthController extends Controller
             return response()->json(['msg' => 'Could not create token'], 500);
         }
 
-        $user = User::where('email', $email)->firstOrFail();
+        $user = User::where('email', $request->input('email'))->firstOrFail();
 
         $response = [
             'msg'   => 'Success',
@@ -132,13 +129,14 @@ class AuthController extends Controller
         return response()->json($response, 200);
     }
 
-    public function install()
-    {
-        $response = [
-            'msg'     => 'Install allowed',
-            'install' => 'ok'
-        ];
-
-        return response()->json($response, 200);
-    }
+    // @todo app install endpoint
+//    public function install()
+//    {
+//        $response = [
+//            'msg'     => 'Install allowed',
+//            'install' => 'ok'
+//        ];
+//
+//        return response()->json($response, 200);
+//    }
 }
