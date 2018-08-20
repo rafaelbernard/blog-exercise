@@ -30,4 +30,15 @@ class PostTest extends TestCase
 
         $response->assertStatus(500);
     }
+
+    public function testProductCreation()
+    {
+        $post = factory(\App\Post::class)->make();
+        $user = factory(\App\User::class)->make();
+
+        $response = $this->actingAs($user)
+            ->post(route('post.store'), $post->jsonSerialize());
+
+        $response->assertOk();
+    }
 }
