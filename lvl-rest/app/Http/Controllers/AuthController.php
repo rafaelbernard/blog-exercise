@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-//use Tymon\JWTAuth\JWTAuth;
 use JWTAuth;
 
 class AuthController extends Controller
