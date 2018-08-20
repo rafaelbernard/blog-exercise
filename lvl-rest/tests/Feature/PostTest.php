@@ -33,8 +33,8 @@ class PostTest extends TestCase
 
     public function testProductCreation()
     {
+        $user = factory(\App\User::class)->create();
         $post = factory(\App\Post::class)->make();
-        $user = factory(\App\User::class)->make();
 
         $response = $this->actingAs($user)
             ->post(route('post.store'), $post->jsonSerialize());
