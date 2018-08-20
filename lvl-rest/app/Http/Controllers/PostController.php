@@ -68,23 +68,16 @@ class PostController extends Controller
             'is_published' => 'required'
         ]);
 
-//        if (!$user = JWTAuth::parseToken()->authenticate())
-//        {
-//            return response()->json(['message' => 'User not found'], 404);
-//        }
-
-        $user = JWTAuth::parseToken()->authenticate();
-
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        $post_same_title = Post::where('title', $title)->first();
-
-        if ($post_same_title)
+        if (Post::where('title', $title)->first())
         {
             return response()->json(['message' => 'There is already a post with the same title'], 500);
         }
+
+        $user = JWTAuth::parseToken()->authenticate();
 
         $post = new Post([
             'title'        => $title,
@@ -125,16 +118,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('_id', $id)->with('user')->first();
-
-        if (!$post)
-        {
-            return response()->json(['message' => 'Post not found'], 404);
-        }
+        $post = Post::where('_id', $id)->with('user')->firstOrFail();
 
         if (!$post->is_published)
         {
-            return response()->json(['message' => 'Post not found'], 401);
+            return response()->json(['message' => 'Post not found'], 404);
         }
 
         $post->view_post = [
@@ -143,7 +131,7 @@ class PostController extends Controller
         ];
 
         $response = [
-            'message' => 'the_post',
+            'message' => 'Post details',
             'post'    => $post
         ];
 
@@ -165,20 +153,13 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        if (!$user = JWTAuth::parseToken()->authenticate())
-        {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+        $post = Post::with('user')->findOrFail($id);
 
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        $post = Post::with('user')->findOrFail($id);
-
-        $post_same_title = Post::where('title', $title)->where('_id', '!=', $id)->first();
-
-        if ($post_same_title)
+        if (Post::where('title', $title)->where('_id', '!=', $id)->first())
         {
             return response()->json(['message' => 'There is already a post with the same title'], 500);
         }
@@ -189,8 +170,6 @@ class PostController extends Controller
 
         if ($post->update())
         {
-            //$post->user()->associate($user_id);
-
             $post->view_post = [
                 'href'   => 'api/v1/post/' . $post->_id,
                 'method' => 'GET'
@@ -222,10 +201,7 @@ class PostController extends Controller
     {
         $post = Post::with('user')->findOrFail($id);
 
-        if (!$user = JWTAuth::parseToken()->authenticate())
-        {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+        $user = JWTAuth::parseToken()->authenticate();
 
         if (!$post->user()->where('users.id', $user->id)->first())
         {

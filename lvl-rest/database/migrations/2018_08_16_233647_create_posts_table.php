@@ -27,12 +27,6 @@ class CreatePostsTable extends Migration
 //        });
         Schema::connection($this->connection)
             ->table('posts', function (Blueprint $table) {
-//                $table->increments('id');
-//                $table->timestamps();
-//                $table->string('title')->unique();
-//                $table->text('content');
-//                $table->integer('user_id');
-//                $table->boolean('is_published');
             });
     }
 
@@ -44,8 +38,7 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::connection($this->connection)
-            ->table('posts', function (Blueprint $collection)
-            {
+            ->table('posts', function (Blueprint $collection) {
                 $collection->drop();
             });
     }
