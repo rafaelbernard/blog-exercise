@@ -34,4 +34,17 @@ class PostTest extends TestCase
 
         $response->assertStatus(201);
     }
+
+    public function testProductUpdate()
+    {
+        $user = factory(\App\User::class)->make();
+        $post = factory(\App\Post::class)->make();
+
+        $post->name = $post->name . ' ' . str_random(10);
+
+        $response = $this->actingAs($user)
+            ->post(route('post.update'), $post->jsonSerialize());
+
+        $response->assertStatus(200);
+    }
 }
