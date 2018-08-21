@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostDeleteRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Post;
@@ -60,16 +61,12 @@ class PostController extends Controller
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        $user = JWTAuth::parseToken()->authenticate();
-
         $post = new Post([
             'title'        => $title,
             'content'      => $content,
             'is_published' => $is_published,
-            'user_id'      => $user->id
+            'user_id'      => $request->user()->id
         ]);
-
-        $post->user = $post->user()->find($user->id);
 
         if (!$post->save())
         {
@@ -161,16 +158,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy($id, PostDeleteRequest $request)
     {
         $post = Post::with('user')->findOrFail($id);
-
-        $user = JWTAuth::parseToken()->authenticate();
-
-        if (!$post->user()->where('users.id', $user->id)->first())
-        {
-            return response()->json(['message' => 'User is not the same that created the post'], 401);
-        }
 
         if (!$post->delete())
         {

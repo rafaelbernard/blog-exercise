@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostUpdateRequest extends FormRequest
+class PostDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class PostUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return TRUE;
+        return Post::where('user_id', $this->user()->id)->find($this->route('post'));
     }
 
     /**
@@ -25,9 +25,7 @@ class PostUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'        => 'required',
-            'content'      => 'required',
-            'is_published' => 'required'
+            //
         ];
     }
 }

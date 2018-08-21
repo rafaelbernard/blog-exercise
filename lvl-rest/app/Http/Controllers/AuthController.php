@@ -38,21 +38,21 @@ class AuthController extends Controller
             'password' => bcrypt($password)
         ]);
 
-        if ($user->save())
+        if (!$user->save())
         {
             $response = [
-                'message' => 'User created',
-                'user'    => $user
+                'message' => 'An error ocurred while creating the user'
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 422);
         }
 
         $response = [
-            'message' => 'An error ocurred while creating the user'
+            'message' => 'User created',
+            'user'    => $user
         ];
 
-        return response()->json($response, 422);
+        return response()->json($response, 201);
     }
 
     public function signin(UserSigninRequest $request)
