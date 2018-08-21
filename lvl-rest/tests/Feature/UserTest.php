@@ -44,4 +44,13 @@ class UserTest extends TestCase
 
         $response->assertJson(['message' => 'Success'])->assertOk();
     }
+
+    public function testUserStoreWithoutAuth()
+    {
+        $user = factory(\App\User::class)->make();
+
+        $response = $this->post('api/v1/user', $user->jsonSerialize());
+
+        $response->assertStatus(400)->assertSee('token_not_provided');
+    }
 }
