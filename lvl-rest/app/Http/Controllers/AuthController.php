@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSigninRequest;
+use App\Http\Requests\UserStoreRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -20,15 +22,8 @@ class AuthController extends Controller
             ]);
     }
 
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $this->validate($request, [
-            'email'            => 'required|email|unique:users',
-            'name'             => 'required',
-            'password'         => 'required|min:5',
-            'confirm_password' => 'required|min:5'
-        ]);
-
         $email            = $request->input('email');
         $password         = $request->input('password');
         $confirm_password = $request->input('confirm_password');
@@ -40,15 +35,8 @@ class AuthController extends Controller
                 'message' => 'Passwords does not match'
             ];
 
-            return response()->json($response, 404);
+            return response()->json($response, 422);
         }
-
-//        $user_same_email = User::where('email', $email)->first();
-//
-//        if ($user_same_email)
-//        {
-//            return response()->json(['message' => 'There is already a user using this e-mail'], 500);
-//        }
 
         $user = new User([
             'name'     => $name,
@@ -58,12 +46,6 @@ class AuthController extends Controller
 
         if ($user->save())
         {
-            $user->signin = [
-                'href'   => 'api/v1/user/signin',
-                'method' => 'POST',
-                'params' => 'email, password'
-            ];
-
             $response = [
                 'message' => 'User created',
                 'user'    => $user
@@ -73,30 +55,19 @@ class AuthController extends Controller
         }
 
         $response = [
-            'message' => 'An erro ocurred while creating the user'
+            'message' => 'An error ocurred while creating the user'
         ];
 
-        return response()->json($response, 404);
+        return response()->json($response, 422);
     }
 
-    public function signin(Request $request)
+    public function signin(UserSigninRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required|email',
-            'password' => 'required|min:5'
-        ]);
-
         $credentials = $request->only('email', 'password');
 
-        try
+        if (!$token = JWTAuth::attempt($credentials))
         {
-            if (!$token = JWTAuth::attempt($credentials))
-            {
-                return response()->json(['message' => 'Invalid credentials'], 401);
-            }
-        } catch (JWTException $e)
-        {
-            return response()->json(['message' => 'Could not create token'], 500);
+            return response()->json(['message' => 'Invalid credentials'], 403);
         }
 
         $user = User::where('email', $request->input('email'))->firstOrFail();
@@ -113,14 +84,6 @@ class AuthController extends Controller
     {
         $users = User::all();
 
-        foreach ($users as $user)
-        {
-            $user->view_post = [
-                'href'   => "api/v1/user/{$user->id}",
-                'method' => 'GET'
-            ];
-        }
-
         $response = [
             'message' => 'List of users',
             'users'   => $users
@@ -129,14 +92,4 @@ class AuthController extends Controller
         return response()->json($response, 200);
     }
 
-    // @todo app install endpoint
-//    public function install()
-//    {
-//        $response = [
-//            'message'     => 'Install allowed',
-//            'install' => 'ok'
-//        ];
-//
-//        return response()->json($response, 200);
-//    }
 }
