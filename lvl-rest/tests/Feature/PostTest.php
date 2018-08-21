@@ -58,7 +58,7 @@ class PostTest extends TestCase
         $user = \App\User::first();
         $post = \App\Post::first();
 
-        $response = $this->patch('api/v1/post/' . $post->_id, $post->jsonSerialize(), $this->JWTTokenHeaders($user));
+        $response = $this->patch("api/v1/post/{$post->_id}", $post->jsonSerialize(), $this->JWTTokenHeaders($user));
 
         $response->assertStatus(200);
     }
