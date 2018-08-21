@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Validation\ValidationException;
+use JWTAuth;
 
 class PostTest extends TestCase
 {
@@ -23,6 +24,25 @@ class PostTest extends TestCase
         $response = $this->get('api/v1/post?withDraft=true');
 
         $response->assertForbidden()->assertSee('This action is unauthorized.');
+    }
+
+    public function testPostsListWithDraft()
+    {
+        $user = factory(\App\User::class)->make(['email' => 'admin@figured.com', 'password' => 'exercise']);
+
+        $response_user = $this->post('api/v1/user/signin', ['email' => 'admin@figured.com', 'password' => 'exercise']);
+
+        $response_user->assertOk();
+
+        $token = JWTAuth::fromUser($user);
+
+        //$response_user->assertOk();
+
+        $auth_header = 'Bearer '+$token;
+
+        $response = $this->get('api/v1/post?withDraft=true');
+
+        $response->assertStatus(200);
     }
 
     public function testProductStoreWithoutToken()
