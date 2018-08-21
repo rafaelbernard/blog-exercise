@@ -20,17 +20,7 @@ class AuthController extends Controller
     {
         $email            = $request->input('email');
         $password         = $request->input('password');
-        $confirm_password = $request->input('confirm_password');
         $name             = $request->input('name');
-
-        if (!($password === $confirm_password))
-        {
-            $response = [
-                'message' => 'Passwords does not match'
-            ];
-
-            return response()->json($response, 422);
-        }
 
         $user = new User([
             'name'     => $name,

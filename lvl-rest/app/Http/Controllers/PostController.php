@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostDeleteRequest;
+use App\Http\Requests\PostDestroyRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Post;
@@ -158,7 +158,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy($id, PostDeleteRequest $request)
+    public function destroy($id, PostDestroyRequest $request)
     {
         $post = Post::with('user')->findOrFail($id);
 

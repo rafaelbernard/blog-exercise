@@ -13,7 +13,7 @@ class UserStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return TRUE;
     }
 
     /**
@@ -27,7 +27,7 @@ class UserStoreRequest extends FormRequest
             'email'            => 'required|email|unique:users',
             'name'             => 'required',
             'password'         => 'required|min:5',
-            'confirm_password' => 'required|min:5'
+            'confirm_password' => 'required|min:5|same:password'
         ];
     }
 }
