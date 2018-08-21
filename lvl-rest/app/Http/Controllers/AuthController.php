@@ -23,7 +23,7 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email'            => 'required|email',
+            'email'            => 'required|email|unique:users',
             'name'             => 'required',
             'password'         => 'required|min:5',
             'confirm_password' => 'required|min:5'
@@ -37,18 +37,18 @@ class AuthController extends Controller
         if (!($password === $confirm_password))
         {
             $response = [
-                'msg' => 'Passwords does not match'
+                'message' => 'Passwords does not match'
             ];
 
             return response()->json($response, 404);
         }
 
-        $user_same_email = User::where('email', $email)->first();
-
-        if ($user_same_email)
-        {
-            return response()->json(['message' => 'There is already a user using this e-mail'], 500);
-        }
+//        $user_same_email = User::where('email', $email)->first();
+//
+//        if ($user_same_email)
+//        {
+//            return response()->json(['message' => 'There is already a user using this e-mail'], 500);
+//        }
 
         $user = new User([
             'name'     => $name,
@@ -65,15 +65,15 @@ class AuthController extends Controller
             ];
 
             $response = [
-                'msg'  => 'User created',
-                'user' => $user
+                'message' => 'User created',
+                'user'    => $user
             ];
 
             return response()->json($response, 201);
         }
 
         $response = [
-            'msg' => 'An erro ocurred while creating the user'
+            'message' => 'An erro ocurred while creating the user'
         ];
 
         return response()->json($response, 404);
@@ -92,19 +92,19 @@ class AuthController extends Controller
         {
             if (!$token = JWTAuth::attempt($credentials))
             {
-                return response()->json(['msg' => 'Invalid credentials'], 401);
+                return response()->json(['message' => 'Invalid credentials'], 401);
             }
         } catch (JWTException $e)
         {
-            return response()->json(['msg' => 'Could not create token'], 500);
+            return response()->json(['message' => 'Could not create token'], 500);
         }
 
         $user = User::where('email', $request->input('email'))->firstOrFail();
 
         $response = [
-            'msg'   => 'Success',
-            'user'  => $user,
-            'token' => $token];
+            'message' => 'Success',
+            'user'    => $user,
+            'token'   => $token];
 
         return response()->json($response, 200);
     }
@@ -122,8 +122,8 @@ class AuthController extends Controller
         }
 
         $response = [
-            'msg'   => 'List of users',
-            'users' => $users
+            'message' => 'List of users',
+            'users'   => $users
         ];
 
         return response()->json($response, 200);
@@ -133,7 +133,7 @@ class AuthController extends Controller
 //    public function install()
 //    {
 //        $response = [
-//            'msg'     => 'Install allowed',
+//            'message'     => 'Install allowed',
 //            'install' => 'ok'
 //        ];
 //
