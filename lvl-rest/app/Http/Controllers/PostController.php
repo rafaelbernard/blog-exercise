@@ -37,13 +37,13 @@ class PostController extends Controller
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get()->where('is_published', 1);
         }
 
-        foreach ($posts as $post)
-        {
-            $post->view_post = [
-                'href'   => "api/v1/post/{$post->_id}",
-                'method' => 'GET'
-            ];
-        }
+//        foreach ($posts as $post)
+//        {
+//            $post->view_post = [
+//                'href'   => "api/v1/post/{$post->_id}",
+//                'method' => 'GET'
+//            ];
+//        }
 
         $response = [
             'message' => 'List of posts',
@@ -88,26 +88,21 @@ class PostController extends Controller
 
         $post->user = $post->user()->find($user->id);
 
-        if ($post->save())
+        if (!$post->save())
         {
-            $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->_id,
-                'method' => 'GET'
-            ];
-
             $response = [
-                'message' => 'Post created',
-                'post'    => $post
+                'message' => 'An error ocurred while creating the post'
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
 
         $response = [
-            'message' => 'An error ocurred while creating the post'
+            'message' => 'Post created',
+            'post'    => $post
         ];
 
-        return response()->json($response, 404);
+        return response()->json($response, 201);
     }
 
     /**
@@ -118,17 +113,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('_id', $id)->with('user')->firstOrFail();
-
-        if (!$post->is_published)
-        {
-            return response()->json(['message' => 'Post not found'], 404);
-        }
-
-        $post->view_post = [
-            'href'   => "api/v1/post/{$post->_id}",
-            'method' => 'GET'
-        ];
+        $post = Post::with('user')
+            ->where(
+                [
+                    ['_id', $id],
+                    ['is_published', '=', 1]
+                ])
+            ->firstOrFail();
 
         $response = [
             'message' => 'Post details',
@@ -159,7 +150,7 @@ class PostController extends Controller
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        if (Post::where('title', $title)->where('_id', '!=', $id)->first())
+        if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
         {
             return response()->json(['message' => 'There is already a post with the same title'], 500);
         }
@@ -168,26 +159,21 @@ class PostController extends Controller
         $post->content      = $content;
         $post->is_published = $is_published;
 
-        if ($post->update())
+        if (!$post->update())
         {
-            $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->_id,
-                'method' => 'GET'
-            ];
-
             $response = [
-                'message' => 'Post updated',
-                'post'    => $post
+                'message' => 'An error ocurred while updating the post'
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
 
         $response = [
-            'message' => 'An error ocurred while updating the post'
+            'message' => 'Post updated',
+            'post'    => $post
         ];
 
-        return response()->json($response, 404);
+        return response()->json($response, 201);
     }
 
     /**
