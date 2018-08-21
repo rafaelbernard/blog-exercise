@@ -37,14 +37,6 @@ class PostController extends Controller
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get()->where('is_published', 1);
         }
 
-//        foreach ($posts as $post)
-//        {
-//            $post->view_post = [
-//                'href'   => "api/v1/post/{$post->_id}",
-//                'method' => 'GET'
-//            ];
-//        }
-
         $response = [
             'message' => 'List of posts',
             'posts'   => $posts
@@ -173,7 +165,7 @@ class PostController extends Controller
             'post'    => $post
         ];
 
-        return response()->json($response, 201);
+        return response()->json($response, 200);
     }
 
     /**
