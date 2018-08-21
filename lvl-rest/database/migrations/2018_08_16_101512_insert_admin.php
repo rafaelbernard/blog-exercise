@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,9 +19,10 @@ class InsertAdmin extends Migration
             // Insert some stuff
             DB::table('users')->insert(
                 array(
-                    'email'    => 'admin@figured.com',
-                    'password' => bcrypt('exercise'),
-                    'name'     => 'admin'
+                    'email'      => 'admin@figured.com',
+                    'password'   => bcrypt('exercise'),
+                    'name'       => 'admin',
+                    'created_at' => Carbon::now()
                 )
             );
         });

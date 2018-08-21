@@ -37,14 +37,6 @@ class PostController extends Controller
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get()->where('is_published', 1);
         }
 
-        foreach ($posts as $post)
-        {
-            $post->view_post = [
-                'href'   => "api/v1/post/{$post->_id}",
-                'method' => 'GET'
-            ];
-        }
-
         $response = [
             'message' => 'List of posts',
             'posts'   => $posts
@@ -68,52 +60,41 @@ class PostController extends Controller
             'is_published' => 'required'
         ]);
 
-//        if (!$user = JWTAuth::parseToken()->authenticate())
-//        {
-//            return response()->json(['message' => 'User not found'], 404);
-//        }
-
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
-        //$user_id      = $user->id;
 
-        $post_same_title = Post::where('title', $title)->first();
-
-        if ($post_same_title)
+        if (Post::where('title', $title)->first())
         {
             return response()->json(['message' => 'There is already a post with the same title'], 500);
         }
+
+        $user = JWTAuth::parseToken()->authenticate();
 
         $post = new Post([
             'title'        => $title,
             'content'      => $content,
             'is_published' => $is_published,
-            //'user_id'      => $user_id
+            'user_id'      => $user->id
         ]);
 
-        if ($post->save())
+        $post->user = $post->user()->find($user->id);
+
+        if (!$post->save())
         {
-            //$post->user()->associate($user_id);
-
-            $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->_id,
-                'method' => 'GET'
-            ];
-
             $response = [
-                'message' => 'Post created',
-                'post'    => $post
+                'message' => 'An error ocurred while creating the post'
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
 
         $response = [
-            'message' => 'An error ocurred while creating the post'
+            'message' => 'Post created',
+            'post'    => $post
         ];
 
-        return response()->json($response, 404);
+        return response()->json($response, 201);
     }
 
     /**
@@ -124,25 +105,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where('_id', $id)->with('user')->first();
-
-        if (!$post)
-        {
-            return response()->json(['message' => 'Post not found'], 404);
-        }
-
-        if (!$post->is_published)
-        {
-            return response()->json(['message' => 'Post not found'], 401);
-        }
-
-        $post->view_post = [
-            'href'   => "api/v1/post/{$post->_id}",
-            'method' => 'GET'
-        ];
+        $post = Post::with('user')
+            ->where(
+                [
+                    ['_id', $id],
+                    ['is_published', '=', 1]
+                ])
+            ->firstOrFail();
 
         $response = [
-            'message' => 'the_post',
+            'message' => 'Post details',
             'post'    => $post
         ];
 
@@ -164,20 +136,13 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        if (!$user = JWTAuth::parseToken()->authenticate())
-        {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+        $post = Post::with('user')->findOrFail($id);
 
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        $post = Post::with('user')->findOrFail($id);
-
-        $post_same_title = Post::where('title', $title)->where('_id', '!=', $id)->first();
-
-        if ($post_same_title)
+        if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
         {
             return response()->json(['message' => 'There is already a post with the same title'], 500);
         }
@@ -186,28 +151,21 @@ class PostController extends Controller
         $post->content      = $content;
         $post->is_published = $is_published;
 
-        if ($post->update())
+        if (!$post->update())
         {
-            //$post->user()->associate($user_id);
-
-            $post->view_post = [
-                'href'   => 'api/v1/post/' . $post->_id,
-                'method' => 'GET'
-            ];
-
             $response = [
-                'message' => 'Post updated',
-                'post'    => $post
+                'message' => 'An error ocurred while updating the post'
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 404);
         }
 
         $response = [
-            'message' => 'An error ocurred while updating the post'
+            'message' => 'Post updated',
+            'post'    => $post
         ];
 
-        return response()->json($response, 404);
+        return response()->json($response, 200);
     }
 
     /**
@@ -221,10 +179,7 @@ class PostController extends Controller
     {
         $post = Post::with('user')->findOrFail($id);
 
-        if (!$user = JWTAuth::parseToken()->authenticate())
-        {
-            return response()->json(['message' => 'User not found'], 404);
-        }
+        $user = JWTAuth::parseToken()->authenticate();
 
         if (!$post->user()->where('users.id', $user->id)->first())
         {
