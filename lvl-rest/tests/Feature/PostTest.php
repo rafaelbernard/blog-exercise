@@ -21,6 +21,6 @@ class PostTest extends TestCase
     {
         $response = $this->get('api/v1/post?withDraft=true');
 
-        $response->assertStatus(500);
+        $response->assertForbidden()->assertSee("This action is unauthorized.");
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostDestroyRequest;
+use App\Http\Requests\PostIndexRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Post;
@@ -23,17 +24,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(PostIndexRequest $request)
     {
         $withDraft = $request->query('withDraft');
 
-        if ($withDraft === 'true')
+        if ($withDraft && $withDraft === 'true')
         {
-            if (!$user = JWTAuth::parseToken()->authenticate())
-            {
-                return response()->json(['message' => 'You must be logged in'], 403);
-            }
-
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get();
         } else
         {
