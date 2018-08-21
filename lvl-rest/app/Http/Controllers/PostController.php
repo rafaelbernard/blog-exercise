@@ -35,12 +35,7 @@ class PostController extends Controller
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get()->where('is_published', 1);
         }
 
-        $response = [
-            'message' => 'List of posts',
-            'posts'   => $posts
-        ];
-
-        return response()->json($response, 200);
+        return response()->json($posts, 200);
     }
 
 
@@ -65,12 +60,7 @@ class PostController extends Controller
 
         $post->save();
 
-        $response = [
-            'message' => 'Post created',
-            'post'    => $post
-        ];
-
-        return response()->json($response, 201);
+        return response()->json($post, 201);
     }
 
     /**
@@ -89,12 +79,7 @@ class PostController extends Controller
                 ])
             ->firstOrFail();
 
-        $response = [
-            'message' => 'Post details',
-            'post'    => $post
-        ];
-
-        return response()->json($response, 200);
+        return response()->json($post, 200);
     }
 
 
@@ -119,12 +104,7 @@ class PostController extends Controller
 
         $post->update();
 
-        $response = [
-            'message' => 'Post updated',
-            'post'    => $post
-        ];
-
-        return response()->json($response, 200);
+        return response()->json($post, 200);
     }
 
     /**

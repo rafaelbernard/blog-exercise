@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserSigninRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\User;
-use Illuminate\Http\Request;
-use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
 
 class AuthController extends Controller
@@ -30,12 +28,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        $response = [
-            'message' => 'User created',
-            'user'    => $user
-        ];
-
-        return response()->json($response, 201);
+        return response()->json($user, 201);
     }
 
     public function signin(UserSigninRequest $request)
@@ -61,12 +54,7 @@ class AuthController extends Controller
     {
         $users = User::all();
 
-        $response = [
-            'message' => 'List of users',
-            'users'   => $users
-        ];
-
-        return response()->json($response, 200);
+        return response()->json($users, 200);
     }
 
 }

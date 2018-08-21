@@ -34,13 +34,13 @@
             $rootScope.messageInfo("Processing...");
             userService.createUser(self.userData)
                 .then(
-                    function (response)
+                    function ()
                     {
                         self._creating         = false;
                         self._updating         = false;
                         self.requestInProgress = false;
                         self.userData          = {};
-                        $rootScope.messageSuccess(response.data.msg || "Success");
+                        $rootScope.messageSuccess("Success");
 
                         self.listUsers();
                     })
@@ -60,8 +60,9 @@
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
+                        //devConsoleLog(response.data);
 
+                        //self.userList = response.data;
                         self.userList = response.data.users;
                         $rootScope.removeMessage();
                     })

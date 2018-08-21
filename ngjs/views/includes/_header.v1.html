@@ -5,6 +5,7 @@
             <a data-ng-href="admin/post">Posts</a> / <a data-ng-href="admin/user">Users</a>
         </div>
         <div class="col-4 text-right">
+            [{{$root.session.getUser().email}}]
             <a href="" data-ng-click="$root.exit()">Logoff</a>
         </div>
     </div>
