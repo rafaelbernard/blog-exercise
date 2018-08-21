@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use JWTAuth;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -55,7 +56,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'        => 'required',
+            'title'        => 'required|unique:mongodb.posts',
             'content'      => 'required',
             'is_published' => 'required'
         ]);
