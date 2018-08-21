@@ -30,7 +30,7 @@ class PostController extends Controller
         {
             if (!$user = JWTAuth::parseToken()->authenticate())
             {
-                return response()->json(['message' => 'You must be logged in'], 404);
+                return response()->json(['message' => 'You must be logged in'], 403);
             }
 
             $posts = Post::with('user')->orderBy('updated_at', 'DESC')->get();
@@ -143,7 +143,7 @@ class PostController extends Controller
                 'message' => 'An error ocurred while updating the post'
             ];
 
-            return response()->json($response, 404);
+            return response()->json($response, 422);
         }
 
         $response = [
@@ -174,7 +174,7 @@ class PostController extends Controller
 
         if (!$post->delete())
         {
-            return response()->json(['message' => 'Deleting failed'], 404);
+            return response()->json(['message' => 'Deleting failed'], 422);
         }
 
         $response = [
