@@ -33,4 +33,13 @@ class PostTest extends TestCase
 
         $response->assertStatus(400)->assertSee('token_not_provided');
     }
+
+    public function testProductUpdateWithoutToken()
+    {
+        $post = \App\Post::first();
+
+        $response = $this->patch("api/v1/post/{$post->_id}", $post->jsonSerialize());
+
+        $response->assertStatus(400)->assertSee('token_not_provided');
+    }
 }

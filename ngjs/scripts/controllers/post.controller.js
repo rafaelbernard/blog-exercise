@@ -115,7 +115,6 @@
         self.listPosts = function (query)
         {
             //devConsoleLog(self.postData);
-            //devConsoleLog(query);
 
             if (!query)
             {
@@ -127,7 +126,8 @@
                 .then(
                     function (response)
                     {
-                        self.postList = response.data.posts;
+                        //self.postList = response.data.posts;
+                        self.postList = response.data;
                         $rootScope.removeMessage();
                     })
                 .catch(function (response)
@@ -145,9 +145,8 @@
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
-
-                        self.postSingle = response.data.post;
+                        //self.postSingle = response.data.post;
+                        self.postSingle = response.data;
                         $rootScope.removeMessage();
                     })
                 .catch(function (response)

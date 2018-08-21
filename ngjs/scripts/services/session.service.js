@@ -97,10 +97,9 @@
                     localStorage._login.createdat = _DATE_NOW;
                     return true;
                 }
-                //devConsoleLog("!(milissegundosDateAgoraComOffset - milissegundosSessaoLocalStorage) < milissegundosValidadeDadosLocalStorage");
             }
 
-            //devConsoleLog("invalida");
+            //devConsoleLog("invalid");
             return false;
         };
 

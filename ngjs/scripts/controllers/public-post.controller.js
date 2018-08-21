@@ -32,9 +32,8 @@
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
-
-                        self.postList = response.data.posts;
+                        //self.postList = response.data.posts;
+                        self.postList = response.data;
                         $rootScope.removeMessage();
                     })
                 .catch(function (response)
@@ -52,9 +51,8 @@
                 .then(
                     function (response)
                     {
-                        devConsoleLog(response.data);
-
-                        self.postSingle = response.data.post;
+                        //self.postSingle = response.data.post;
+                        self.postSingle = response.data;
                         $rootScope.removeMessage();
                     })
                 .catch(function (response)
