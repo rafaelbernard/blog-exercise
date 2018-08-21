@@ -18,9 +18,9 @@ class AuthController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        $email            = $request->input('email');
-        $password         = $request->input('password');
-        $name             = $request->input('name');
+        $email    = $request->input('email');
+        $password = $request->input('password');
+        $name     = $request->input('name');
 
         $user = new User([
             'name'     => $name,
@@ -28,14 +28,7 @@ class AuthController extends Controller
             'password' => bcrypt($password)
         ]);
 
-        if (!$user->save())
-        {
-            $response = [
-                'message' => 'An error ocurred while creating the user'
-            ];
-
-            return response()->json($response, 422);
-        }
+        $user->save();
 
         $response = [
             'message' => 'User created',

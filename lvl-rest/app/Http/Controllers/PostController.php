@@ -7,7 +7,6 @@ use App\Http\Requests\PostIndexRequest;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Post;
-use Illuminate\Http\Request;
 use JWTAuth;
 
 class PostController extends Controller
@@ -48,7 +47,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param PostStoreRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostStoreRequest $request)
@@ -64,14 +63,7 @@ class PostController extends Controller
             'user_id'      => $request->user()->id
         ]);
 
-        if (!$post->save())
-        {
-            $response = [
-                'message' => 'An error ocurred while creating the post'
-            ];
-
-            return response()->json($response, 422);
-        }
+        $post->save();
 
         $response = [
             'message' => 'Post created',
@@ -121,23 +113,16 @@ class PostController extends Controller
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-        if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
-        {
-            return response()->json(['message' => 'There is already a post with the same title'], 422);
-        }
+//        if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
+//        {
+//            return response()->json(['message' => 'There is already a post with the same title'], 422);
+//        }
 
         $post->title        = $title;
         $post->content      = $content;
         $post->is_published = $is_published;
 
-        if (!$post->update())
-        {
-            $response = [
-                'message' => 'An error ocurred while updating the post'
-            ];
-
-            return response()->json($response, 422);
-        }
+        $post->update();
 
         $response = [
             'message' => 'Post updated',

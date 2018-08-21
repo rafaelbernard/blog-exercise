@@ -30,4 +30,15 @@ class PostUpdateRequest extends FormRequest
             'is_published' => 'required'
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+
+            if (Post::where([['title', $this->input('title')], ['_id', '!=', $this->route('post')]])->first())
+            {
+                $validator->errors()->add('title', 'There is already a post with the same title');
+            }
+        });
+    }
 }
