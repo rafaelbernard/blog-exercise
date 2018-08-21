@@ -31,4 +31,17 @@ class UserTest extends TestCase
 
         $response->assertStatus(400);
     }
+
+    public function testSiginWithAdminFigured()
+    {
+        //$credential     = ['email' => 'admin@figured.com', 'password' => 'exercise'];
+        //$response = $this->post('api/v1/user/signin', $credential);
+
+        $user = factory(\App\User::class)->create();
+
+        $credential = ['email' => $user->email, 'password' => 'secret'];
+        $response   = $this->post('api/v1/user/signin', $credential);
+
+        $response->assertJson(['message' => 'Success'])->assertOk();
+    }
 }

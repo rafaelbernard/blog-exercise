@@ -52,7 +52,7 @@
         {
             //devConsoleLog(self.postData);
             self.requestInProgress = true;
-
+            $rootScope.messageInfo('Processing...');
             postService.createPost(self.postData)
                 .then(
                     function (response)
@@ -79,7 +79,7 @@
         {
             //devConsoleLog(self.postData);
             self.requestInProgress = true;
-
+            $rootScope.messageInfo('Processing...');
             postService.updatePost(self.postData)
                 .then(
                     function (response)
