@@ -39,9 +39,9 @@ class UserTest extends TestCase
 
         $user = factory(\App\User::class)->create();
 
-        $credential     = ['email' => $user->email, 'password' => 'secret'];
-        $response = $this->post('api/v1/user/signin', $credential);
+        $credential = ['email' => $user->email, 'password' => 'secret'];
+        $response   = $this->post('api/v1/user/signin', $credential);
 
-        $response->assertOk();
+        $response->assertJson(['msg' => 'Success'])->assertOk();
     }
 }

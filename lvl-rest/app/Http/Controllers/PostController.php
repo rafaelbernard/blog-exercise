@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         $this->middleware('jwt.auth',
             ['except' =>
-                 ['index', 'show']]);
+                 ['index', 'show', 'store']]);
     }
 
     /**
