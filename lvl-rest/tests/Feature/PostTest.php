@@ -24,27 +24,42 @@ class PostTest extends TestCase
         $response->assertStatus(500);
     }
 
-    public function testProductCreation()
+//    public function testProductCreation()
+//    {
+//        $user = factory(\App\User::class)->make();
+//        $post = factory(\App\Post::class)->make();
+//
+//        $response = $this->actingAs($user)
+//            ->post(route('post.store'), $post->jsonSerialize());
+//
+//        $response->assertStatus(201);
+//    }
+
+    public function testProductCreationFailsWhenTitleNotProvided()
     {
-        $user = factory(\App\User::class)->make();
-        $post = factory(\App\Post::class)->make();
+        //$user = factory(\App\User::class)->create();
+        //$post = factory(\App\Post::class)->create();
 
-        $response = $this->actingAs($user)
-            ->post(route('post.store'), $post->jsonSerialize());
+        //$response = $this->actingAs($user)->post(route('post.store'), $post->jsonSerialize());
 
-        $response->assertStatus(201);
+        $post = factory(\App\Post::class)->create(['title' => '']);
+
+        //$response = $this->withHeaders(['X-Requested-With', 'XMLHttpRequest'])->post(route('post.store'), $post->jsonSerialize());
+        $response = $this->post(route('post.store'), $post->jsonSerialize());
+
+        $response->assertStatus(422);
     }
 
-    public function testProductUpdate()
-    {
-        $user = factory(\App\User::class)->make();
-        $post = factory(\App\Post::class)->make();
-
-        $post->name = $post->name . ' ' . str_random(10);
-
-        $response = $this->actingAs($user)
-            ->post(route('post.update'), $post->jsonSerialize());
-
-        $response->assertStatus(200);
-    }
+//    public function testProductUpdate()
+//    {
+//        $user = factory(\App\User::class)->make();
+//        $post = factory(\App\Post::class)->make();
+//
+//        $post->name = $post->name . ' ' . str_random(10);
+//
+//        $response = $this->actingAs($user)
+//            ->post(route('post.update'), $post->jsonSerialize());
+//
+//        $response->assertStatus(200);
+//    }
 }
