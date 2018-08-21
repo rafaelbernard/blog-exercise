@@ -42,6 +42,6 @@ class UserTest extends TestCase
         $credential = ['email' => $user->email, 'password' => 'secret'];
         $response   = $this->post('api/v1/user/signin', $credential);
 
-        $response->assertJson(['msg' => 'Success'])->assertOk();
+        $response->assertJson(['message' => 'Success'])->assertOk();
     }
 }

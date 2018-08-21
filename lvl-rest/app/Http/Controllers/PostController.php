@@ -113,11 +113,6 @@ class PostController extends Controller
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
 
-//        if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
-//        {
-//            return response()->json(['message' => 'There is already a post with the same title'], 422);
-//        }
-
         $post->title        = $title;
         $post->content      = $content;
         $post->is_published = $is_published;
@@ -143,10 +138,7 @@ class PostController extends Controller
     {
         $post = Post::with('user')->findOrFail($id);
 
-        if (!$post->delete())
-        {
-            return response()->json(['message' => 'Deleting failed'], 422);
-        }
+        $post->delete();
 
         $response = [
             'message' => 'post deleted',
