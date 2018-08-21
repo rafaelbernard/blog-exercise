@@ -37,20 +37,34 @@ class PostTest extends TestCase
 
     public function testProductCreationFailsWhenTitleNotProvided()
     {
-        $user = factory(\App\User::class)->create();
-        //$post = factory(\App\Post::class)->create();
-
-        //$response = $this->actingAs($user)->post(route('post.store'), $post->jsonSerialize());
+        //$user = factory(\App\User::class)->create();
+        $user = factory(\App\User::class)->make(['email' => 'admin@figured.com', 'password' => 'exercise']);
 
         $post = factory(\App\Post::class)->make(['title' => '']);
 
-        //$response = $this->withHeaders(['X-Requested-With', 'XMLHttpRequest'])->post(route('post.store'), $post->jsonSerialize());
         $response = $this->actingAs($user)->post(route('post.store'), $post->jsonSerialize());
 
         $response
             ->assertJson(['title'=>['The title field is required']])
             ->assertStatus(422);
     }
+
+//    public function testProductCreationFailsWhenTitleNotProvided()
+//    {
+//        $user = factory(\App\User::class)->create();
+//        //$post = factory(\App\Post::class)->create();
+//
+//        //$response = $this->actingAs($user)->post(route('post.store'), $post->jsonSerialize());
+//
+//        $post = factory(\App\Post::class)->make(['title' => '']);
+//
+//        //$response = $this->withHeaders(['X-Requested-With', 'XMLHttpRequest'])->post(route('post.store'), $post->jsonSerialize());
+//        $response = $this->actingAs($user)->post(route('post.store'), $post->jsonSerialize());
+//
+//        $response
+//            ->assertJson(['title'=>['The title field is required']])
+//            ->assertStatus(422);
+//    }
 
 //    public function testProductUpdate()
 //    {
