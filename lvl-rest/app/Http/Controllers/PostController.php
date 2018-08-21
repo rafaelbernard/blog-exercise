@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\PostUpdateRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -52,14 +54,8 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        $this->validate($request, [
-            'title'        => 'required|unique:mongodb.posts',
-            'content'      => 'required',
-            'is_published' => 'required'
-        ]);
-
         $title        = $request->input('title');
         $content      = $request->input('content');
         $is_published = $request->input('is_published');
@@ -81,7 +77,7 @@ class PostController extends Controller
                 'message' => 'An error ocurred while creating the post'
             ];
 
-            return response()->json($response, 404);
+            return response()->json($response, 422);
         }
 
         $response = [
@@ -124,13 +120,8 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostUpdateRequest $request, $id)
     {
-        $this->validate($request, [
-            'title'   => 'required',
-            'content' => 'required',
-        ]);
-
         $post = Post::with('user')->findOrFail($id);
 
         $title        = $request->input('title');
@@ -139,7 +130,7 @@ class PostController extends Controller
 
         if (Post::where([['title', $title], ['_id', '!=', $id]])->first())
         {
-            return response()->json(['message' => 'There is already a post with the same title'], 500);
+            return response()->json(['message' => 'There is already a post with the same title'], 422);
         }
 
         $post->title        = $title;
