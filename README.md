@@ -46,7 +46,7 @@ Credentials are:
 - login: `admin@figured.com`
 - password: `exercise`
 
-[5] Enjoy. And **hire me**! I will bring my best to learn, share, contribute and put all my skills to join forces so that Figured keeps delivering a world-class tech solution to their customers.
+[5] Enjoy.
 
 ## structure
 
