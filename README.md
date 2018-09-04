@@ -1,4 +1,4 @@
-# figured-blog-exercise
+# blog-exercise
 
 Welcome to README file of the blog exercise challenge. I will try to go straight to the point so we have fun!
 
