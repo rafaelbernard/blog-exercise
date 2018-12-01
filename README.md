@@ -1,20 +1,19 @@
 # blog-exercise
 
-Welcome to README file of the blog exercise challenge. I will try to go straight to the point so we have fun!
+Welcome to README file of the exercise challenge. I will try to go straight to the point so we have fun!
 
 ## requirements
 
 - php 7.*
 - mongodb
-- mysql
 - nodejs
 
 ## install/publish
 
-[1] Create .env file at `lvl-rest/.env`
+[1] Create .env file based on .env.example at `lvl-rest/.env`
 
-Observe database configurations. We are using MySQL for users and MongoDB for 
-everything else. Then, database configuration is mandatory as example: 
+Observe database configurations. We are using MongoDB. 
+Then, database configuration is mandatory as example: 
 
 ```
 DB_CONNECTION=mysql
@@ -40,25 +39,11 @@ MONGO_DB_PASSWORD=
 [3] Use your preferred web server from the project root folder (Ex: `php -S localhost:8080`). 
 The web server should recognise htaccess files. 
 
-[4] Login with default admin user created using route `login` (Ex: `localhost:8080/ngjs/login`).
-Credentials are:
-
-- login: `admin@figured.com`
-- password: `exercise`
-
-[5] Enjoy.
+[4] Enjoy.
 
 ## structure
 
  - `ngjs/` - angular.js client application
  - `lvl-rest/` - laravel rest server application
-
-## environment
-
-### laravel
-
-1) application creation
-
-The application was created using composer `create-aplication laravel/laravel` command.
 
 

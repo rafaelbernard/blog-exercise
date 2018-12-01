@@ -18,15 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function () {
+
+    Route::get('polls', 'PollsController@index');
+
     Route::resource('post', 'PostController', [
         'except' => ['edit', 'create']
-    ]);
-
-    Route::resource('user', 'AuthController', [
-        'only' => ['store', 'index', 'install']
-    ]);
-
-    Route::post('user/signin', [
-        'uses' => 'AuthController@signin'
     ]);
 });
