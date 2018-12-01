@@ -1,12 +1,11 @@
-<div class="container" data-ng-init="publicPostController._init()">
-    <!--<h1>Blog - Figured Exercise Challenge</h1>-->
+<div class="container" data-ng-init="mainPageController._init()">
 
-    <div class="p-2" data-ng-repeat="post in publicPostController.postList">
+    <div class="p-2" data-ng-repeat="poll in mainPageController.pollsList | orderBy:publish_date:false">
         <section>
             <h1 class="h4">
-                <a data-ng-href="post/{{post._id}}">{{post.title}}</a>
+                <a data-ng-href="poll/{{poll._id}}">{{poll.title}}</a>
             </h1>
-            <p><em>- by <strong>{{post.user.name}}</strong></em></p>
+            <p><em>- by <strong>{{poll.user.name}}</strong></em></p>
         </section>
 
         <hr>

@@ -100,15 +100,6 @@
     var configDevLocal = {
         _ENV: "local",
         HOST_API: 'http://localhost:8000/lvl-rest/',
-        //HOST_API: "http://localhost:3000",
-        HOST_CMS: "https://content.hom.cuidadospelavida.com.br/",
-        HOST_PORTAL: "http://localhost:8000",
-        SALESFORCE: {
-            ORGID: "00D36000000uZzf",
-            URL_WEBTOCASE: "https://cs52.salesforce.com",
-        },
-        X_TOKEN_API: "262e4801adb5dfe5611a4a83c68365a591f14c48",
-        DEBUG_MODE: "debug"
     };
 
     var configUso = configProducao;
@@ -122,24 +113,7 @@
     else if (urlAcesso.lastIndexOf("hom") !== -1)
     { configUso = configHom; }
 
-    // DEBUG MODE
-    // off - nao exibe nenhum log (ideal para producao)
-    // info - exibe somente textos informativos
-    // debug - loga tudo inclusive os dados recebidos
-
     var IS_MOBILE = false;
-
-    // IS_MOBILE eh recuperado no arquivo de app
-    if (IS_MOBILE !== undefined)
-    {
-        configUso.IS_MOBILE = IS_MOBILE;
-
-        if (IS_MOBILE)
-        {
-            // configUso.WS_BARRAMENTO.ID_PARCEIRO = WS_BARRAMENTO_ID_PARCEIRO_SITE_MOBILE;
-            // configUso.WS_BARRAMENTO.ID_CANAL = WS_BARRAMENTO_ID_CANAL_SITE_MOBILE;
-        }
-    }
 
     window._CONFIG = configUso;
 

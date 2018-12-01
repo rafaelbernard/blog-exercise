@@ -11,25 +11,26 @@ class PollsSeeder extends Seeder
      */
     public function run()
     {
-        $polls = [[
-            'id'             => 1,
-            'title'          => 'Is bitcoin worth the time and money that mining requires?',
-            'published_date' => 1516605447,
-            'answer'         => [
-                'type'    => 'Single',
-                'options' => [[
-                    'id'    => 1,
-                    'label' => 'Yes'
-                ],
-                    [
-                        'id'    => 2,
-                        'label' => 'No'
+        $polls = [
+            [
+                'xid'            => 1,
+                'title'          => 'Is bitcoin worth the time and money that mining requires?',
+                'published_date' => 1516605447,
+                'answer'         => [
+                    'type'    => 'Single',
+                    'options' => [[
+                        'id'    => 1,
+                        'label' => 'Yes'
+                    ],
+                        [
+                            'id'    => 2,
+                            'label' => 'No'
+                        ]
                     ]
                 ]
-            ]
-        ],
+            ],
             [
-                'id'             => 2,
+                'xid'            => 2,
                 'title'          => 'Should chatbots replace humans in customer service jobs?',
                 'published_date' => 1516000647,
                 'answer'         => [
@@ -46,7 +47,7 @@ class PollsSeeder extends Seeder
                 ]
             ],
             [
-                'id'             => 3,
+                'xid'            => 3,
                 'title'          => 'How are we feeling about 2018?',
                 'published_date' => 1515568647,
                 'answer'         => [
@@ -63,7 +64,7 @@ class PollsSeeder extends Seeder
                 ]
             ],
             [
-                'id'             => 4,
+                'xid'            => 4,
                 'title'          => 'Which country/region have you ever visited? (Select all that applies)',
                 'published_date' => 1515482247,
                 'answer'         => [
@@ -96,7 +97,7 @@ class PollsSeeder extends Seeder
                 ]
             ],
             [
-                'id'             => 5,
+                'xid'            => 5,
                 'title'          => 'Will new benefits encourage you to study or work in mainland?',
                 'published_date' => 1515309447,
                 'answer'         => [

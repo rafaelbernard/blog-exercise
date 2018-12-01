@@ -11,6 +11,8 @@ class PollsTest extends TestCase
     /** @test */
     public function list_all()
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get('api/v1/polls');
 
         $response->assertStatus(200)

@@ -45,7 +45,7 @@
                     // OBJECTS
                     // =========
                     $rootScope.seo = {
-                        description: "Figured"
+                        description: "SCMP"
                     };
 
                     // ==================
@@ -87,8 +87,6 @@
                     $rootScope.setLogged = function (value)
                     {
                         return $rootScope.session.setLogged(value);
-                        //$rootScope.logado = Boolean(value);
-                        //return this;
                     };
 
                     /**
@@ -100,18 +98,6 @@
                     {
                         return $sce.trustAsHtml(html);
                     };
-
-                    // $rootScope.setLastBreadcrumbLabel = function (newLabel)
-                    // {
-                    //     var bc                  = breadcrumbs.getAll();
-                    //     bc[bc.length - 1].label = newLabel;
-                    // };
-                    //
-                    // $rootScope.setLastButOneBreadcrumbLabel = function (newLabel)
-                    // {
-                    //     var bc                  = breadcrumbs.getAll();
-                    //     bc[bc.length - 2].label = newLabel;
-                    // };
 
                     $rootScope.isSuccessResponse = function (response)
                     {
@@ -139,7 +125,7 @@
                     {
                         if (!text)
                         {
-                            text = 'Sucesso';
+                            text = 'Success';
                         }
 
                         $rootScope.classeAlert = 'success';
@@ -150,7 +136,7 @@
                     {
                         if (!data)
                         {
-                            data = 'Erro!';
+                            data = 'Error!';
                         }
                         if (dados)
                         {
@@ -299,20 +285,11 @@
                 $routeProvider
                     .when('/', {
                         templateUrl: 'views/main.html',
-                        controller: 'PublicPostController',
-                        controllerAs: 'publicPostController',
+                        controller: 'MainPageController',
+                        controllerAs: 'mainPageController',
                         label: 'Home'
                     })
                     // landings
-                    .when('/login', {
-                        templateUrl: "views/login.html",
-                        controller: "LoginController",
-                        controllerAs: "loginController",
-                        label: "Login"
-                    })
-                    .when('/admin', {
-                        redirectTo: '/admin/post'
-                    })
                     .when('/admin/user', {
                         templateUrl: 'views/private/tpl-users-list.html',
                         controller: 'UserController',

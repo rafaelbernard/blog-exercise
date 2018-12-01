@@ -13,9 +13,10 @@ class CreatePollsTable extends Migration
      */
     public function up()
     {
-        Schema::create('polls', function (Blueprint $table) {
-//            $table->increments('id');
-//            $table->timestamps();
+//        Schema::create('polls', function (Blueprint $table) {
+//        });
+
+        Schema::table('posts', function (Blueprint $table) {
         });
     }
 
@@ -27,5 +28,9 @@ class CreatePollsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('polls');
+
+        Schema::table('polls', function (Blueprint $table) {
+            $table->drop();
+        });
     }
 }
