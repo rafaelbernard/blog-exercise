@@ -4,10 +4,10 @@ Welcome to README file of the blog exercise challenge. I will try to go straight
 
 ## requirements
 
-- php 7.*
-- mongodb
-- mysql
-- nodejs
+  - php 7.*
+  - mongodb
+  - mysql
+  - nodejs
 
 ## install/publish
 
@@ -16,7 +16,7 @@ Welcome to README file of the blog exercise challenge. I will try to go straight
 Observe database configurations. We are using MySQL for users and MongoDB for 
 everything else. Then, database configuration is mandatory as example: 
 
-```
+```yaml
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
